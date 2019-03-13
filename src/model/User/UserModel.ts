@@ -11,6 +11,7 @@ interface IExperience {
   dateStart: Date;
   dateEnd: Date;
   name: string;
+  role: string;
   description: string;
 }
 
