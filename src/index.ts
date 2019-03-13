@@ -5,10 +5,14 @@ require('dotenv').config();
 
 import { ApolloServer } from 'apollo-server-express';
 import schema from './schema';
+import Client from './cosmos/Client';
 
 const startServer = async () => {
   const app = express();
   const port = process.env.PORT || 8080; // default port to listen
+
+  // initalize cosmosDB intializer
+  Client.init();
 
   // middleware
   app.use(morgan('combined'));
@@ -19,6 +23,7 @@ const startServer = async () => {
     schema,
     context: ({ req }: any) => ({
       req,
+      userController: Client.userController
     }),
   });
 

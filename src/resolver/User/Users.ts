@@ -30,7 +30,12 @@ export const typeDef = `
     skill: [String],
     education: Education,
     Experience: Experience,
-    Project: Project
+    Project: Project,
+    isActived: Boolean,
+  }
+
+  type Mutation {
+    addUser(name: String!, email: String!): User
   }
 
   type Query {
@@ -39,9 +44,18 @@ export const typeDef = `
 `;
 
 export const resolvers: IResolvers = {
+  Mutation: {
+    addUser: (async (_, { name, email }, { userController }) => {
+      return userController.addUser({ name, email }).then((result: any) => {
+        return result;
+      });
+    }),
+  },
   Query: {
     me: (async (_, {}, { userController }) => {
-      console.log(userController);
+      return userController.showUsers().then((result: any) => {
+        return result;
+      });
     }),
   },
 };

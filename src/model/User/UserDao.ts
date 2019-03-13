@@ -7,10 +7,10 @@ class UserDao extends Dao {
     super(cosmosClient, databaseId, containerId);
   }
 
-  async addUser(user: IUser) {
+  async addUser(user: any) {
     user.isActived = true;
-    return this.container.items.create(user).then((body) => {
-      return body;
+    return this.container.items.create(user).then((result) => {
+      return result.body;
     }).catch((err) => {
       return err;
     });

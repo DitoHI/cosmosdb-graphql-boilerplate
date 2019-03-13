@@ -19,8 +19,8 @@ class UserDao extends Dao_1.default {
     addUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             user.isActived = true;
-            return this.container.items.create(user).then((body) => {
-                return body;
+            return this.container.items.create(user).then((result) => {
+                return result.body;
             }).catch((err) => {
                 return err;
             });

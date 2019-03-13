@@ -38,7 +38,12 @@ exports.typeDef = `
     skill: [String],
     education: Education,
     Experience: Experience,
-    Project: Project
+    Project: Project,
+    isActived: Boolean,
+  }
+
+  type Mutation {
+    addUser(name: String!, email: String!): User
   }
 
   type Query {
@@ -46,9 +51,18 @@ exports.typeDef = `
   }
 `;
 exports.resolvers = {
+    Mutation: {
+        addUser: ((_, { name, email }, { userController }) => __awaiter(this, void 0, void 0, function* () {
+            return userController.addUser({ name, email }).then((result) => {
+                return result;
+            });
+        })),
+    },
     Query: {
         me: ((_, {}, { userController }) => __awaiter(this, void 0, void 0, function* () {
-            console.log(userController);
+            return userController.showUsers().then((result) => {
+                return result;
+            });
         })),
     },
 };

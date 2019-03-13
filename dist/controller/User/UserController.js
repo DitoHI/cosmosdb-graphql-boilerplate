@@ -12,16 +12,26 @@ class UserController {
     constructor(userDao) {
         this.userDao = userDao;
     }
-    showUsers() {
+    showUsers(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const querySpec = {
-                query: 'SELECT * FROM root r WHERE r.isActived=@isActived',
-                parameters: [
-                    {
-                        name: '@isActived',
-                        value: true,
+            this.query = 'SELECT * FROM root r WHERE';
+            let index = 0;
+            for (const prop of user) {
+                if (user.hasOwnProperty(prop)) {
+                    if (index === 0) {
+                        this.query += ` r.${prop}=@${prop}`;
                     }
-                ]
+                    this.query += ` AND r.${prop}=@${prop}`;
+                    this.parameters.push({
+                        name: prop,
+                        value: user.prop
+                    });
+                }
+                index = index + 1;
+            }
+            const querySpec = {
+                query: this.query,
+                parameters: this.parameters
             };
             return this.userDao.find(querySpec).then((user) => {
                 return user;
@@ -33,6 +43,7 @@ class UserController {
     addUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.userDao.addUser(user).then((user) => {
+                console.log(user);
                 return user;
             }).catch((err) => {
                 return err;

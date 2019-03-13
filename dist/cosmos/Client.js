@@ -24,9 +24,9 @@ class Client {
                 },
                 endpoint: Config_1.config.host,
             });
-            const userDao = new UserDao_1.default(cosmosClient, Config_1.config.databaseId, Config_1.config.containerUserId);
-            const userController = new UserController_1.default(userDao);
-            userDao.init().then(() => {
+            this.userDao = new UserDao_1.default(cosmosClient, Config_1.config.databaseId, Config_1.config.containerUserId);
+            this.userController = new UserController_1.default(this.userDao);
+            this.userDao.init().then(() => {
                 this.log = 'Successful configure user';
             }).catch((err) => {
                 this.log = err;
@@ -35,5 +35,6 @@ class Client {
         });
     }
 }
-exports.Client = Client;
+const client = new Client();
+exports.default = client;
 //# sourceMappingURL=Client.js.map

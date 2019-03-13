@@ -16,9 +16,12 @@ const morgan_1 = __importDefault(require("morgan"));
 require('dotenv').config();
 const apollo_server_express_1 = require("apollo-server-express");
 const schema_1 = __importDefault(require("./schema"));
+const Client_1 = __importDefault(require("./cosmos/Client"));
 const startServer = () => __awaiter(this, void 0, void 0, function* () {
     const app = express_1.default();
     const port = process.env.PORT || 8080; // default port to listen
+    // initalize cosmosDB intializer
+    Client_1.default.init();
     // middleware
     app.use(morgan_1.default('combined'));
     app.use(express_1.default.json());
@@ -27,6 +30,7 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
         schema: schema_1.default,
         context: ({ req }) => ({
             req,
+            userController: Client_1.default.userController
         }),
     });
     server.applyMiddleware({

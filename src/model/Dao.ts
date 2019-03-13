@@ -1,4 +1,4 @@
-import { Container, CosmosClient, Database, SqlQuerySpec } from '@azure/cosmos';
+import { Container, CosmosClient, Database, SqlParameter, SqlQuerySpec } from '@azure/cosmos';
 
 export default class Dao {
   public client: CosmosClient;
@@ -6,6 +6,8 @@ export default class Dao {
   public collectionId: string;
   public database: Database;
   public container: Container;
+  public query: string;
+  public parameters: SqlParameter[];
 
   constructor(cosmosClient: CosmosClient, databaseId: string, containerId: string) {
     this.client = cosmosClient;
@@ -26,6 +28,7 @@ export default class Dao {
       id: this.collectionId
     });
     this.container = coResponse.container;
+
     console.log('Setting up the container user... done');
   }
 

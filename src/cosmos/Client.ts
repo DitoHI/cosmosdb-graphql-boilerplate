@@ -5,6 +5,8 @@ import UserController from '../controller/User/UserController';
 
 class Client {
   public log: string;
+  public userDao: UserDao;
+  public userController: UserController;
 
   async init() {
     const cosmosClient = new CosmosClient({
@@ -14,9 +16,9 @@ class Client {
       endpoint: config.host,
     });
 
-    const userDao = new UserDao(cosmosClient, config.databaseId, config.containerUserId);
-    const userController = new UserController(userDao);
-    userDao.init().then(() => {
+    this.userDao = new UserDao(cosmosClient, config.databaseId, config.containerUserId);
+    this.userController = new UserController(this.userDao);
+    this.userDao.init().then(() => {
       this.log = 'Successful configure user';
     }).catch((err) => {
       this.log = err;
@@ -25,4 +27,6 @@ class Client {
   }
 }
 
-export { Client };
+const client = new Client();
+
+export default client;
