@@ -14,39 +14,46 @@ class UserController {
     }
     showUsers(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            this.query = 'SELECT * FROM root r WHERE';
+            this.query = 'SELECT * FROM root r';
+            this.parameters = [];
             let index = 0;
-            for (const prop of user) {
-                if (user.hasOwnProperty(prop)) {
-                    if (index === 0) {
-                        this.query += ` r.${prop}=@${prop}`;
+            if (user) {
+                for (const prop in user) {
+                    if (user.hasOwnProperty(prop) && user[prop]) {
+                        if (index === 0) {
+                            this.query += ` WHERE r.${prop}=@${prop}`;
+                        }
+                        else {
+                            this.query += ` AND r.${prop}=@${prop}`;
+                        }
+                        this.parameters.push({
+                            name: `@${prop}`,
+                            value: user[prop]
+                        });
                     }
-                    this.query += ` AND r.${prop}=@${prop}`;
-                    this.parameters.push({
-                        name: prop,
-                        value: user.prop
-                    });
+                    index = index + 1;
                 }
-                index = index + 1;
             }
             const querySpec = {
                 query: this.query,
                 parameters: this.parameters
             };
             return this.userDao.find(querySpec).then((user) => {
+                if (user.length === 0) {
+                    throw new Error('User not found');
+                }
                 return user;
             }).catch((err) => {
-                return err;
+                throw new Error(err);
             });
         });
     }
     addUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.userDao.addUser(user).then((user) => {
-                console.log(user);
                 return user;
             }).catch((err) => {
-                return err;
+                throw new Error(err);
             });
         });
     }

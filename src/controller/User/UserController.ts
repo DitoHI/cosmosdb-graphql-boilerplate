@@ -1,6 +1,5 @@
 import UserDao from '../../model/User/UserDao';
 import { SqlParameter, SqlQuerySpec } from '@azure/cosmos';
-import { IUser } from '../../model/User/UserModel';
 
 class UserController {
   public userDao: UserDao;
@@ -11,21 +10,25 @@ class UserController {
     this.userDao = userDao;
   }
 
-  async showUsers(user?: any) {
-    this.query = 'SELECT * FROM root r WHERE';
+  async showUsers(user?: any, logical: string = 'AND') {
+    this.query = 'SELECT * FROM root r';
+    this.parameters = [];
     let index: number = 0;
-    for (const prop of user) {
-      if (user.hasOwnProperty(prop)) {
-        if (index === 0) {
-          this.query += ` r.${prop}=@${prop}`;
+    if (user) {
+      for (const prop in user) {
+        if (user.hasOwnProperty(prop) && user[prop]) {
+          if (index === 0) {
+            this.query += ` WHERE r.${prop}=@${prop}`;
+          } else {
+            this.query += ` ${logical} r.${prop}=@${prop}`;
+          }
+          this.parameters.push({
+            name: `@${prop}`,
+            value: user[prop]
+          });
         }
-        this.query += ` AND r.${prop}=@${prop}`;
-        this.parameters.push({
-          name: prop,
-          value: user.prop
-        });
+        index = index + 1;
       }
-      index = index + 1;
     }
 
     const querySpec: SqlQuerySpec = {
@@ -36,15 +39,24 @@ class UserController {
     return this.userDao.find(querySpec).then((user) => {
       return user;
     }).catch((err) => {
-      return err;
+      throw new Error(err);
     });
   }
 
   async addUser(user?: any) {
-    return this.userDao.addUser(user).then((user) => {
-      return user;
-    }).catch((err) => {
-      return err;
+    // check if name or username is already exist
+    return new Promise((resolve, reject) => {
+      this.showUsers(user, 'OR').then((result) => {
+        if (result.length > 0) {
+          return reject('Username or email is already exist');
+        }
+
+        this.userDao.addUser(user).then((user) => {
+          return resolve(user);
+        }).catch((err) => {
+          return reject(err);
+        });
+      });
     });
   }
 }

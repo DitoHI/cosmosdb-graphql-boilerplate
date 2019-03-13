@@ -6,8 +6,6 @@ export default class Dao {
   public collectionId: string;
   public database: Database;
   public container: Container;
-  public query: string;
-  public parameters: SqlParameter[];
 
   constructor(cosmosClient: CosmosClient, databaseId: string, containerId: string) {
     this.client = cosmosClient;

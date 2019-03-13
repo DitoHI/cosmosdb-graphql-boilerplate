@@ -7,7 +7,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const ISODate_1 = __importDefault(require("../../scalar/ISODate"));
 exports.typeDef = `
   type Education {
     location: String,
@@ -29,12 +33,13 @@ exports.typeDef = `
 
   type User {
     id: ID!,
-    name: String,
+    name: String!,
     occupation: String,
-    email: String,
+    email: String!,
     phone: String,
     address: String,
     website: String,
+    dateBirth: ISODate,
     skill: [String],
     education: Education,
     Experience: Experience,
@@ -43,14 +48,19 @@ exports.typeDef = `
   }
 
   type Mutation {
-    addUser(name: String!, email: String!): User
+    addUser(name: String!, occupation: String!, email: String!,
+            phone: String!)
+            : [User]
   }
 
   type Query {
-    me: User
+    users(name: String, email: String): [User]
   }
+
+  scalar ISODate
 `;
 exports.resolvers = {
+    ISODate: ISODate_1.default,
     Mutation: {
         addUser: ((_, { name, email }, { userController }) => __awaiter(this, void 0, void 0, function* () {
             return userController.addUser({ name, email }).then((result) => {
@@ -59,7 +69,7 @@ exports.resolvers = {
         })),
     },
     Query: {
-        me: ((_, {}, { userController }) => __awaiter(this, void 0, void 0, function* () {
+        users: ((_, {}, { userController }) => __awaiter(this, void 0, void 0, function* () {
             return userController.showUsers().then((result) => {
                 return result;
             });

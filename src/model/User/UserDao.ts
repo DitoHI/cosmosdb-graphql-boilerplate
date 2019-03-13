@@ -1,6 +1,5 @@
 import { CosmosClient } from '@azure/cosmos';
 import Dao from '../Dao';
-import { IUser } from './UserModel';
 
 class UserDao extends Dao {
   constructor(cosmosClient: CosmosClient, databaseId: string, containerId: string) {

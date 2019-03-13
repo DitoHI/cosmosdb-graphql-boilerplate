@@ -1,4 +1,5 @@
 import { IResolvers } from 'graphql-tools';
+import ISODate from '../../scalar/ISODate';
 
 export const typeDef = `
   type Education {
@@ -21,12 +22,13 @@ export const typeDef = `
 
   type User {
     id: ID!,
-    name: String,
+    name: String!,
+    email: String!,
     occupation: String,
-    email: String,
     phone: String,
     address: String,
     website: String,
+    dateBirth: ISODate,
     skill: [String],
     education: Education,
     Experience: Experience,
@@ -39,21 +41,29 @@ export const typeDef = `
   }
 
   type Query {
-    me: User
+    users(name: String, email: String): [User]
   }
+
+  scalar ISODate
 `;
 
 export const resolvers: IResolvers = {
+  ISODate,
   Mutation: {
-    addUser: (async (_, { name, email }, { userController }) => {
-      return userController.addUser({ name, email }).then((result: any) => {
+    addUser: (async (_, user, { userController }) => {
+      return userController.addUser(user).then((result: any) => {
         return result;
+      }).catch((err: string) => {
+        throw new Error(err);
       });
     }),
   },
   Query: {
-    me: (async (_, {}, { userController }) => {
-      return userController.showUsers().then((result: any) => {
+    users: (async (_, user, { userController }) => {
+      return userController.showUsers(user).then((result: any) => {
+        if (result.length === 0) {
+          throw new Error('User not found');
+        }
         return result;
       });
     }),
