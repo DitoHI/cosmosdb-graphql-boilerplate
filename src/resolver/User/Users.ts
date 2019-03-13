@@ -38,6 +38,7 @@ export const typeDef = `
 
   type Mutation {
     addUser(name: String!, email: String!): User
+    deleteUser(name: String!, email: String!): User
   }
 
   type Query {
@@ -53,8 +54,15 @@ export const resolvers: IResolvers = {
     addUser: (async (_, user, { userController }) => {
       return userController.addUser(user).then((result: any) => {
         return result;
-      }).catch((err: string) => {
-        throw new Error(err);
+      }).catch((err: Error) => {
+        throw err;
+      });
+    }),
+    deleteUser: (async (_, user, { userController }) => {
+      return userController.deleteUser(user).then((result: any) => {
+        return result;
+      }).catch((err: any) => {
+        throw err;
       });
     }),
   },

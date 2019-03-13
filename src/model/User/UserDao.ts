@@ -32,6 +32,18 @@ class UserDao extends Dao {
       return err;
     });
   }
+
+  async deleteUser(userId: string) {
+    return this.getItem(userId).then((result) => {
+      if (result == null) {
+        return new Error('No user found');
+      }
+
+      this.container.item(userId).delete().catch((err) => {
+        return new Error(err);
+      });
+    }
+  )}
 }
 
 export default UserDao;

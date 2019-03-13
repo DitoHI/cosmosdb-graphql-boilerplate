@@ -48,10 +48,27 @@ class UserController {
     return new Promise((resolve, reject) => {
       this.showUsers(user, 'OR').then((result) => {
         if (result.length > 0) {
-          return reject('Username or email is already exist');
+          return reject(new Error('Username or email is already exist'));
         }
 
         this.userDao.addUser(user).then((user) => {
+          return resolve(user);
+        }).catch((err) => {
+          return reject(new Error(err));
+        });
+      });
+    });
+  }
+
+  async deleteUser(user?: any) {
+    return new Promise((resolve, reject) => {
+      this.showUsers(user).then((users) => {
+        if (users.length > 1) {
+          return reject(new Error(`There are ${users.length} users found. Please specify more`));
+        }
+
+        const user = Object.assign({}, users[0]);
+        this.userDao.deleteUser(user.id).then(() => {
           return resolve(user);
         }).catch((err) => {
           return reject(err);
