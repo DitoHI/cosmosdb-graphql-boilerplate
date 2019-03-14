@@ -26,11 +26,19 @@ class UserDao extends Dao_1.default {
             });
         });
     }
-    updateUser(userId) {
+    updateUser(userId, user) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.getItem(userId).then((doc) => {
-                this.container.item(userId).replace(doc).then((replaced) => {
-                    return replaced;
+                if (doc == null) {
+                    return new Error('No user found');
+                }
+                for (const key in user) {
+                    if (user.hasOwnProperty(key)) {
+                        doc[key] = user[key];
+                    }
+                }
+                return this.container.item(userId).replace(doc).then((result) => {
+                    return result.body;
                 }).catch((err) => {
                     return err;
                 });
@@ -39,10 +47,22 @@ class UserDao extends Dao_1.default {
     }
     getItem(userId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.container.item(userId).read().then((body) => {
-                return body;
+            return this.container.item(userId).read().then((result) => {
+                return result.body;
             }).catch((err) => {
                 return err;
+            });
+        });
+    }
+    deleteUser(userId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.getItem(userId).then((result) => {
+                if (result == null) {
+                    return new Error('No user found');
+                }
+                this.container.item(userId).delete().catch((err) => {
+                    return new Error(err);
+                });
             });
         });
     }

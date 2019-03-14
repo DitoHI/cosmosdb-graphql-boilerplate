@@ -39,12 +39,14 @@ export const typeDef = `
   type Mutation {
     addUser(name: String!, email: String!): User
     deleteUser(name: String!, email: String!): User
+    updateStatus(name: String!, email: String!, updatedIsActived: Boolean!): User
     updateUser(occupation: String, phone: String, address: String,
                website: String, dateBirth: ISODate
                ): User
   }
 
   type Query {
+    me: User
     users(name: String, email: String): [User]
   }
 
@@ -68,15 +70,32 @@ export const resolvers: IResolvers = {
         throw err;
       });
     }),
+    updateStatus: (async (_, user , { userController }) => {
+      return userController.updateUser(user, user.updatedIsActived).then((result: any) => {
+        return result;
+      }).catch((err: Error) => {
+        throw err;
+      });
+    }),
     updateUser: (async (_, user, { userController }) => {
+      user.isActived = true;
       return userController.updateUser(user).then((result: any) => {
         return result;
-      }).catch((err: any) => {
+      }).catch((err: Error) => {
         throw err;
       });
     }),
   },
   Query: {
+    me: (async (_, {}, { userController }) => {
+      return userController.showUsers({ isActived: true }).then((result: any) => {
+        if (result.length > 1) {
+          throw new Error(`There are ${result.length} users found who are actived. ` +
+            'Please inactive the others');
+        }
+        return result[0];
+      });
+    }),
     users: (async (_, user, { userController }) => {
       return userController.showUsers(user).then((result: any) => {
         if (result.length === 0) {

@@ -5,6 +5,7 @@ class UserController {
   public userDao: UserDao;
   public query: string;
   public parameters: SqlParameter[];
+  private updatedParameters: string[] = ['updatedIsActived'];
 
   constructor(userDao: UserDao) {
     this.userDao = userDao;
@@ -16,7 +17,8 @@ class UserController {
     let index: number = 0;
     if (user) {
       for (const prop in user) {
-        if (user.hasOwnProperty(prop) && user[prop]) {
+        if (user.hasOwnProperty(prop) && user[prop] &&
+          this.updatedParameters.indexOf(prop) === -1) {
           if (index === 0) {
             this.query += ` WHERE r.${prop}=@${prop}`;
           } else {
@@ -60,16 +62,20 @@ class UserController {
     });
   }
 
-  async updateUser(user?: any) {
+  async updateUser(user?: any, updatedIsActived?: Boolean) {
     return new Promise((resolve, reject) => {
-      this.showUsers({ isActived: true }).then((users) => {
+      this.showUsers(user).then((users) => {
         if (users.length === 0) {
-          return reject(new Error(`No user registered`));
+          return reject(new Error('No user registered'));
         }
 
         if (users.length > 1) {
           return reject(new Error(`There are ${users.length} users found who are actived. ` +
             'Please inactive the others'));
+        }
+
+        if (updatedIsActived != null) {
+          user.isActived = updatedIsActived;
         }
 
         const userClone = Object.assign({}, users[0]);
@@ -88,7 +94,7 @@ class UserController {
     return new Promise((resolve, reject) => {
       this.showUsers(user).then((users) => {
         if (users.length === 0) {
-          return reject(new Error(`No user registered`));
+          return reject(new Error('No user registered'));
         }
 
         if (users.length > 1) {

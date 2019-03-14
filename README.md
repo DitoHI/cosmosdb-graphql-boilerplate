@@ -6,7 +6,7 @@ GraphQl is a powerful tool to satisfy the front end for them to manipulate the r
 
 The boilerplate is using **user** as the model and typeDef which is likely to be displayed in *curriculum vitae*
 
-Features
+Dependencies
 --------
 
 * Create user with default value `isActived` false

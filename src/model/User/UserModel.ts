@@ -40,10 +40,4 @@ interface IUser {
   isActived: boolean;
 }
 
-interface IUserLog {
-  status: number;
-  message: string;
-  user: IUser;
-}
-
-export { IUser, IUserLog };
+export { IUser };

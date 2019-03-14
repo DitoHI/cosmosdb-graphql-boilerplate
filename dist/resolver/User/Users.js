@@ -34,8 +34,8 @@ exports.typeDef = `
   type User {
     id: ID!,
     name: String!,
-    occupation: String,
     email: String!,
+    occupation: String,
     phone: String,
     address: String,
     website: String,
@@ -48,12 +48,16 @@ exports.typeDef = `
   }
 
   type Mutation {
-    addUser(name: String!, occupation: String!, email: String!,
-            phone: String!)
-            : [User]
+    addUser(name: String!, email: String!): User
+    deleteUser(name: String!, email: String!): User
+    updateStatus(name: String!, email: String!, updatedIsActived: Boolean!): User
+    updateUser(occupation: String, phone: String, address: String,
+               website: String, dateBirth: ISODate
+               ): User
   }
 
   type Query {
+    me: User
     users(name: String, email: String): [User]
   }
 
@@ -62,15 +66,51 @@ exports.typeDef = `
 exports.resolvers = {
     ISODate: ISODate_1.default,
     Mutation: {
-        addUser: ((_, { name, email }, { userController }) => __awaiter(this, void 0, void 0, function* () {
-            return userController.addUser({ name, email }).then((result) => {
+        addUser: ((_, user, { userController }) => __awaiter(this, void 0, void 0, function* () {
+            return userController.addUser(user).then((result) => {
                 return result;
+            }).catch((err) => {
+                throw err;
+            });
+        })),
+        deleteUser: ((_, user, { userController }) => __awaiter(this, void 0, void 0, function* () {
+            return userController.deleteUser(user).then((result) => {
+                return result;
+            }).catch((err) => {
+                throw err;
+            });
+        })),
+        updateStatus: ((_, user, { userController }) => __awaiter(this, void 0, void 0, function* () {
+            return userController.updateUser(user).then((result) => {
+                return result;
+            }).catch((err) => {
+                throw err;
+            });
+        })),
+        updateUser: ((_, user, { userController }) => __awaiter(this, void 0, void 0, function* () {
+            user.isActived = true;
+            return userController.updateUser(user).then((result) => {
+                return result;
+            }).catch((err) => {
+                throw err;
             });
         })),
     },
     Query: {
-        users: ((_, {}, { userController }) => __awaiter(this, void 0, void 0, function* () {
-            return userController.showUsers().then((result) => {
+        me: ((_, {}, { userController }) => __awaiter(this, void 0, void 0, function* () {
+            return userController.showUsers({ isActived: true }).then((result) => {
+                if (result.length > 1) {
+                    throw new Error(`There are ${result.length} users found who are actived. ` +
+                        'Please inactive the others');
+                }
+                return result[0];
+            });
+        })),
+        users: ((_, user, { userController }) => __awaiter(this, void 0, void 0, function* () {
+            return userController.showUsers(user).then((result) => {
+                if (result.length === 0) {
+                    throw new Error('User not found');
+                }
                 return result;
             });
         })),

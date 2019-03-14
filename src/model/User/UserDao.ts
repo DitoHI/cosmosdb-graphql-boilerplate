@@ -52,8 +52,8 @@ class UserDao extends Dao {
       this.container.item(userId).delete().catch((err) => {
         return new Error(err);
       });
-    }
-  )}
+    });
+  }
 }
 
 export default UserDao;
