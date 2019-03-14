@@ -67,7 +67,11 @@ class UserController {
     updateUser(user, updatedIsActived) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
-                this.showUsers(user).then((users) => {
+                let userFind = {};
+                updatedIsActived == null
+                    ? userFind.isActived = true
+                    : userFind = user;
+                this.showUsers(userFind).then((users) => {
                     if (users.length === 0) {
                         return reject(new Error('No user registered'));
                     }
@@ -75,8 +79,7 @@ class UserController {
                         return reject(new Error(`There are ${users.length} users found who are actived. ` +
                             'Please inactive the others'));
                     }
-                    console.log(users);
-                    if (updatedIsActived) {
+                    if (updatedIsActived != null) {
                         user.isActived = updatedIsActived;
                     }
                     const userClone = Object.assign({}, users[0]);

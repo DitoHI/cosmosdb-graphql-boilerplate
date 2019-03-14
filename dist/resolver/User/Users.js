@@ -81,7 +81,7 @@ exports.resolvers = {
             });
         })),
         updateStatus: ((_, user, { userController }) => __awaiter(this, void 0, void 0, function* () {
-            return userController.updateUser(user).then((result) => {
+            return userController.updateUser(user, user.updatedIsActived).then((result) => {
                 return result;
             }).catch((err) => {
                 throw err;

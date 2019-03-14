@@ -94,6 +94,72 @@ class UserController {
     });
   }
 
+  async updateEducation(education: any) {
+    return new Promise((resolve, reject) => {
+      this.showUsers({ isActived: true }).then((users) => {
+        if (users.length === 0) {
+          return reject(new Error('No user registered'));
+        }
+
+        if (users.length > 1) {
+          return reject(new Error(`There are ${users.length} users found. Please specify more`));
+        }
+
+        const userClone = Object.assign({}, users[0]);
+        const educationClone = Object.assign({}, education);
+        this.userDao.updateUser(userClone.id, { education: educationClone }).then((replaced) => {
+          return resolve(replaced);
+        }).catch((err) => {
+          return reject(err);
+        });
+      });
+    });
+  }
+
+  async updateExperience(experience: any) {
+    return new Promise((resolve, reject) => {
+      this.showUsers({ isActived: true }).then((users) => {
+        if (users.length === 0) {
+          return reject(new Error('No user registered'));
+        }
+
+        if (users.length > 1) {
+          return reject(new Error(`There are ${users.length} users found. Please specify more`));
+        }
+
+        const userClone = Object.assign({}, users[0]);
+        const experienceClone = Object.assign({}, experience);
+        this.userDao.updateUser(userClone.id, { experience: experienceClone }).then((replaced) => {
+          return resolve(replaced);
+        }).catch((err) => {
+          return reject(err);
+        });
+      });
+    });
+  }
+
+  async updateProject(project: any) {
+    return new Promise((resolve, reject) => {
+      this.showUsers({ isActived: true }).then((users) => {
+        if (users.length === 0) {
+          return reject(new Error('No user registered'));
+        }
+
+        if (users.length > 1) {
+          return reject(new Error(`There are ${users.length} users found. Please specify more`));
+        }
+
+        const userClone = Object.assign({}, users[0]);
+        const projectClone = Object.assign({}, project);
+        this.userDao.updateUser(userClone.id, { project: projectClone }).then((replaced) => {
+          return resolve(replaced);
+        }).catch((err) => {
+          return reject(err);
+        });
+      });
+    });
+  }
+
   async deleteUser(user?: any) {
     return new Promise((resolve, reject) => {
       this.showUsers(user).then((users) => {

@@ -3,6 +3,8 @@ import ISODate from '../../scalar/ISODate';
 
 export const typeDef = `
   type Education {
+    dateStart: ISODate,
+    dateEnd: ISODate,
     location: String,
     name: String,
     description: String
@@ -31,8 +33,8 @@ export const typeDef = `
     dateBirth: ISODate,
     skill: [String],
     education: Education,
-    Experience: Experience,
-    Project: Project,
+    experience: Experience,
+    project: Project,
     isActived: Boolean,
   }
 
@@ -40,6 +42,10 @@ export const typeDef = `
     addUser(name: String!, email: String!): User
     deleteUser(name: String!, email: String!): User
     updateStatus(name: String!, email: String!, updatedIsActived: Boolean!): User
+    updateEducation(name: String, dateStart: ISODate, dateEnd: ISODate,
+                    location: String, description: String): User
+    updateExperience(name: String, role: String, description: String): User
+    updateProject(techStacks: [String], description: String, link: String): User
     updateUser(occupation: String, phone: String, address: String,
                website: String, dateBirth: ISODate
                ): User
@@ -80,6 +86,27 @@ export const resolvers: IResolvers = {
     updateUser: (async (_, user, { userController }) => {
       user.isActived = true;
       return userController.updateUser(user).then((result: any) => {
+        return result;
+      }).catch((err: Error) => {
+        throw err;
+      });
+    }),
+    updateEducation: (async (_, education, { userController }) => {
+      return userController.updateEducation(education).then((result: any) => {
+        return result;
+      }).catch((err: Error) => {
+        throw err;
+      });
+    }),
+    updateExperience: (async (_, experience, { userController }) => {
+      return userController.updateExperience(experience).then((result: any) => {
+        return result;
+      }).catch((err: Error) => {
+        throw err;
+      });
+    }),
+    updateProject: (async (_, project, { userController }) => {
+      return userController.updateProject(project).then((result: any) => {
         return result;
       }).catch((err: Error) => {
         throw err;

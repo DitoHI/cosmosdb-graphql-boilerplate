@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bb75fe6-b363-482a-98be-9af986454925" name="Default Changelist" comment="">
+    <list default="true" id="8bb75fe6-b363-482a-98be-9af986454925" name="Default Changelist" comment="optimize updating user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/controller/User/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/User/UserController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/controller/User/UserController.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/User/UserController.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/User/UserDao.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/User/UserDao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/User/UserDao.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/User/UserDao.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/resolver/User/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/User/Users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/resolver/User/Users.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/User/Users.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/User/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/User/UserController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/User/UserDao.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User/UserDao.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/User/UserModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User/UserModel.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resolver/User/Users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/User/Users.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -48,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resolver/User/Users.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="73" column="66" selection-start-line="73" selection-start-column="66" selection-end-line="73" selection-end-column="66" />
+            <state relative-caret-position="131">
+              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -60,13 +55,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/User/UserController.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+            <state relative-caret-position="296">
+              <caret line="153" column="55" selection-start-line="153" selection-start-column="55" selection-end-line="153" selection-end-column="55" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
+                <element signature="n#!!block;n#deleteUser#0;n#UserController#0" />
               </folding>
             </state>
           </provider>
@@ -147,8 +143,8 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/model/User/UserDao.ts" />
         <option value="$PROJECT_DIR$/src/model/User/UserModel.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/User/Users.ts" />
         <option value="$PROJECT_DIR$/src/controller/User/UserController.ts" />
+        <option value="$PROJECT_DIR$/src/resolver/User/Users.ts" />
       </list>
     </option>
   </component>
@@ -257,7 +253,7 @@
       <workItem from="1552416382540" duration="9165000" />
       <workItem from="1552450437470" duration="4955000" />
       <workItem from="1552458475329" duration="55000" />
-      <workItem from="1552478452532" duration="23888000" />
+      <workItem from="1552478452532" duration="30213000" />
     </task>
     <task id="LOCAL-00001" summary="initial setup of cosmosClient, Model, and Controller done">
       <created>1552437481395</created>
@@ -308,11 +304,25 @@
       <option name="project" value="LOCAL" />
       <updated>1552526702104</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update status of user done">
+      <created>1552532155070</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1552532155070</updated>
+    </task>
+    <task id="LOCAL-00009" summary="optimize updating user">
+      <created>1552532444192</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1552532444192</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42698000" />
+    <option name="totallyTimeSpent" value="49023000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="25" width="1311" height="743" extended-state="6" />
@@ -351,7 +361,9 @@
     <MESSAGE value="add middleware to check if existing name or value in addUser" />
     <MESSAGE value="delete user done" />
     <MESSAGE value="delete and updating user done" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete and updating user done" />
+    <MESSAGE value="update status of user done" />
+    <MESSAGE value="optimize updating user" />
+    <option name="LAST_COMMIT_MESSAGE" value="optimize updating user" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/App.ts" />
@@ -483,22 +495,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resolver/User/Users.ts">
+    <entry file="file://$PROJECT_DIR$/src/controller/User/UserController.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="73" column="66" selection-start-line="73" selection-start-column="66" selection-end-line="73" selection-end-column="66" />
+        <state relative-caret-position="296">
+          <caret line="153" column="55" selection-start-line="153" selection-start-column="55" selection-end-line="153" selection-end-column="55" />
           <folding>
-            <element signature="e#0#43#0" expanded="true" />
+            <element signature="e#0#47#0" expanded="true" />
+            <element signature="n#!!block;n#deleteUser#0;n#UserController#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/User/UserController.ts">
+    <entry file="file://$PROJECT_DIR$/src/resolver/User/Users.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+        <state relative-caret-position="131">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
           <folding>
-            <element signature="e#0#47#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
