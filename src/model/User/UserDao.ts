@@ -15,10 +15,20 @@ class UserDao extends Dao {
     });
   }
 
-  async updateUser(userId: string) {
+  async updateUser(userId: string, user: any) {
     return this.getItem(userId).then((doc) => {
-      this.container.item(userId).replace(doc).then((replaced) => {
-        return replaced;
+      if (doc == null) {
+        return new Error('No user found');
+      }
+
+      for (const key in user) {
+        if (user.hasOwnProperty(key)) {
+          doc[key] = user[key];
+        }
+      }
+
+      return this.container.item(userId).replace(doc).then((result) => {
+        return result.body;
       }).catch((err) => {
         return err;
       });
@@ -26,8 +36,8 @@ class UserDao extends Dao {
   }
 
   async getItem(userId: string) {
-    return this.container.item(userId).read().then((body) => {
-      return body;
+    return this.container.item(userId).read().then((result) => {
+      return result.body;
     }).catch((err) => {
       return err;
     });

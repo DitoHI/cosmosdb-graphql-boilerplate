@@ -60,15 +60,43 @@ class UserController {
     });
   }
 
+  async updateUser(user?: any) {
+    return new Promise((resolve, reject) => {
+      this.showUsers({ isActived: true }).then((users) => {
+        if (users.length === 0) {
+          return reject(new Error(`No user registered`));
+        }
+
+        if (users.length > 1) {
+          return reject(new Error(`There are ${users.length} users found who are actived. ` +
+            'Please inactive the others'));
+        }
+
+        const userClone = Object.assign({}, users[0]);
+        this.userDao.updateUser(userClone.id, user).then((replaced) => {
+          return resolve(replaced);
+        }).catch((err) => {
+          return reject(err);
+        });
+      }).catch((err) => {
+        return reject(err);
+      });
+    });
+  }
+
   async deleteUser(user?: any) {
     return new Promise((resolve, reject) => {
       this.showUsers(user).then((users) => {
+        if (users.length === 0) {
+          return reject(new Error(`No user registered`));
+        }
+
         if (users.length > 1) {
           return reject(new Error(`There are ${users.length} users found. Please specify more`));
         }
 
-        const user = Object.assign({}, users[0]);
-        this.userDao.deleteUser(user.id).then(() => {
+        const userClone = Object.assign({}, users[0]);
+        this.userDao.deleteUser(userClone.id).then(() => {
           return resolve(user);
         }).catch((err) => {
           return reject(err);

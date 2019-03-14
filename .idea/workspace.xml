@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bb75fe6-b363-482a-98be-9af986454925" name="Default Changelist" comment="">
+    <list default="true" id="8bb75fe6-b363-482a-98be-9af986454925" name="Default Changelist" comment="delete user done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controller/User/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/User/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controller/User/UserController.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/User/UserController.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/Dao.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/Dao.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/User/UserDao.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/User/UserDao.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/User/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/User/Users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/User/Users.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/User/Users.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/User/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/User/UserController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Dao.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Dao.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/User/UserDao.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User/UserDao.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resolver/User/Users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/User/Users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,6 +19,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="210">
+                <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.ts">
           <provider selected="true" editor-type-id="text-editor">
@@ -49,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resolver/User/Users.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="53" column="65" selection-start-line="53" selection-start-column="65" selection-end-line="53" selection-end-column="65" />
+            <state relative-caret-position="236">
+              <caret line="72" column="22" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -64,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/User/UserController.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="54" column="31" lean-forward="true" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
+            <state relative-caret-position="90">
+              <caret line="78" column="29" lean-forward="true" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -76,8 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/User/UserDao.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="135">
+              <caret line="30" column="15" lean-forward="true" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -135,7 +139,6 @@
         <option value="$PROJECT_DIR$/src/model/UserDao.ts" />
         <option value="$PROJECT_DIR$/src/cosmos/client.ts" />
         <option value="$PROJECT_DIR$/src/resolver/index.ts" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/LICENSE.md" />
         <option value="$PROJECT_DIR$/src/cosmos/Config.ts" />
         <option value="$PROJECT_DIR$/src/cosmos/Client.ts" />
@@ -146,9 +149,10 @@
         <option value="$PROJECT_DIR$/src/model/Dao.ts" />
         <option value="$PROJECT_DIR$/src/schema/index.ts" />
         <option value="$PROJECT_DIR$/src/index.ts" />
+        <option value="$PROJECT_DIR$/src/resolver/User/Users.ts" />
         <option value="$PROJECT_DIR$/src/model/User/UserDao.ts" />
         <option value="$PROJECT_DIR$/src/controller/User/UserController.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/User/Users.ts" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -257,7 +261,7 @@
       <workItem from="1552416382540" duration="9165000" />
       <workItem from="1552450437470" duration="4955000" />
       <workItem from="1552458475329" duration="55000" />
-      <workItem from="1552478452532" duration="14370000" />
+      <workItem from="1552478452532" duration="19529000" />
     </task>
     <task id="LOCAL-00001" summary="initial setup of cosmosClient, Model, and Controller done">
       <created>1552437481395</created>
@@ -287,17 +291,31 @@
       <option name="project" value="LOCAL" />
       <updated>1552455391269</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add middleware to check if existing name or value in addUser">
+      <created>1552509269383</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1552509269383</updated>
+    </task>
+    <task id="LOCAL-00006" summary="delete user done">
+      <created>1552511310809</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1552511310809</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33180000" />
+    <option name="totallyTimeSpent" value="38339000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="25" width="1311" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -312,7 +330,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="RNConsole" order="10" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3306189" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3306189" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -327,7 +345,9 @@
     <MESSAGE value="initial setup of graphldone" />
     <MESSAGE value="add license and readme" />
     <MESSAGE value="basic mutation addUser done" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic mutation addUser done" />
+    <MESSAGE value="add middleware to check if existing name or value in addUser" />
+    <MESSAGE value="delete user done" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete user done" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/App.ts" />
@@ -358,16 +378,6 @@
         <state split_layout="FIRST">
           <first_editor>
             <caret column="4" selection-start-column="4" selection-end-column="4" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="90">
-            <caret line="6" column="97" lean-forward="true" selection-start-line="6" selection-start-column="97" selection-end-line="6" selection-end-column="97" />
           </first_editor>
           <second_editor />
         </state>
@@ -432,16 +442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/User/UserDao.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scalar/ISODate.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -459,10 +459,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/User/UserDao.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="30" column="15" lean-forward="true" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/User/UserController.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="54" column="31" lean-forward="true" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
+        <state relative-caret-position="90">
+          <caret line="78" column="29" lean-forward="true" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
@@ -471,11 +481,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resolver/User/Users.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="53" column="65" selection-start-line="53" selection-start-column="65" selection-end-line="53" selection-end-column="65" />
+        <state relative-caret-position="236">
+          <caret line="72" column="22" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="210">
+            <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
