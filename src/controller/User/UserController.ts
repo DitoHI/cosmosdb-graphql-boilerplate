@@ -64,7 +64,11 @@ class UserController {
 
   async updateUser(user?: any, updatedIsActived?: Boolean) {
     return new Promise((resolve, reject) => {
-      this.showUsers(user).then((users) => {
+      let userFind: any = {};
+      updatedIsActived == null
+        ? userFind.isActived = true
+        : userFind = user;
+      this.showUsers(userFind).then((users) => {
         if (users.length === 0) {
           return reject(new Error('No user registered'));
         }
