@@ -14,6 +14,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const ISODate_1 = __importDefault(require("../../scalar/ISODate"));
 exports.typeDef = `
   type Education {
+    dateStart: ISODate,
+    dateEnd: ISODate,
     location: String,
     name: String,
     description: String
@@ -42,8 +44,8 @@ exports.typeDef = `
     dateBirth: ISODate,
     skill: [String],
     education: Education,
-    Experience: Experience,
-    Project: Project,
+    experience: Experience,
+    project: Project,
     isActived: Boolean,
   }
 
@@ -51,6 +53,10 @@ exports.typeDef = `
     addUser(name: String!, email: String!): User
     deleteUser(name: String!, email: String!): User
     updateStatus(name: String!, email: String!, updatedIsActived: Boolean!): User
+    updateEducation(name: String, dateStart: ISODate, dateEnd: ISODate,
+                    location: String, description: String): User
+    updateExperience(name: String, role: String, description: String): User
+    updateProject(techStacks: [String], description: String, link: String): User
     updateUser(occupation: String, phone: String, address: String,
                website: String, dateBirth: ISODate
                ): User
@@ -90,6 +96,27 @@ exports.resolvers = {
         updateUser: ((_, user, { userController }) => __awaiter(this, void 0, void 0, function* () {
             user.isActived = true;
             return userController.updateUser(user).then((result) => {
+                return result;
+            }).catch((err) => {
+                throw err;
+            });
+        })),
+        updateEducation: ((_, education, { userController }) => __awaiter(this, void 0, void 0, function* () {
+            return userController.updateEducation(education).then((result) => {
+                return result;
+            }).catch((err) => {
+                throw err;
+            });
+        })),
+        updateExperience: ((_, experience, { userController }) => __awaiter(this, void 0, void 0, function* () {
+            return userController.updateExperience(experience).then((result) => {
+                return result;
+            }).catch((err) => {
+                throw err;
+            });
+        })),
+        updateProject: ((_, project, { userController }) => __awaiter(this, void 0, void 0, function* () {
+            return userController.updateProject(project).then((result) => {
                 return result;
             }).catch((err) => {
                 throw err;

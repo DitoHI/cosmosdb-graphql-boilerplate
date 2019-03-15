@@ -19,7 +19,7 @@ const schema_1 = __importDefault(require("./schema"));
 const Client_1 = __importDefault(require("./cosmos/Client"));
 const startServer = () => __awaiter(this, void 0, void 0, function* () {
     const app = express_1.default();
-    const port = process.env.PORT || 8080; // default port to listen
+    const port = process.env.PORT || 3000; // default port to listen
     // initalize cosmosDB intializer
     Client_1.default.init();
     // middleware
@@ -38,7 +38,7 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
     });
     // start the Express server
     app.listen(port, () => {
-        console.log(`Server started at PORT ${port}`);
+        console.log(`Server started @PORT ${port}`);
     });
 });
 startServer();
