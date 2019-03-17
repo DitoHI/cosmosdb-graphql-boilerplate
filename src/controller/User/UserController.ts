@@ -107,11 +107,16 @@ class UserController {
 
         const userClone = Object.assign({}, users[0]);
         const educationClone = Object.assign({}, education);
-        this.userDao.updateUser(userClone.id, { education: educationClone }).then((replaced) => {
-          return resolve(replaced);
-        }).catch((err) => {
-          return reject(err);
-        });
+        if (!userClone.education) {
+          userClone.education = [];
+        }
+        userClone.education.push(education);
+        this.userDao.updateUser(userClone.id, { education: userClone.education })
+          .then((replaced) => {
+            return resolve(replaced);
+          }).catch((err) => {
+            return reject(err);
+          });
       });
     });
   }
@@ -173,7 +178,7 @@ class UserController {
 
         const userClone = Object.assign({}, users[0]);
         this.userDao.deleteUser(userClone.id).then(() => {
-          return resolve(user);
+          return resolve(userClone);
         }).catch((err) => {
           return reject(err);
         });

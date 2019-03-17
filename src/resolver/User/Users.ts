@@ -7,6 +7,8 @@ export const typeDef = `
     dateEnd: ISODate,
     location: String,
     name: String,
+    degree: String,
+    major: String,
     description: String
   }
 
@@ -32,9 +34,9 @@ export const typeDef = `
     website: String,
     dateBirth: ISODate,
     skill: [String],
-    education: Education,
-    experience: Experience,
-    project: Project,
+    education: [Education],
+    experience: [Experience],
+    project: [Project],
     isActived: Boolean,
   }
 
@@ -42,12 +44,12 @@ export const typeDef = `
     addUser(name: String!, email: String!): User
     deleteUser(name: String!, email: String!): User
     updateStatus(name: String!, email: String!, updatedIsActived: Boolean!): User
-    updateEducation(name: String, dateStart: ISODate, dateEnd: ISODate,
-                    location: String, description: String): User
+    updateEducation(name: String, degree: String, major: String, dateStart: ISODate,
+                    dateEnd: ISODate, location: String, description: String): User
     updateExperience(name: String, role: String, description: String): User
     updateProject(techStacks: [String], description: String, link: String): User
     updateUser(occupation: String, phone: String, address: String,
-               website: String, dateBirth: ISODate
+               website: String, dateBirth: ISODate, skill: [String]
                ): User
   }
 
