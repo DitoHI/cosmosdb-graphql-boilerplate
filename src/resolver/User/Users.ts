@@ -21,6 +21,8 @@ export const typeDef = `
   }
 
   type Project {
+    name: String,
+    role: String,
     techStacks: [String],
     description: String,
     link: URL,
@@ -50,7 +52,8 @@ export const typeDef = `
                     dateEnd: DateTime, location: String, description: String): User
     updateExperience(name: String, role: String, description: String,
                      dateStart: DateTime, dateEnd: DateTime): User
-    updateProject(techStacks: [String], description: String, link: URL): User
+    updateProject(name: String, role: String, techStacks: [String],
+                  description: String, link: URL): User
     updateUser(occupation: String, phone: String, address: String,
                website: URL, dateBirth: DateTime, skill: [String]
                ): User
