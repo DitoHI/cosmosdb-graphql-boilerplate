@@ -16,7 +16,8 @@ export const typeDef = `
     name: String,
     role: String,
     description: String,
-    link: URL,
+    dateStart: DateTime,
+    dateEnd: DateTime,
   }
 
   type Project {
@@ -47,10 +48,11 @@ export const typeDef = `
     updateStatus(name: String!, email: String!, updatedIsActived: Boolean!): User
     updateEducation(name: String, degree: String, major: String, dateStart: DateTime,
                     dateEnd: DateTime, location: String, description: String): User
-    updateExperience(name: String, role: String, description: String): User
-    updateProject(techStacks: [String], description: String, link: String): User
+    updateExperience(name: String, role: String, description: String,
+                     dateStart: DateTime, dateEnd: DateTime): User
+    updateProject(techStacks: [String], description: String, link: URL): User
     updateUser(occupation: String, phone: String, address: String,
-               website: String, dateBirth: DateTime, skill: [String]
+               website: URL, dateBirth: DateTime, skill: [String]
                ): User
   }
 

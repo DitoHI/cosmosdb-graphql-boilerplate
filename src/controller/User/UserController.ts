@@ -134,11 +134,16 @@ class UserController {
 
         const userClone = Object.assign({}, users[0]);
         const experienceClone = Object.assign({}, experience);
-        this.userDao.updateUser(userClone.id, { experience: experienceClone }).then((replaced) => {
-          return resolve(replaced);
-        }).catch((err) => {
-          return reject(err);
-        });
+        if (!userClone.experience) {
+          userClone.experience = [];
+        }
+        userClone.experience.push(experience);
+        this.userDao.updateUser(userClone.id, { experience: userClone.experience })
+          .then((replaced) => {
+            return resolve(replaced);
+          }).catch((err) => {
+            return reject(err);
+          });
       });
     });
   }
@@ -156,11 +161,17 @@ class UserController {
 
         const userClone = Object.assign({}, users[0]);
         const projectClone = Object.assign({}, project);
-        this.userDao.updateUser(userClone.id, { project: projectClone }).then((replaced) => {
-          return resolve(replaced);
-        }).catch((err) => {
-          return reject(err);
-        });
+        if (!userClone.project) {
+          userClone.project = [];
+        }
+        userClone.project.push(project);
+
+        this.userDao.updateUser(userClone.id, { project: userClone.project })
+          .then((replaced) => {
+            return resolve(replaced);
+          }).catch((err) => {
+            return reject(err);
+          });
       });
     });
   }
