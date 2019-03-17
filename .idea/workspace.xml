@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bb75fe6-b363-482a-98be-9af986454925" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/User/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/User/UserController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resolver/User/Users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/User/Users.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -51,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resolver/User/Users.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-495">
-              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+            <state relative-caret-position="180">
+              <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -262,7 +260,7 @@
       <workItem from="1552607099001" duration="2501000" />
       <workItem from="1552632940456" duration="4795000" />
       <workItem from="1552652584704" duration="961000" />
-      <workItem from="1552798146410" duration="2837000" />
+      <workItem from="1552798146410" duration="3345000" />
     </task>
     <task id="LOCAL-00001" summary="initial setup of cosmosClient, Model, and Controller done">
       <created>1552437481395</created>
@@ -341,11 +339,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552655075413</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fix the format of education">
+      <created>1552802260429</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1552802260429</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67872000" />
+    <option name="totallyTimeSpent" value="68380000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="25" width="1311" height="743" extended-state="6" />
@@ -410,7 +415,8 @@
     <MESSAGE value="optimize updating user" />
     <MESSAGE value="wrapping up - done all the function of User CRUD" />
     <MESSAGE value="add Dockerfile to dockerized the app" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Dockerfile to dockerized the app" />
+    <MESSAGE value="fix the format of education" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the format of education" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/App.ts" />
@@ -561,8 +567,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resolver/User/Users.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-495">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        <state relative-caret-position="180">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>

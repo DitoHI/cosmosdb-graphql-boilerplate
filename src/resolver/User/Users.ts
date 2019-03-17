@@ -15,7 +15,8 @@ export const typeDef = `
   type Experience {
     name: String,
     role: String,
-    description: String
+    description: String,
+    link: String,
   }
 
   type Project {
