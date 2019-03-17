@@ -1,6 +1,6 @@
 ### CosmosDB with GraphQL
 
-GraphQl is a powerful tool to satisfy the front end for them to manipulate the returned data in the client. Also CosmosDB is also a powerful tool to satisfy the back end to manipulate the request data from the client. But it's so daunting to combine them as a full pack server. So this boilerplate comes to solve that daunting process
+GraphQL is a powerful tool to satisfy the front end for them to manipulate the returned data in the client. Also CosmosDB is also a powerful tool to satisfy the back end to manipulate the request data from the client. But it's so daunting to combine them as a full pack server. So this boilerplate comes to solve that daunting process
 
 ### Use Case
 
