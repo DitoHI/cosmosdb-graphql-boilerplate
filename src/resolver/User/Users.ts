@@ -1,28 +1,28 @@
 import { IResolvers } from 'graphql-tools';
-import ISODate from '../../scalar/ISODate';
+import { DateTime, URL } from '@okgrow/graphql-scalars';
 
 export const typeDef = `
   type Education {
-    dateStart: ISODate,
-    dateEnd: ISODate,
+    dateStart: DateTime,
+    dateEnd: DateTime,
     location: String,
     name: String,
     degree: String,
     major: String,
-    description: String
+    description: String,
   }
 
   type Experience {
     name: String,
     role: String,
     description: String,
-    link: String,
+    link: URL,
   }
 
   type Project {
     techStacks: [String],
     description: String,
-    link: String
+    link: URL,
   }
 
   type User {
@@ -32,8 +32,8 @@ export const typeDef = `
     occupation: String,
     phone: String,
     address: String,
-    website: String,
-    dateBirth: ISODate,
+    website: URL,
+    dateBirth: DateTime,
     skill: [String],
     education: [Education],
     experience: [Experience],
@@ -45,12 +45,12 @@ export const typeDef = `
     addUser(name: String!, email: String!): User
     deleteUser(name: String!, email: String!): User
     updateStatus(name: String!, email: String!, updatedIsActived: Boolean!): User
-    updateEducation(name: String, degree: String, major: String, dateStart: ISODate,
-                    dateEnd: ISODate, location: String, description: String): User
+    updateEducation(name: String, degree: String, major: String, dateStart: DateTime,
+                    dateEnd: DateTime, location: String, description: String): User
     updateExperience(name: String, role: String, description: String): User
     updateProject(techStacks: [String], description: String, link: String): User
     updateUser(occupation: String, phone: String, address: String,
-               website: String, dateBirth: ISODate, skill: [String]
+               website: String, dateBirth: DateTime, skill: [String]
                ): User
   }
 
@@ -59,11 +59,13 @@ export const typeDef = `
     users(name: String, email: String): [User]
   }
 
-  scalar ISODate
+  scalar DateTime
+  scalar URL
 `;
 
 export const resolvers: IResolvers = {
-  ISODate,
+  DateTime,
+  URL,
   Mutation: {
     addUser: (async (_, user, { userController }) => {
       return userController.addUser(user).then((result: any) => {
