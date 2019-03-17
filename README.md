@@ -13,6 +13,7 @@ Dependencies
 * Show all users with flexibly request of parameters. You just can request user based on name, email, or nothing at all
 * Update user with the only one `isActived` true
 * Delete user by its parameters
+* Use [this library](https://github.com/okgrow/graphql-scalars) from @okgrow to use Scalar Type in GraphQL
 
 License
 --------

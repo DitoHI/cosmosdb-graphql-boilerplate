@@ -1,25 +1,31 @@
 import { IResolvers } from 'graphql-tools';
-import ISODate from '../../scalar/ISODate';
+import { DateTime, URL } from '@okgrow/graphql-scalars';
 
 export const typeDef = `
   type Education {
-    dateStart: ISODate,
-    dateEnd: ISODate,
+    dateStart: DateTime,
+    dateEnd: DateTime,
     location: String,
     name: String,
-    description: String
+    degree: String,
+    major: String,
+    description: String,
   }
 
   type Experience {
     name: String,
     role: String,
-    description: String
+    description: String,
+    dateStart: DateTime,
+    dateEnd: DateTime,
   }
 
   type Project {
+    name: String,
+    role: String,
     techStacks: [String],
     description: String,
-    link: String
+    link: URL,
   }
 
   type User {
@@ -29,12 +35,12 @@ export const typeDef = `
     occupation: String,
     phone: String,
     address: String,
-    website: String,
-    dateBirth: ISODate,
+    website: URL,
+    dateBirth: DateTime,
     skill: [String],
-    education: Education,
-    experience: Experience,
-    project: Project,
+    education: [Education],
+    experience: [Experience],
+    project: [Project],
     isActived: Boolean,
   }
 
@@ -42,12 +48,14 @@ export const typeDef = `
     addUser(name: String!, email: String!): User
     deleteUser(name: String!, email: String!): User
     updateStatus(name: String!, email: String!, updatedIsActived: Boolean!): User
-    updateEducation(name: String, dateStart: ISODate, dateEnd: ISODate,
-                    location: String, description: String): User
-    updateExperience(name: String, role: String, description: String): User
-    updateProject(techStacks: [String], description: String, link: String): User
+    updateEducation(name: String, degree: String, major: String, dateStart: DateTime,
+                    dateEnd: DateTime, location: String, description: String): User
+    updateExperience(name: String, role: String, description: String,
+                     dateStart: DateTime, dateEnd: DateTime): User
+    updateProject(name: String, role: String, techStacks: [String],
+                  description: String, link: URL): User
     updateUser(occupation: String, phone: String, address: String,
-               website: String, dateBirth: ISODate
+               website: URL, dateBirth: DateTime, skill: [String]
                ): User
   }
 
@@ -56,80 +64,107 @@ export const typeDef = `
     users(name: String, email: String): [User]
   }
 
-  scalar ISODate
+  scalar DateTime
+  scalar URL
 `;
 
 export const resolvers: IResolvers = {
-  ISODate,
+  DateTime,
+  URL,
   Mutation: {
     addUser: (async (_, user, { userController }) => {
-      return userController.addUser(user).then((result: any) => {
-        return result;
-      }).catch((err: Error) => {
-        throw err;
-      });
+      return userController
+        .addUser(user)
+        .then((result: any) => {
+          return result;
+        })
+        .catch((err: Error) => {
+          throw err;
+        });
     }),
     deleteUser: (async (_, user, { userController }) => {
-      return userController.deleteUser(user).then((result: any) => {
-        return result;
-      }).catch((err: any) => {
-        throw err;
-      });
+      return userController
+        .deleteUser(user)
+        .then((result: any) => {
+          return result;
+        })
+        .catch((err: any) => {
+          throw err;
+        });
     }),
     updateStatus: (async (_, user , { userController }) => {
-      return userController.updateUser(user, user.updatedIsActived).then((result: any) => {
-        return result;
-      }).catch((err: Error) => {
-        throw err;
-      });
+      return userController
+        .updateUser(user, user.updatedIsActived)
+        .then((result: any) => {
+          return result;
+        })
+        .catch((err: Error) => {
+          throw err;
+        });
     }),
     updateUser: (async (_, user, { userController }) => {
       user.isActived = true;
-      return userController.updateUser(user).then((result: any) => {
-        return result;
-      }).catch((err: Error) => {
-        throw err;
-      });
+      return userController
+        .updateUser(user)
+        .then((result: any) => {
+          return result;
+        })
+        .catch((err: Error) => {
+          throw err;
+        });
     }),
     updateEducation: (async (_, education, { userController }) => {
-      return userController.updateEducation(education).then((result: any) => {
-        return result;
-      }).catch((err: Error) => {
-        throw err;
-      });
+      return userController
+        .updateEducation(education)
+        .then((result: any) => {
+          return result;
+        })
+        .catch((err: Error) => {
+          throw err;
+        });
     }),
     updateExperience: (async (_, experience, { userController }) => {
-      return userController.updateExperience(experience).then((result: any) => {
-        return result;
-      }).catch((err: Error) => {
-        throw err;
-      });
+      return userController
+        .updateExperience(experience)
+        .then((result: any) => {
+          return result;
+        })
+        .catch((err: Error) => {
+          throw err;
+        });
     }),
     updateProject: (async (_, project, { userController }) => {
-      return userController.updateProject(project).then((result: any) => {
-        return result;
-      }).catch((err: Error) => {
-        throw err;
-      });
+      return userController
+        .updateProject(project)
+        .then((result: any) => {
+          return result;
+        })
+        .catch((err: Error) => {
+          throw err;
+        });
     }),
   },
   Query: {
     me: (async (_, {}, { userController }) => {
-      return userController.showUsers({ isActived: true }).then((result: any) => {
-        if (result.length > 1) {
-          throw new Error(`There are ${result.length} users found who are actived. ` +
+      return userController
+        .showUsers({ isActived: true })
+        .then((result: any) => {
+          if (result.length > 1) {
+            throw new Error(`There are ${result.length} users found who are actived. ` +
             'Please inactive the others');
-        }
-        return result[0];
-      });
+          }
+          return result[0];
+        });
     }),
     users: (async (_, user, { userController }) => {
-      return userController.showUsers(user).then((result: any) => {
-        if (result.length === 0) {
-          throw new Error('User not found');
-        }
-        return result;
-      });
+      return userController
+        .showUsers(user)
+        .then((result: any) => {
+          if (result.length === 0) {
+            throw new Error('User not found');
+          }
+          return result;
+        });
     }),
   },
 };

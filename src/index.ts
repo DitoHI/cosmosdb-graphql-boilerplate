@@ -9,7 +9,7 @@ import Client from './cosmos/Client';
 
 const startServer = async () => {
   const app = express();
-  const port = process.env.PORT || 8080; // default port to listen
+  const port = process.env.PORT || 3000; // default port to listen
 
   // initalize cosmosDB intializer
   Client.init();
@@ -33,7 +33,7 @@ const startServer = async () => {
 
   // start the Express server
   app.listen(port, () => {
-    console.log(`Server started at PORT ${port}`);
+    console.log(`Server started @PORT ${port}`);
   });
 };
 
