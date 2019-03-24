@@ -17,7 +17,7 @@ export default class Dao {
   }
 
   async init() {
-    console.log('Setting up database user...');
+    console.log('Setting up database...');
     const dbResponse = await this.client.databases.createIfNotExists({
       id: this.databaseId
     });
@@ -39,7 +39,6 @@ export default class Dao {
   }
 
   async addItem(item: any) {
-    item.isActived = true;
     return this.container.items
       .create(item)
       .then((result) => {

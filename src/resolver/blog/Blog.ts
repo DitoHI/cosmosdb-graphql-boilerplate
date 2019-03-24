@@ -1,5 +1,6 @@
 import { IResolvers } from 'graphql-tools';
 import { IUser } from '../../model/User/UserModel';
+import { IBlog } from '../../model/Blog/BlogModel';
 import { DateTime } from '@okgrow/graphql-scalars';
 
 export const typeDef = `
@@ -32,7 +33,7 @@ export const resolvers: IResolvers = {
 
           const user = result[0] as IUser;
           blog.user = user.id;
-          blogController
+          return blogController
             .addBlog(blog)
             .then((blog: any) => {
               return blog;
@@ -58,10 +59,10 @@ export const resolvers: IResolvers = {
           }
 
           const user = result[0] as IUser;
-          blogController
+          return blogController
             .showBlogs({ user: user.id })
-            .then((blogs: any) => {
-              return blogs;
+            .then((blogsResult: any) => {
+              return blogsResult;
             })
             .catch((err: any) => {
               throw err;

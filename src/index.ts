@@ -12,7 +12,14 @@ const startServer = async () => {
   const port = process.env.PORT || 3000; // default port to listen
 
   // initalize cosmosDB intializer
-  Client.init();
+  Client
+    .init()
+    .then((log) => {
+      console.log(log);
+    })
+    .catch((err) => {
+      throw new Error(err);
+    });
 
   // middleware
   app.use(morgan('combined'));

@@ -50,6 +50,8 @@ class BlogController {
 
   async addBlog(blog?: any) {
     return new Promise((resolve, reject) => {
+      blog.lastEdited = Date.now();
+      blog.isDeleted = false;
       this.blogDao
         .addItem(blog)
         .then((blog) => {

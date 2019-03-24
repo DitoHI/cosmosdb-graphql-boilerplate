@@ -58,6 +58,7 @@ class UserController {
             return reject(new Error('Username or email is already exist'));
           }
 
+          user.isActived = true;
           this.userDao
             .addItem(user)
             .then((user) => {
