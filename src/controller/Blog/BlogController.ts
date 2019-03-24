@@ -78,6 +78,30 @@ class BlogController {
         });
     });
   }
+
+  async deleteBlog(id: string) {
+    return new Promise((resolve, reject) => {
+      const blog = {} as any;
+      blog.id = id;
+      this
+        .showBlogs(blog)
+        .then((blogsResult) => {
+          if (blogsResult.length === 0) {
+            return reject(new Error('No blog found'));
+          }
+
+          const blogClone = Object.assign({}, blogsResult[0]);
+          this.blogDao
+            .deleteItem(id)
+            .then(() => {
+              return resolve(blogClone);
+            })
+            .catch((err) => {
+              return reject(err);
+            });
+        });
+    });
+  }
 }
 
 export default BlogController;

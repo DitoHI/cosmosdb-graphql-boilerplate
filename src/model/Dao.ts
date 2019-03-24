@@ -75,9 +75,9 @@ export default class Dao {
       });
   }
 
-  async getItem(userId: string) {
+  async getItem(id: string) {
     return this.container
-      .item(userId)
+      .item(id)
       .read()
       .then((result) => {
         return result.body;
@@ -87,16 +87,17 @@ export default class Dao {
       });
   }
 
-  async deleteItem(userId: string) {
+  async deleteItem(id: string) {
     return this
-      .getItem(userId)
+      .getItem(id)
       .then((result) => {
-        if (result == null) {
-          return new Error('No user found');
+        if (!result) {
+          return new Error('No item found');
         }
+        console.log(result);
 
         this.container
-          .item(userId)
+          .item(id)
           .delete()
           .catch((err) => {
             return new Error(err);

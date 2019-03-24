@@ -43,6 +43,16 @@ export const resolvers: IResolvers = {
             });
         });
     }),
+    deleteBlog: (async (_, { id }, { blogController }) => {
+      return blogController
+        .deleteBlog(id)
+        .then((blogDeleted: any) => {
+          return blogDeleted;
+        })
+        .catch((err: Error) => {
+          throw err;
+        });
+    }),
     updateBlog: (async (_, blog, { blogController }) => {
       return blogController
         .updateBlog(blog.id, blog)
