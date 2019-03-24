@@ -43,6 +43,16 @@ export const resolvers: IResolvers = {
             });
         });
     }),
+    updateBlog: (async (_, blog, { blogController }) => {
+      return blogController
+        .updateBlog(blog.id, blog)
+        .then((blogUpdated: any) => {
+          return blogUpdated;
+        })
+        .catch((err: Error) => {
+          throw err;
+        });
+    }),
   },
   Query: {
     blogs: (async (_, {}, { userController, blogController }) => {

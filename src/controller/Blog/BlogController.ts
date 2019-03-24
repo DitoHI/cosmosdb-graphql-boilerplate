@@ -62,6 +62,22 @@ class BlogController {
         });
     });
   }
+
+  async updateBlog(idBlog: any, blog: any) {
+    return new Promise((resolve, reject) => {
+      this.blogDao
+        .updateItem(idBlog, blog)
+        .then((blogUpdated) => {
+          if (blogUpdated.code === 404) {
+            return reject(blogUpdated.body);
+          }
+          return resolve(blogUpdated);
+        })
+        .catch((err) => {
+          return reject(err);
+        });
+    });
+  }
 }
 
 export default BlogController;
