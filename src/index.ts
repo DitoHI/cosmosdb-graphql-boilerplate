@@ -23,12 +23,16 @@ const startServer = async () => {
     schema,
     context: ({ req }: any) => ({
       req,
-      userController: Client.userController
+      blogController: Client.blogController,
+      userController: Client.userController,
     }),
   });
 
   server.applyMiddleware({
-    app
+    app, cors: {
+      credentials: true,
+      origin: 'http://localhost:3000',
+    }
   });
 
   // start the Express server

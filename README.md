@@ -4,7 +4,7 @@ GraphQL is a powerful tool to satisfy the front end for them to manipulate the r
 
 ### Use Case
 
-The boilerplate is using **user** as the model and typeDef which is likely to be displayed in *curriculum vitae*
+The boilerplate is using **user** as the model and resolvers which is likely to be displayed in *curriculum vitae*
 
 Dependencies
 --------

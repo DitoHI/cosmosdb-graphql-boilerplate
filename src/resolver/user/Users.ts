@@ -43,29 +43,6 @@ export const typeDef = `
     project: [Project],
     isActived: Boolean,
   }
-
-  type Mutation {
-    addUser(name: String!, email: String!): User
-    deleteUser(name: String!, email: String!): User
-    updateStatus(name: String!, email: String!, updatedIsActived: Boolean!): User
-    updateEducation(name: String, degree: String, major: String, dateStart: DateTime,
-                    dateEnd: DateTime, location: String, description: String): User
-    updateExperience(name: String, role: String, description: String,
-                     dateStart: DateTime, dateEnd: DateTime): User
-    updateProject(name: String, role: String, techStacks: [String],
-                  description: String, link: URL): User
-    updateUser(occupation: String, phone: String, address: String,
-               website: URL, dateBirth: DateTime, skill: [String]
-               ): User
-  }
-
-  type Query {
-    me: User
-    users(name: String, email: String): [User]
-  }
-
-  scalar DateTime
-  scalar URL
 `;
 
 export const resolvers: IResolvers = {
@@ -161,7 +138,7 @@ export const resolvers: IResolvers = {
         .showUsers(user)
         .then((result: any) => {
           if (result.length === 0) {
-            throw new Error('User not found');
+            throw new Error('user not found');
           }
           return result;
         });

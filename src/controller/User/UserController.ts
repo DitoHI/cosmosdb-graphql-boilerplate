@@ -1,13 +1,13 @@
-import UserDao from '../../model/User/UserDao';
+import Dao from '../../model/Dao';
 import { SqlParameter, SqlQuerySpec } from '@azure/cosmos';
 
 class UserController {
-  public userDao: UserDao;
+  public userDao: Dao;
   public query: string;
   public parameters: SqlParameter[];
   private updatedParameters: string[] = ['updatedIsActived'];
 
-  constructor(userDao: UserDao) {
+  constructor(userDao: Dao) {
     this.userDao = userDao;
   }
 
@@ -58,7 +58,8 @@ class UserController {
             return reject(new Error('Username or email is already exist'));
           }
 
-          this.userDao.addUser(user)
+          this.userDao
+            .addItem(user)
             .then((user) => {
               return resolve(user);
             })
@@ -93,7 +94,7 @@ class UserController {
 
           const userClone = Object.assign({}, users[0]);
           this.userDao
-            .updateUser(userClone.id, user)
+            .updateItem(userClone.id, user)
             .then((replaced) => {
               return resolve(replaced);
             })
@@ -127,7 +128,7 @@ class UserController {
           }
           userClone.education.push(education);
           this.userDao
-            .updateUser(userClone.id, { education: userClone.education })
+            .updateItem(userClone.id, { education: userClone.education })
             .then((replaced) => {
               return resolve(replaced);
             })
@@ -159,7 +160,7 @@ class UserController {
           userClone.experience.push(experience);
 
           this.userDao
-            .updateUser(userClone.id, { experience: userClone.experience })
+            .updateItem(userClone.id, { experience: userClone.experience })
             .then((replaced) => {
               return resolve(replaced);
             })
@@ -191,7 +192,7 @@ class UserController {
           userClone.project.push(project);
 
           this.userDao
-            .updateUser(userClone.id, { project: userClone.project })
+            .updateItem(userClone.id, { project: userClone.project })
             .then((replaced) => {
               return resolve(replaced);
             })
@@ -216,7 +217,7 @@ class UserController {
 
           const userClone = Object.assign({}, users[0]);
           this.userDao
-            .deleteUser(userClone.id)
+            .deleteItem(userClone.id)
             .then(() => {
               return resolve(userClone);
             })

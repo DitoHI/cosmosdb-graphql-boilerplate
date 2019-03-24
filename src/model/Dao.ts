@@ -27,14 +27,81 @@ export default class Dao {
     });
     this.container = coResponse.container;
 
-    console.log('Setting up the container user... done');
+    console.log('Setting up the container... done');
   }
 
   async find(querySpec: SqlQuerySpec) {
     if (!this.container) {
-      throw new Error('User collection is not initialized');
+      throw new Error('The collection is not initialized');
     }
     const { result: results } = await this.container.items.query(querySpec).toArray();
     return results;
+  }
+
+  async addItem(item: any) {
+    item.isActived = true;
+    return this.container.items
+      .create(item)
+      .then((result) => {
+        return result.body;
+      })
+      .catch((err) => {
+        return err;
+      });
+  }
+
+  async updateItem(id: string, item: any) {
+    return this
+      .getItem(id)
+      .then((doc) => {
+        if (doc == null) {
+          return new Error('Data not found');
+        }
+
+        for (const key in item) {
+          if (item.hasOwnProperty(key)) {
+            doc[key] = item[key];
+          }
+        }
+
+        return this.container
+          .item(id)
+          .replace(doc)
+          .then((result) => {
+            return result.body;
+          })
+          .catch((err) => {
+            return err;
+          });
+      });
+  }
+
+  async getItem(userId: string) {
+    return this.container
+      .item(userId)
+      .read()
+      .then((result) => {
+        return result.body;
+      })
+      .catch((err) => {
+        return err;
+      });
+  }
+
+  async deleteItem(userId: string) {
+    return this
+      .getItem(userId)
+      .then((result) => {
+        if (result == null) {
+          return new Error('No user found');
+        }
+
+        this.container
+          .item(userId)
+          .delete()
+          .catch((err) => {
+            return new Error(err);
+          });
+      });
   }
 }

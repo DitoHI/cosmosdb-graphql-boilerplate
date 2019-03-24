@@ -1,12 +1,15 @@
 import { CosmosClient } from '@azure/cosmos';
 import { config } from './Config';
-import UserDao from '../model/User/UserDao';
+import Dao from '../model/Dao';
 import UserController from '../controller/User/UserController';
+import BlogController from '../controller/Blog/BlogController';
 
 class Client {
   public log: string;
-  public userDao: UserDao;
+  public userDao: Dao;
+  public blogDao: Dao;
   public userController: UserController;
+  public blogController: BlogController;
 
   async init() {
     const cosmosClient = new CosmosClient({
@@ -16,14 +19,19 @@ class Client {
       endpoint: config.host,
     });
 
-    this.userDao = new UserDao(cosmosClient, config.databaseId, config.containerUserId);
+    this.userDao = new Dao(cosmosClient, config.databaseId, config.containerUserId);
+    this.blogDao = new Dao(cosmosClient, config.databaseId, config.containerBlogId);
     this.userController = new UserController(this.userDao);
-    this.userDao.init().then(() => {
-      this.log = 'Successful configure user';
-    }).catch((err) => {
-      this.log = err;
-      return err;
-    });
+    this.blogController = new BlogController(this.userDao);
+    this.userDao
+      .init()
+      .then(() => {
+        this.log = 'Successful configure user & blog';
+      })
+      .catch((err) => {
+        this.log = err;
+        return err;
+      });
   }
 }
 

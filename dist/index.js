@@ -34,7 +34,10 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
         }),
     });
     server.applyMiddleware({
-        app
+        app, cors: {
+            credentials: true,
+            origin: 'http://localhost:3000'
+        }
     });
     // start the Express server
     app.listen(port, () => {

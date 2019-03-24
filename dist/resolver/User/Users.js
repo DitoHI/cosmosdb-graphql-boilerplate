@@ -7,30 +7,33 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const ISODate_1 = __importDefault(require("../../scalar/ISODate"));
+const graphql_scalars_1 = require("@okgrow/graphql-scalars");
 exports.typeDef = `
   type Education {
-    dateStart: ISODate,
-    dateEnd: ISODate,
+    dateStart: DateTime,
+    dateEnd: DateTime,
     location: String,
     name: String,
-    description: String
+    degree: String,
+    major: String,
+    description: String,
   }
 
   type Experience {
     name: String,
     role: String,
-    description: String
+    description: String,
+    dateStart: DateTime,
+    dateEnd: DateTime,
   }
 
   type Project {
+    name: String,
+    role: String,
     techStacks: [String],
     description: String,
-    link: String
+    link: URL,
   }
 
   type User {
@@ -40,12 +43,12 @@ exports.typeDef = `
     occupation: String,
     phone: String,
     address: String,
-    website: String,
-    dateBirth: ISODate,
+    website: URL,
+    dateBirth: DateTime,
     skill: [String],
-    education: Education,
-    experience: Experience,
-    project: Project,
+    education: [Education],
+    experience: [Experience],
+    project: [Project],
     isActived: Boolean,
   }
 
@@ -53,12 +56,14 @@ exports.typeDef = `
     addUser(name: String!, email: String!): User
     deleteUser(name: String!, email: String!): User
     updateStatus(name: String!, email: String!, updatedIsActived: Boolean!): User
-    updateEducation(name: String, dateStart: ISODate, dateEnd: ISODate,
-                    location: String, description: String): User
-    updateExperience(name: String, role: String, description: String): User
-    updateProject(techStacks: [String], description: String, link: String): User
+    updateEducation(name: String, degree: String, major: String, dateStart: DateTime,
+                    dateEnd: DateTime, location: String, description: String): User
+    updateExperience(name: String, role: String, description: String,
+                     dateStart: DateTime, dateEnd: DateTime): User
+    updateProject(name: String, role: String, techStacks: [String],
+                  description: String, link: URL): User
     updateUser(occupation: String, phone: String, address: String,
-               website: String, dateBirth: ISODate
+               website: URL, dateBirth: DateTime, skill: [String]
                ): User
   }
 
@@ -67,65 +72,90 @@ exports.typeDef = `
     users(name: String, email: String): [User]
   }
 
-  scalar ISODate
+  scalar DateTime
+  scalar URL
 `;
 exports.resolvers = {
-    ISODate: ISODate_1.default,
+    DateTime: graphql_scalars_1.DateTime,
+    URL: graphql_scalars_1.URL,
     Mutation: {
         addUser: ((_, user, { userController }) => __awaiter(this, void 0, void 0, function* () {
-            return userController.addUser(user).then((result) => {
+            return userController
+                .addUser(user)
+                .then((result) => {
                 return result;
-            }).catch((err) => {
+            })
+                .catch((err) => {
                 throw err;
             });
         })),
         deleteUser: ((_, user, { userController }) => __awaiter(this, void 0, void 0, function* () {
-            return userController.deleteUser(user).then((result) => {
+            return userController
+                .deleteUser(user)
+                .then((result) => {
                 return result;
-            }).catch((err) => {
+            })
+                .catch((err) => {
                 throw err;
             });
         })),
         updateStatus: ((_, user, { userController }) => __awaiter(this, void 0, void 0, function* () {
-            return userController.updateUser(user, user.updatedIsActived).then((result) => {
+            return userController
+                .updateUser(user, user.updatedIsActived)
+                .then((result) => {
                 return result;
-            }).catch((err) => {
+            })
+                .catch((err) => {
                 throw err;
             });
         })),
         updateUser: ((_, user, { userController }) => __awaiter(this, void 0, void 0, function* () {
             user.isActived = true;
-            return userController.updateUser(user).then((result) => {
+            return userController
+                .updateUser(user)
+                .then((result) => {
                 return result;
-            }).catch((err) => {
+            })
+                .catch((err) => {
                 throw err;
             });
         })),
         updateEducation: ((_, education, { userController }) => __awaiter(this, void 0, void 0, function* () {
-            return userController.updateEducation(education).then((result) => {
+            return userController
+                .updateEducation(education)
+                .then((result) => {
                 return result;
-            }).catch((err) => {
+            })
+                .catch((err) => {
                 throw err;
             });
         })),
         updateExperience: ((_, experience, { userController }) => __awaiter(this, void 0, void 0, function* () {
-            return userController.updateExperience(experience).then((result) => {
+            return userController
+                .updateExperience(experience)
+                .then((result) => {
                 return result;
-            }).catch((err) => {
+            })
+                .catch((err) => {
                 throw err;
             });
         })),
         updateProject: ((_, project, { userController }) => __awaiter(this, void 0, void 0, function* () {
-            return userController.updateProject(project).then((result) => {
+            return userController
+                .updateProject(project)
+                .then((result) => {
                 return result;
-            }).catch((err) => {
+            })
+                .catch((err) => {
                 throw err;
             });
         })),
     },
     Query: {
         me: ((_, {}, { userController }) => __awaiter(this, void 0, void 0, function* () {
-            return userController.showUsers({ isActived: true }).then((result) => {
+            return userController
+                .showUsers({ isActived: true })
+                .then((result) => {
                 if (result.length > 1) {
                     throw new Error(`There are ${result.length} users found who are actived. ` +
                         'Please inactive the others');
@@ -134,9 +164,11 @@ exports.resolvers = {
             });
         })),
         users: ((_, user, { userController }) => __awaiter(this, void 0, void 0, function* () {
-            return userController.showUsers(user).then((result) => {
+            return userController
+                .showUsers(user)
+                .then((result) => {
                 if (result.length === 0) {
-                    throw new Error('User not found');
+                    throw new Error('user not found');
                 }
                 return result;
             });

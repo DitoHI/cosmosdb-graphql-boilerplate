@@ -19,16 +19,21 @@ class UserDao extends Dao_1.default {
     addUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             user.isActived = true;
-            return this.container.items.create(user).then((result) => {
+            return this.container.items
+                .create(user)
+                .then((result) => {
                 return result.body;
-            }).catch((err) => {
+            })
+                .catch((err) => {
                 return err;
             });
         });
     }
     updateUser(userId, user) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.getItem(userId).then((doc) => {
+            return this
+                .getItem(userId)
+                .then((doc) => {
                 if (doc == null) {
                     return new Error('No user found');
                 }
@@ -37,9 +42,13 @@ class UserDao extends Dao_1.default {
                         doc[key] = user[key];
                     }
                 }
-                return this.container.item(userId).replace(doc).then((result) => {
+                return this.container
+                    .item(userId)
+                    .replace(doc)
+                    .then((result) => {
                     return result.body;
-                }).catch((err) => {
+                })
+                    .catch((err) => {
                     return err;
                 });
             });
@@ -47,20 +56,29 @@ class UserDao extends Dao_1.default {
     }
     getItem(userId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.container.item(userId).read().then((result) => {
+            return this.container
+                .item(userId)
+                .read()
+                .then((result) => {
                 return result.body;
-            }).catch((err) => {
+            })
+                .catch((err) => {
                 return err;
             });
         });
     }
     deleteUser(userId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.getItem(userId).then((result) => {
+            return this
+                .getItem(userId)
+                .then((result) => {
                 if (result == null) {
                     return new Error('No user found');
                 }
-                this.container.item(userId).delete().catch((err) => {
+                this.container
+                    .item(userId)
+                    .delete()
+                    .catch((err) => {
                     return new Error(err);
                 });
             });

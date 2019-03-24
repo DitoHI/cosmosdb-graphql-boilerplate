@@ -33,7 +33,7 @@ class Dao {
     find(querySpec) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!this.container) {
-                throw new Error('User collection is not initialized');
+                throw new Error('user collection is not initialized');
             }
             const { result: results } = yield this.container.items.query(querySpec).toArray();
             return results;

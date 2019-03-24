@@ -40,9 +40,12 @@ class UserController {
                 query: this.query,
                 parameters: this.parameters
             };
-            return this.userDao.find(querySpec).then((user) => {
+            return this.userDao
+                .find(querySpec)
+                .then((user) => {
                 return user;
-            }).catch((err) => {
+            })
+                .catch((err) => {
                 throw new Error(err);
             });
         });
@@ -51,13 +54,17 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             // check if name or username is already exist
             return new Promise((resolve, reject) => {
-                this.showUsers(user, 'OR').then((result) => {
+                this
+                    .showUsers(user, 'OR')
+                    .then((result) => {
                     if (result.length > 0) {
                         return reject(new Error('Username or email is already exist'));
                     }
-                    this.userDao.addUser(user).then((user) => {
+                    this.userDao.addUser(user)
+                        .then((user) => {
                         return resolve(user);
-                    }).catch((err) => {
+                    })
+                        .catch((err) => {
                         return reject(new Error(err));
                     });
                 });
@@ -71,7 +78,9 @@ class UserController {
                 updatedIsActived == null
                     ? userFind.isActived = true
                     : userFind = user;
-                this.showUsers(userFind).then((users) => {
+                this
+                    .showUsers(userFind)
+                    .then((users) => {
                     if (users.length === 0) {
                         return reject(new Error('No user registered'));
                     }
@@ -83,12 +92,16 @@ class UserController {
                         user.isActived = updatedIsActived;
                     }
                     const userClone = Object.assign({}, users[0]);
-                    this.userDao.updateUser(userClone.id, user).then((replaced) => {
+                    this.userDao
+                        .updateUser(userClone.id, user)
+                        .then((replaced) => {
                         return resolve(replaced);
-                    }).catch((err) => {
+                    })
+                        .catch((err) => {
                         return reject(err);
                     });
-                }).catch((err) => {
+                })
+                    .catch((err) => {
                     return reject(err);
                 });
             });
@@ -97,7 +110,9 @@ class UserController {
     updateEducation(education) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
-                this.showUsers({ isActived: true }).then((users) => {
+                this
+                    .showUsers({ isActived: true })
+                    .then((users) => {
                     if (users.length === 0) {
                         return reject(new Error('No user registered'));
                     }
@@ -106,9 +121,16 @@ class UserController {
                     }
                     const userClone = Object.assign({}, users[0]);
                     const educationClone = Object.assign({}, education);
-                    this.userDao.updateUser(userClone.id, { education: educationClone }).then((replaced) => {
+                    if (!userClone.education) {
+                        userClone.education = [];
+                    }
+                    userClone.education.push(education);
+                    this.userDao
+                        .updateUser(userClone.id, { education: userClone.education })
+                        .then((replaced) => {
                         return resolve(replaced);
-                    }).catch((err) => {
+                    })
+                        .catch((err) => {
                         return reject(err);
                     });
                 });
@@ -118,7 +140,9 @@ class UserController {
     updateExperience(experience) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
-                this.showUsers({ isActived: true }).then((users) => {
+                this
+                    .showUsers({ isActived: true })
+                    .then((users) => {
                     if (users.length === 0) {
                         return reject(new Error('No user registered'));
                     }
@@ -127,9 +151,16 @@ class UserController {
                     }
                     const userClone = Object.assign({}, users[0]);
                     const experienceClone = Object.assign({}, experience);
-                    this.userDao.updateUser(userClone.id, { experience: experienceClone }).then((replaced) => {
+                    if (!userClone.experience) {
+                        userClone.experience = [];
+                    }
+                    userClone.experience.push(experience);
+                    this.userDao
+                        .updateUser(userClone.id, { experience: userClone.experience })
+                        .then((replaced) => {
                         return resolve(replaced);
-                    }).catch((err) => {
+                    })
+                        .catch((err) => {
                         return reject(err);
                     });
                 });
@@ -139,7 +170,9 @@ class UserController {
     updateProject(project) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
-                this.showUsers({ isActived: true }).then((users) => {
+                this
+                    .showUsers({ isActived: true })
+                    .then((users) => {
                     if (users.length === 0) {
                         return reject(new Error('No user registered'));
                     }
@@ -148,9 +181,16 @@ class UserController {
                     }
                     const userClone = Object.assign({}, users[0]);
                     const projectClone = Object.assign({}, project);
-                    this.userDao.updateUser(userClone.id, { project: projectClone }).then((replaced) => {
+                    if (!userClone.project) {
+                        userClone.project = [];
+                    }
+                    userClone.project.push(project);
+                    this.userDao
+                        .updateUser(userClone.id, { project: userClone.project })
+                        .then((replaced) => {
                         return resolve(replaced);
-                    }).catch((err) => {
+                    })
+                        .catch((err) => {
                         return reject(err);
                     });
                 });
@@ -160,7 +200,8 @@ class UserController {
     deleteUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
-                this.showUsers(user).then((users) => {
+                this.showUsers(user)
+                    .then((users) => {
                     if (users.length === 0) {
                         return reject(new Error('No user registered'));
                     }
@@ -168,9 +209,12 @@ class UserController {
                         return reject(new Error(`There are ${users.length} users found. Please specify more`));
                     }
                     const userClone = Object.assign({}, users[0]);
-                    this.userDao.deleteUser(userClone.id).then(() => {
-                        return resolve(user);
-                    }).catch((err) => {
+                    this.userDao
+                        .deleteUser(userClone.id)
+                        .then(() => {
+                        return resolve(userClone);
+                    })
+                        .catch((err) => {
                         return reject(err);
                     });
                 });
