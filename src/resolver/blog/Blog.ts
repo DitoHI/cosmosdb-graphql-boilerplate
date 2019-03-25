@@ -12,6 +12,7 @@ export const typeDef = `
     lastEdited: DateTime,
     isDeleted: Boolean,
     imageUri: [String],
+    positionIndex: Int,
   }
 `;
 
@@ -65,7 +66,7 @@ export const resolvers: IResolvers = {
     }),
   },
   Query: {
-    blogs: (async (_, {}, { userController, blogController }) => {
+    blogs: (async (_, blog, { userController, blogController }) => {
       return userController
         .showUsers({ isActived: true })
         .then((result: any) => {
@@ -79,9 +80,14 @@ export const resolvers: IResolvers = {
           }
 
           const user = result[0] as IUser;
+          blog.user = user.id;
           return blogController
-            .showBlogs({ user: user.id })
+            .showBlogs(blog)
             .then((blogsResult: any) => {
+              if (blogsResult.length === 0) {
+                throw new Error('Blog is empty');
+              }
+
               return blogsResult;
             })
             .catch((err: any) => {

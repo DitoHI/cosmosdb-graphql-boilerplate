@@ -1,4 +1,4 @@
-import { Container, CosmosClient, Database, SqlParameter, SqlQuerySpec } from '@azure/cosmos';
+import { Container, CosmosClient, Database, SqlQuerySpec, DocumentBase } from '@azure/cosmos';
 
 export default class Dao {
   public client: CosmosClient;
@@ -22,8 +22,9 @@ export default class Dao {
       id: this.databaseId
     });
     this.database = dbResponse.database;
+
     const coResponse = await this.database.containers.createIfNotExists({
-      id: this.collectionId
+      id: this.collectionId,
     });
     this.container = coResponse.container;
 
@@ -94,7 +95,6 @@ export default class Dao {
         if (!result) {
           return new Error('No item found');
         }
-        console.log(result);
 
         this.container
           .item(id)

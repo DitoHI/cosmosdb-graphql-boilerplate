@@ -5,14 +5,17 @@ class BlogController {
   public blogDao: Dao;
   public query: string;
   public parameters: SqlParameter[];
-  private updatedParameters: string[] = ['updatedIsDeleted'];
+  private updatedParameters: string[] = ['updatedIsDeleted', 'top'];
 
   constructor(blogDao: Dao) {
     this.blogDao = blogDao;
   }
 
   async showBlogs(blog?: any, logical: string = 'AND') {
-    this.query = 'SELECT * FROM root r';
+    const top = blog && blog.top
+      ? `TOP ${blog.top}`
+      : '';
+    this.query = `SELECT ${top} * FROM Blogs b`;
     this.parameters = [];
     let index: number = 0;
     if (blog) {
@@ -20,23 +23,27 @@ class BlogController {
         if (blog.hasOwnProperty(prop) && blog[prop] &&
           this.updatedParameters.indexOf(prop) === -1) {
           if (index === 0) {
-            this.query += ` WHERE r.${prop}=@${prop}`;
+            this.query += ` WHERE b.${prop}=@${prop}`;
           } else {
-            this.query += ` ${logical} r.${prop}=@${prop}`;
+            this.query += ` ${logical} b.${prop}=@${prop}`;
           }
           this.parameters.push({
             name: `@${prop}`,
             value: blog[prop]
           });
+          index = index + 1;
         }
-        index = index + 1;
       }
     }
+
+    this.query += ' ORDER BY b.lastEdited DESC';
 
     const querySpec: SqlQuerySpec = {
       query: this.query,
       parameters: this.parameters
     };
+
+    console.log(querySpec);
 
     return this.blogDao
       .find(querySpec)
@@ -49,9 +56,15 @@ class BlogController {
   }
 
   async addBlog(blog?: any) {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       blog.lastEdited = Date.now();
       blog.isDeleted = false;
+
+      // get total of document
+      // to assign manual indexing
+      const blogs = await this.showBlogs();
+      blog.positionIndex = blogs.length;
+
       this.blogDao
         .addItem(blog)
         .then((blog) => {

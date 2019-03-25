@@ -7,6 +7,6 @@ export const mutationDef = `
 
 export const queryDef = `
     blogs(title: String, content: String, lastEdited: DateTime, isDeleted: Boolean,
-          imageUri: [String]
+          imageUri: [String], top: Int
     ): [Blog]
 `;

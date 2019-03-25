@@ -6,6 +6,7 @@ interface IBlog {
   lastEdited: Date;
   isDeleted: boolean;
   imageUri: string[];
+  positionIndex: number;
 }
 
 export { IBlog };

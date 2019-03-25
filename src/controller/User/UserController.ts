@@ -12,7 +12,7 @@ class UserController {
   }
 
   async showUsers(user?: any, logical: string = 'AND') {
-    this.query = 'SELECT * FROM root r';
+    this.query = 'SELECT * FROM Users u';
     this.parameters = [];
     let index: number = 0;
     if (user) {
@@ -20,9 +20,9 @@ class UserController {
         if (user.hasOwnProperty(prop) && user[prop] &&
           this.updatedParameters.indexOf(prop) === -1) {
           if (index === 0) {
-            this.query += ` WHERE r.${prop}=@${prop}`;
+            this.query += ` WHERE u.${prop}=@${prop}`;
           } else {
-            this.query += ` ${logical} r.${prop}=@${prop}`;
+            this.query += ` ${logical} u.${prop}=@${prop}`;
           }
           this.parameters.push({
             name: `@${prop}`,
