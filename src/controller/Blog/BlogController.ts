@@ -5,27 +5,34 @@ class BlogController {
   public blogDao: Dao;
   public query: string;
   public parameters: SqlParameter[];
-  private updatedParameters: string[] = ['updatedIsDeleted', 'top'];
+  private updatedParameters: string[] = ['updatedIsDeleted'];
 
   constructor(blogDao: Dao) {
     this.blogDao = blogDao;
   }
 
   async showBlogs(blog?: any, logical: string = 'AND') {
-    const top = blog && blog.top
-      ? `TOP ${blog.top}`
-      : '';
-    this.query = `SELECT ${top} * FROM Blogs b`;
+    this.query = `SELECT * FROM Blogs b`;
     this.parameters = [];
     let index: number = 0;
     if (blog) {
       for (const prop in blog) {
         if (blog.hasOwnProperty(prop) && blog[prop] &&
           this.updatedParameters.indexOf(prop) === -1) {
+          let propActive = prop;
+          let operator = '=';
+          if (prop === 'startAt') {
+            propActive = 'positionIndex';
+            operator = '>=';
+          }
+          if (prop === 'endAt') {
+            propActive = 'positionIndex';
+            operator = '<=';
+          }
           if (index === 0) {
-            this.query += ` WHERE b.${prop}=@${prop}`;
+            this.query += ` WHERE b.${propActive}${operator}@${prop}`;
           } else {
-            this.query += ` ${logical} b.${prop}=@${prop}`;
+            this.query += ` ${logical} b.${propActive}${operator}@${prop}`;
           }
           this.parameters.push({
             name: `@${prop}`,
@@ -42,8 +49,6 @@ class BlogController {
       query: this.query,
       parameters: this.parameters
     };
-
-    console.log(querySpec);
 
     return this.blogDao
       .find(querySpec)
