@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8bb75fe6-b363-482a-98be-9af986454925" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/User/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/User/UserController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Dao.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Dao.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" afterDir="false" />
     </list>
@@ -37,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cosmos/Client.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-120">
+            <state relative-caret-position="45">
               <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
@@ -67,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+            <state relative-caret-position="45">
+              <caret line="3" column="64" selection-start-line="3" selection-start-column="64" selection-end-line="3" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -76,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resolver/blog/Blog.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="83" column="30" lean-forward="true" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
+            <state relative-caret-position="-150">
+              <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -88,8 +85,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+            <state relative-caret-position="150">
+              <caret line="40" column="28" lean-forward="true" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -98,10 +95,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/User/UserController.ts">
+        <entry file="file://$PROJECT_DIR$/src/model/Blog/BlogModel.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-150">
-              <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+            <state relative-caret-position="135">
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -184,20 +181,20 @@
         <option value="$PROJECT_DIR$/src/resolver/user/Users.ts" />
         <option value="$PROJECT_DIR$/src/cosmos/Client.ts" />
         <option value="$PROJECT_DIR$/src/index.ts" />
-        <option value="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" />
         <option value="$PROJECT_DIR$/src/model/Dao.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/blog/Blog.ts" />
         <option value="$PROJECT_DIR$/src/controller/User/UserController.ts" />
         <option value="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" />
+        <option value="$PROJECT_DIR$/src/resolver/blog/Blog.ts" />
+        <option value="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" />
+        <option value="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="65" />
-    <option name="y" value="47" />
-    <option name="width" value="1291" />
-    <option name="height" value="701" />
+    <option name="y" value="27" />
+    <option name="width" value="1281" />
+    <option name="height" value="741" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -346,7 +343,8 @@
       <workItem from="1553420577602" duration="186000" />
       <workItem from="1553422615008" duration="1918000" />
       <workItem from="1553432404757" duration="22190000" />
-      <workItem from="1553470927648" duration="8112000" />
+      <workItem from="1553470927648" duration="9697000" />
+      <workItem from="1553481517285" duration="386000" />
     </task>
     <task id="LOCAL-00001" summary="initial setup of cosmosClient, Model, and Controller done">
       <created>1552437481395</created>
@@ -502,11 +500,25 @@
       <option name="project" value="LOCAL" />
       <updated>1553455558935</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="add condition to top selecting in query">
+      <created>1553479457632</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1553479457632</updated>
+    </task>
+    <task id="LOCAL-00024" summary="add query by indexing">
+      <created>1553480816125</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1553480816125</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113416000" />
+    <option name="totallyTimeSpent" value="115387000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="25" width="1311" height="743" extended-state="6" />
@@ -582,7 +594,9 @@
     <MESSAGE value="fix return value from show" />
     <MESSAGE value="update blog done" />
     <MESSAGE value="delete blog done" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete blog done" />
+    <MESSAGE value="add condition to top selecting in query" />
+    <MESSAGE value="add query by indexing" />
+    <option name="LAST_COMMIT_MESSAGE" value="add query by indexing" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/App.ts" />
@@ -710,6 +724,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/User/UserController.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -721,24 +742,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts">
+    <entry file="file://$PROJECT_DIR$/src/cosmos/Client.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Blog/BlogModel.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/schema/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="29" />
+        <state relative-caret-position="45">
+          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -749,13 +759,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cosmos/Client.ts">
+    <entry file="file://$PROJECT_DIR$/src/schema/index.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="165">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -766,27 +773,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Blog/BlogModel.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="64" selection-start-line="3" selection-start-column="64" selection-end-line="3" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/resolver/blog/Blog.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="83" column="30" lean-forward="true" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
+        <state relative-caret-position="-150">
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/User/UserController.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+        <state relative-caret-position="150">
+          <caret line="40" column="28" lean-forward="true" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>

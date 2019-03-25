@@ -12,6 +12,7 @@ export const typeDef = `
     lastEdited: DateTime,
     isDeleted: Boolean,
     imageUri: [String],
+    hastag: String,
     positionIndex: Int,
   }
 `;
