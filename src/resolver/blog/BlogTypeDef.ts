@@ -6,7 +6,7 @@ export const mutationDef = `
 `;
 
 export const queryDef = `
-    blogs(title: String, content: String, lastEdited: DateTime, isDeleted: Boolean,
+    blogs(id: String, title: String, content: String, lastEdited: DateTime, isDeleted: Boolean,
           imageUri: [String], startAt: Int, endAt: Int, hastag: String
     ): [Blog]
 `;
