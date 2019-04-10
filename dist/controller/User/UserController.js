@@ -15,7 +15,7 @@ class UserController {
     }
     showUsers(user, logical = 'AND') {
         return __awaiter(this, void 0, void 0, function* () {
-            this.query = 'SELECT * FROM root r';
+            this.query = 'SELECT * FROM Users u';
             this.parameters = [];
             let index = 0;
             if (user) {
@@ -23,10 +23,10 @@ class UserController {
                     if (user.hasOwnProperty(prop) && user[prop] &&
                         this.updatedParameters.indexOf(prop) === -1) {
                         if (index === 0) {
-                            this.query += ` WHERE r.${prop}=@${prop}`;
+                            this.query += ` WHERE u.${prop}=@${prop}`;
                         }
                         else {
-                            this.query += ` ${logical} r.${prop}=@${prop}`;
+                            this.query += ` ${logical} u.${prop}=@${prop}`;
                         }
                         this.parameters.push({
                             name: `@${prop}`,
@@ -60,7 +60,9 @@ class UserController {
                     if (result.length > 0) {
                         return reject(new Error('Username or email is already exist'));
                     }
-                    this.userDao.addUser(user)
+                    user.isActived = true;
+                    this.userDao
+                        .addItem(user)
                         .then((user) => {
                         return resolve(user);
                     })
@@ -93,7 +95,7 @@ class UserController {
                     }
                     const userClone = Object.assign({}, users[0]);
                     this.userDao
-                        .updateUser(userClone.id, user)
+                        .updateItem(userClone.id, user)
                         .then((replaced) => {
                         return resolve(replaced);
                     })
@@ -126,7 +128,7 @@ class UserController {
                     }
                     userClone.education.push(education);
                     this.userDao
-                        .updateUser(userClone.id, { education: userClone.education })
+                        .updateItem(userClone.id, { education: userClone.education })
                         .then((replaced) => {
                         return resolve(replaced);
                     })
@@ -156,7 +158,7 @@ class UserController {
                     }
                     userClone.experience.push(experience);
                     this.userDao
-                        .updateUser(userClone.id, { experience: userClone.experience })
+                        .updateItem(userClone.id, { experience: userClone.experience })
                         .then((replaced) => {
                         return resolve(replaced);
                     })
@@ -186,7 +188,7 @@ class UserController {
                     }
                     userClone.project.push(project);
                     this.userDao
-                        .updateUser(userClone.id, { project: userClone.project })
+                        .updateItem(userClone.id, { project: userClone.project })
                         .then((replaced) => {
                         return resolve(replaced);
                     })
@@ -210,7 +212,7 @@ class UserController {
                     }
                     const userClone = Object.assign({}, users[0]);
                     this.userDao
-                        .deleteUser(userClone.id)
+                        .deleteItem(userClone.id)
                         .then(() => {
                         return resolve(userClone);
                     })

@@ -21,7 +21,14 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
     const app = express_1.default();
     const port = process.env.PORT || 3000; // default port to listen
     // initalize cosmosDB intializer
-    Client_1.default.init();
+    Client_1.default
+        .init()
+        .then((log) => {
+        console.log(log);
+    })
+        .catch((err) => {
+        throw new Error(err);
+    });
     // middleware
     app.use(morgan_1.default('combined'));
     app.use(express_1.default.json());
@@ -30,13 +37,14 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
         schema: schema_1.default,
         context: ({ req }) => ({
             req,
-            userController: Client_1.default.userController
+            blogController: Client_1.default.blogController,
+            userController: Client_1.default.userController,
         }),
     });
     server.applyMiddleware({
         app, cors: {
             credentials: true,
-            origin: 'http://localhost:3000'
+            origin: 'http://localhost:3000',
         }
     });
     // start the Express server

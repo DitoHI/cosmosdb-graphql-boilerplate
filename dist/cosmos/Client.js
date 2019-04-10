@@ -13,9 +13,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const cosmos_1 = require("@azure/cosmos");
 const Config_1 = require("./Config");
-const UserDao_1 = __importDefault(require("../model/User/UserDao"));
+const Dao_1 = __importDefault(require("../model/Dao"));
 const UserController_1 = __importDefault(require("../controller/User/UserController"));
+const BlogController_1 = __importDefault(require("../controller/Blog/BlogController"));
 class Client {
+    constructor() {
+        this.log = 'Successfully configure container';
+    }
     init() {
         return __awaiter(this, void 0, void 0, function* () {
             const cosmosClient = new cosmos_1.CosmosClient({
@@ -24,14 +28,21 @@ class Client {
                 },
                 endpoint: Config_1.config.host,
             });
-            this.userDao = new UserDao_1.default(cosmosClient, Config_1.config.databaseId, Config_1.config.containerUserId);
+            this.userDao = new Dao_1.default(cosmosClient, Config_1.config.databaseId, Config_1.config.containerUserId);
+            this.blogDao = new Dao_1.default(cosmosClient, Config_1.config.databaseId, Config_1.config.containerBlogId);
             this.userController = new UserController_1.default(this.userDao);
-            this.userDao.init().then(() => {
-                this.log = 'Successful configure user';
-            }).catch((err) => {
-                this.log = err;
+            this.blogController = new BlogController_1.default(this.blogDao);
+            this.userDao
+                .init()
+                .catch((err) => {
                 return err;
             });
+            this.blogDao
+                .init()
+                .catch((err) => {
+                return err;
+            });
+            return this.log;
         });
     }
 }

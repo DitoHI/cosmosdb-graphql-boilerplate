@@ -12,7 +12,7 @@ class BlogController {
   }
 
   async showBlogs(blog?: any, logical: string = 'AND') {
-    this.query = `SELECT * FROM Blogs b`;
+    this.query = 'SELECT * FROM Blogs b';
     this.parameters = [];
     let index: number = 0;
     if (blog) {

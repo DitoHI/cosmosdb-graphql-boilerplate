@@ -14,9 +14,6 @@ const startServer = async () => {
   // initalize cosmosDB intializer
   Client
     .init()
-    .then((log) => {
-      console.log(log);
-    })
     .catch((err) => {
       throw new Error(err);
     });
@@ -32,19 +29,25 @@ const startServer = async () => {
       req,
       blogController: Client.blogController,
       userController: Client.userController,
-    }),
+    })
   });
+
+  const origin = process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : 'https://hafizhnotes.azurewebsites.net';
 
   server.applyMiddleware({
     app, cors: {
+      origin,
       credentials: true,
-      origin: 'http://localhost:3000',
     }
   });
 
   // start the Express server
   app.listen(port, () => {
-    console.log(`Server started @PORT ${port}`);
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`Server started at PORT ${port}`);
+    }
   });
 };
 

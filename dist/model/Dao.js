@@ -18,25 +18,92 @@ class Dao {
     }
     init() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('Setting up database user...');
+            console.log('Setting up database...');
             const dbResponse = yield this.client.databases.createIfNotExists({
                 id: this.databaseId
             });
             this.database = dbResponse.database;
             const coResponse = yield this.database.containers.createIfNotExists({
-                id: this.collectionId
+                id: this.collectionId,
             });
             this.container = coResponse.container;
-            console.log('Setting up the container user... done');
+            console.log('Setting up the container... done');
         });
     }
     find(querySpec) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!this.container) {
-                throw new Error('user collection is not initialized');
+                throw new Error('The collection is not initialized');
             }
             const { result: results } = yield this.container.items.query(querySpec).toArray();
             return results;
+        });
+    }
+    addItem(item) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.container.items
+                .create(item)
+                .then((result) => {
+                return result.body;
+            })
+                .catch((err) => {
+                return err;
+            });
+        });
+    }
+    updateItem(id, item) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this
+                .getItem(id)
+                .then((doc) => {
+                if (doc == null) {
+                    return new Error('Data not found');
+                }
+                for (const key in item) {
+                    if (item.hasOwnProperty(key)) {
+                        doc[key] = item[key];
+                    }
+                }
+                return this.container
+                    .item(id)
+                    .replace(doc)
+                    .then((result) => {
+                    return result.body;
+                })
+                    .catch((err) => {
+                    return err;
+                });
+            });
+        });
+    }
+    getItem(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.container
+                .item(id)
+                .read()
+                .then((result) => {
+                return result.body;
+            })
+                .catch((err) => {
+                return err;
+            });
+        });
+    }
+    deleteItem(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this
+                .getItem(id)
+                .then((result) => {
+                if (!result) {
+                    return new Error('No item found');
+                }
+                this.container
+                    .item(id)
+                    .delete()
+                    .catch((err) => {
+                    return new Error(err);
+                });
+            });
         });
     }
 }

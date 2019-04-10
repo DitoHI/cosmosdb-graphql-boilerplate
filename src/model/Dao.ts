@@ -17,7 +17,6 @@ export default class Dao {
   }
 
   async init() {
-    console.log('Setting up database...');
     const dbResponse = await this.client.databases.createIfNotExists({
       id: this.databaseId
     });
@@ -27,8 +26,6 @@ export default class Dao {
       id: this.collectionId,
     });
     this.container = coResponse.container;
-
-    console.log('Setting up the container... done');
   }
 
   async find(querySpec: SqlQuerySpec) {
