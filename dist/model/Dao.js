@@ -18,7 +18,6 @@ class Dao {
     }
     init() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('Setting up database...');
             const dbResponse = yield this.client.databases.createIfNotExists({
                 id: this.databaseId
             });
@@ -27,7 +26,6 @@ class Dao {
                 id: this.collectionId,
             });
             this.container = coResponse.container;
-            console.log('Setting up the container... done');
         });
     }
     find(querySpec) {

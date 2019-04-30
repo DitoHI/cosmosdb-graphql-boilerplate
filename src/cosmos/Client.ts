@@ -14,22 +14,40 @@ class Client {
   async init() {
     const cosmosClient = new CosmosClient({
       auth: {
-        masterKey: config.authKey,
+        masterKey: config.authKey
       },
-      endpoint: config.host,
+      endpoint: config.host
     });
 
-    this.userDao = new Dao(cosmosClient, config.databaseId, config.containerUserId);
-    this.blogDao = new Dao(cosmosClient, config.databaseId, config.containerBlogId);
+    this.userDao = new Dao(
+      cosmosClient,
+      config.databaseId,
+      config.containerUserId
+    );
+    this.blogDao = new Dao(
+      cosmosClient,
+      config.databaseId,
+      config.containerBlogId
+    );
     this.userController = new UserController(this.userDao);
     this.blogController = new BlogController(this.blogDao);
     this.userDao
       .init()
+      .then(() => {
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Database user connected');
+        }
+      })
       .catch((err) => {
         return err;
       });
     this.blogDao
       .init()
+      .then(() => {
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Database blog connected');
+        }
+      })
       .catch((err) => {
         return err;
       });

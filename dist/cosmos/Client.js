@@ -24,9 +24,9 @@ class Client {
         return __awaiter(this, void 0, void 0, function* () {
             const cosmosClient = new cosmos_1.CosmosClient({
                 auth: {
-                    masterKey: Config_1.config.authKey,
+                    masterKey: Config_1.config.authKey
                 },
-                endpoint: Config_1.config.host,
+                endpoint: Config_1.config.host
             });
             this.userDao = new Dao_1.default(cosmosClient, Config_1.config.databaseId, Config_1.config.containerUserId);
             this.blogDao = new Dao_1.default(cosmosClient, Config_1.config.databaseId, Config_1.config.containerBlogId);
@@ -34,11 +34,21 @@ class Client {
             this.blogController = new BlogController_1.default(this.blogDao);
             this.userDao
                 .init()
+                .then(() => {
+                if (process.env.NODE_ENV === 'development') {
+                    console.log('Database user connected');
+                }
+            })
                 .catch((err) => {
                 return err;
             });
             this.blogDao
                 .init()
+                .then(() => {
+                if (process.env.NODE_ENV === 'development') {
+                    console.log('Database blog connected');
+                }
+            })
                 .catch((err) => {
                 return err;
             });

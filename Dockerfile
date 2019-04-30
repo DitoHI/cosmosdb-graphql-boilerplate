@@ -1,5 +1,5 @@
 FROM node:8-alpine
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /udosr/src/app
 WORKDIR /usr/src/app
 COPY . .
 RUN npm install

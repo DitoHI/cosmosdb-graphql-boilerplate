@@ -23,14 +23,13 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
     // initalize cosmosDB intializer
     Client_1.default
         .init()
-        .then((log) => {
-        console.log(log);
-    })
         .catch((err) => {
         throw new Error(err);
     });
     // middleware
-    app.use(morgan_1.default('combined'));
+    if (process.env.NODE_ENV === 'development') {
+        app.use(morgan_1.default('combined'));
+    }
     app.use(express_1.default.json());
     app.use(express_1.default.urlencoded({ extended: false }));
     const server = new apollo_server_express_1.ApolloServer({
@@ -39,17 +38,23 @@ const startServer = () => __awaiter(this, void 0, void 0, function* () {
             req,
             blogController: Client_1.default.blogController,
             userController: Client_1.default.userController,
-        }),
+        })
     });
+    const origin = process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000'
+        : `${process.env.WEB_URI}`;
+    console.log(origin);
     server.applyMiddleware({
         app, cors: {
+            origin,
             credentials: true,
-            origin: 'http://localhost:3000',
         }
     });
     // start the Express server
     app.listen(port, () => {
-        console.log(`Server started @PORT ${port}`);
+        if (process.env.NODE_ENV === 'development') {
+            console.log(`Server started at PORT ${port}`);
+        }
     });
 });
 startServer();
