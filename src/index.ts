@@ -1,14 +1,15 @@
 import express from 'express';
-import morgan from 'morgan';
 
 require('dotenv').config();
 
-import { ApolloServer } from 'apollo-server';
+import { ApolloServer } from 'apollo-server-express';
 import schema from './schema';
 import Client from './cosmos/Client';
 
 const startServer = async () => {
   const port = process.env.PORT || 3000; // default port to listen
+
+  const app = express();
 
   // initialize cosmosDB initializer
   Client
@@ -25,8 +26,10 @@ const startServer = async () => {
     })
   });
 
+  server.applyMiddleware({ app, path: '/graphql' });
+
   // start the Express server
-  server.listen({ port }).then(({ url }) => {
+  app.listen({ port }, () => {
     if (process.env.NODE_ENV === 'development') {
       console.log(`Server started at PORT ${port}`);
     }
