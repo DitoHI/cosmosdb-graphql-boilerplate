@@ -1,78 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bb75fe6-b363-482a-98be-9af986454925" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ToDoApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ToDoApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/config/winston.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/config/winston.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/config/winston.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/config/winston.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controller/Blog/BlogController.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/Blog/BlogController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controller/Blog/BlogController.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/Blog/BlogController.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controller/User/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/User/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controller/User/UserController.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/User/UserController.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/cosmos/Client.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/cosmos/Client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/cosmos/Client.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/cosmos/Client.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/cosmos/Config.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/cosmos/Config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/cosmos/Config.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/cosmos/Config.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/cosmos/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/cosmos/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/cosmos/config.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/cosmos/config.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/Blog/BlogModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/Blog/BlogModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/Blog/BlogModel.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/Blog/BlogModel.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/Dao.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/Dao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/Dao.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/Dao.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/User/UserDao.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/User/UserDao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/User/UserDao.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/User/UserDao.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/User/UserModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/User/UserModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/User/UserModel.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/User/UserModel.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/User/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/User/Users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/User/Users.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/User/Users.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/blog/Blog.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/blog/Blog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/blog/Blog.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/blog/Blog.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/blog/BlogTypeDef.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/blog/BlogTypeDef.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/blog/BlogTypeDef.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/blog/BlogTypeDef.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/combiner/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/combiner/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/combiner/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/combiner/index.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/user/UserTypeDef.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/user/UserTypeDef.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/user/UserTypeDef.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/user/UserTypeDef.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/user/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/user/Users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/resolver/user/Users.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/user/Users.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/scalar/ISODate.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/scalar/ISODate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/scalar/ISODate.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/scalar/ISODate.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/schema/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/schema/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/schema/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/schema/index.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/index.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/User/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/User/UserController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cosmos/Client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/cosmos/Client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cosmos/Config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/cosmos/Config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Dao.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Dao.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/User/UserModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User/UserModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/combiner/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/combiner/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/user/Users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/user/Users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/schema/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/schema/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tslint.json" beforeDir="false" afterPath="$PROJECT_DIR$/tslint.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-    </list>
+    <list default="true" id="8bb75fe6-b363-482a-98be-9af986454925" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -93,7 +22,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
@@ -102,14 +31,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
-              <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
-                <element signature="e#90#143#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -248,6 +176,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -259,14 +188,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="eu.ydp.idea.ts.spec.generator.settings.spec.template" value="import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';&#10;&#10;describe('$ClassName$', () =&gt; {&#10;  let $ObjName$:$ClassName$;&#10;&#10;  beforeEach(() =&gt; {&#10;    $ObjName$ = new $ClassName$();&#10;  });&#10;&#10;  describe('', () =&gt; {&#10;    it('', () =&gt; {&#10;      // given&#10;&#10;      // when&#10;&#10;      // then&#10;    });&#10;  });&#10;});&#10;" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LearnReactNative" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -363,6 +291,7 @@
       <workItem from="1554901142520" duration="3340000" />
       <workItem from="1555924758762" duration="44000" />
       <workItem from="1555924841853" duration="877000" />
+      <workItem from="1556592981213" duration="1029000" />
     </task>
     <task id="LOCAL-00001" summary="initial setup of cosmosClient, Model, and Controller done">
       <created>1552437481395</created>
@@ -557,12 +486,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130544000" />
+    <option name="totallyTimeSpent" value="131573000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="25" width="1315" height="743" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -573,11 +502,11 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="RNConsole" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3306189" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3306189" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="GraphQL" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -702,11 +631,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6075" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json" />
     <entry file="file://$PROJECT_DIR$/src/resolver/Combiner/scalar.ts" />
     <entry file="file://$PROJECT_DIR$/src/resolver/combiner/index.ts">
       <provider selected="true" editor-type-id="text-editor">
@@ -804,13 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/schema/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -846,11 +764,17 @@
     <entry file="file://$PROJECT_DIR$/src/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
-            <element signature="e#90#143#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
