@@ -1,7 +1,9 @@
-import Dao from '../../model/Dao';
 import { SqlParameter, SqlQuerySpec } from '@azure/cosmos';
 import bcryptjs from 'bcryptjs';
-import has = Reflect.has;
+import { default as Ajv } from 'ajv';
+
+import Dao from '../../model/Dao';
+import validator from '../../utils/validator';
 
 class UserController {
   public userDao: Dao;
@@ -9,6 +11,7 @@ class UserController {
   public parameters: SqlParameter[];
   private updatedParameters: string[] = ['updatedIsActived'];
   private salt: number = 10;
+  private ajv = new Ajv({ allErrors: true });
 
   constructor(userDao: Dao) {
     this.userDao = userDao;
@@ -62,7 +65,28 @@ class UserController {
           return reject(new Error('Username or email is already exist'));
         }
 
+        // validator
+        const validateUserSchema = this.ajv.compile(validator.userSchema);
+        const isUserValid = validateUserSchema(user);
+        let errorUserMap: string[];
+        if (!isUserValid) {
+          errorUserMap = validateUserSchema.errors.map(log => {
+            const attr = log.dataPath.replace('.', '').toUpperCase();
+            return `${attr} ${
+              attr.toLowerCase() === 'password'
+                ? validator.log.password
+                : log.message
+            }`;
+          });
+          return reject(new Error(errorUserMap.join(' && ')));
+        }
+
         user.isActived = true;
+        // if name is null
+        // then username = name
+        if (!user.name) {
+          user.name = user.username;
+        }
         bcryptjs
           .genSalt(this.salt)
           .then(salt => {
