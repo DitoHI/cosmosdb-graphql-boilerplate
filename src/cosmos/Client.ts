@@ -38,8 +38,8 @@ class Client {
           console.log('Database user connected');
         }
       })
-      .catch((err) => {
-        return err;
+      .catch(err => {
+        console.log(err.body);
       });
     this.blogDao
       .init()
@@ -48,8 +48,8 @@ class Client {
           console.log('Database blog connected');
         }
       })
-      .catch((err) => {
-        return err;
+      .catch(err => {
+        console.log(err.body);
       });
 
     return this.log;
