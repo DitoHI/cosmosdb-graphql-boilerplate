@@ -12,17 +12,15 @@ const startServer = async () => {
   const app = express();
 
   // initialize cosmosDB initializer
-  Client
-    .init()
-    .catch((err) => {
-      throw new Error(err);
-    });
+  Client.init().catch(err => {
+    throw new Error(err);
+  });
 
   const server = new ApolloServer({
     schema,
     context: () => ({
       blogController: Client.blogController,
-      userController: Client.userController,
+      userController: Client.userController
     })
   });
 

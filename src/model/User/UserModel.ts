@@ -38,6 +38,9 @@ interface IUser {
   experience: IExperience;
   project: IProject;
   isActived: boolean;
+  // credentials
+  username: string;
+  password: string;
 }
 
 export { IUser };

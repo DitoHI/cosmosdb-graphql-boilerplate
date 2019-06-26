@@ -1,6 +1,5 @@
 import { IResolvers } from 'graphql-tools';
 import { IUser } from '../../model/User/UserModel';
-import { IBlog } from '../../model/Blog/BlogModel';
 import { DateTime } from '@okgrow/graphql-scalars';
 
 export const typeDef = `
@@ -20,7 +19,7 @@ export const typeDef = `
 export const resolvers: IResolvers = {
   DateTime,
   Mutation: {
-    addBlog: (async (_, blog, { userController, blogController }) => {
+    addBlog: async (_, blog, { userController, blogController }) => {
       return userController
         .showUsers({ isActived: true })
         .then((result: any) => {
@@ -29,8 +28,10 @@ export const resolvers: IResolvers = {
           }
 
           if (result.length > 1) {
-            throw new Error(`There are ${result.length} users found who are actived. ` +
-              'Please inactive the others');
+            throw new Error(
+              `There are ${result.length} users found who are actived. ` +
+                'Please inactive the others'
+            );
           }
 
           const user = result[0] as IUser;
@@ -44,8 +45,8 @@ export const resolvers: IResolvers = {
               throw err;
             });
         });
-    }),
-    deleteBlog: (async (_, { id }, { blogController }) => {
+    },
+    deleteBlog: async (_, { id }, { blogController }) => {
       return blogController
         .deleteBlog(id)
         .then((blogDeleted: any) => {
@@ -54,8 +55,8 @@ export const resolvers: IResolvers = {
         .catch((err: Error) => {
           throw err;
         });
-    }),
-    updateBlog: (async (_, blog, { blogController }) => {
+    },
+    updateBlog: async (_, blog, { blogController }) => {
       return blogController
         .updateBlog(blog.id, blog)
         .then((blogUpdated: any) => {
@@ -64,10 +65,10 @@ export const resolvers: IResolvers = {
         .catch((err: Error) => {
           throw err;
         });
-    }),
+    }
   },
   Query: {
-    blogs: (async (_, blog, { userController, blogController }) => {
+    blogs: async (_, blog, { userController, blogController }) => {
       return userController
         .showUsers({ isActived: true })
         .then((result: any) => {
@@ -76,8 +77,10 @@ export const resolvers: IResolvers = {
           }
 
           if (result.length > 1) {
-            throw new Error(`There are ${result.length} users found who are actived. ` +
-              'Please inactive the others');
+            throw new Error(
+              `There are ${result.length} users found who are actived. ` +
+                'Please inactive the others'
+            );
           }
 
           const user = result[0] as IUser;
@@ -95,6 +98,6 @@ export const resolvers: IResolvers = {
               throw err;
             });
         });
-    })
-  },
+    }
+  }
 };

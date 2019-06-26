@@ -1,11 +1,14 @@
 import Dao from '../../model/Dao';
 import { SqlParameter, SqlQuerySpec } from '@azure/cosmos';
+import bcryptjs from 'bcryptjs';
+import has = Reflect.has;
 
 class UserController {
   public userDao: Dao;
   public query: string;
   public parameters: SqlParameter[];
   private updatedParameters: string[] = ['updatedIsActived'];
+  private salt: number = 10;
 
   constructor(userDao: Dao) {
     this.userDao = userDao;
@@ -17,8 +20,11 @@ class UserController {
     let index: number = 0;
     if (user) {
       for (const prop in user) {
-        if (user.hasOwnProperty(prop) && user[prop] &&
-          this.updatedParameters.indexOf(prop) === -1) {
+        if (
+          user.hasOwnProperty(prop) &&
+          user[prop] &&
+          this.updatedParameters.indexOf(prop) === -1
+        ) {
           if (index === 0) {
             this.query += ` WHERE u.${prop}=@${prop}`;
           } else {
@@ -40,10 +46,10 @@ class UserController {
 
     return this.userDao
       .find(querySpec)
-      .then((user) => {
+      .then(user => {
         return user;
       })
-      .catch((err) => {
+      .catch(err => {
         throw new Error(err);
       });
   }
@@ -51,23 +57,34 @@ class UserController {
   async addUser(user?: any) {
     // check if name or username is already exist
     return new Promise((resolve, reject) => {
-      this
-        .showUsers(user, 'OR')
-        .then((result) => {
-          if (result.length > 0) {
-            return reject(new Error('Username or email is already exist'));
-          }
+      this.showUsers(user, 'OR').then(result => {
+        if (result.length > 0) {
+          return reject(new Error('Username or email is already exist'));
+        }
 
-          user.isActived = true;
-          this.userDao
-            .addItem(user)
-            .then((user) => {
-              return resolve(user);
-            })
-            .catch((err) => {
-              return reject(new Error(err));
-            });
-        });
+        user.isActived = true;
+        bcryptjs
+          .genSalt(this.salt)
+          .then(salt => {
+            bcryptjs
+              .hash(user.password, salt)
+              .then(hash => {
+                // change the naked password
+                // to hash
+                user.password = hash;
+                this.userDao
+                  .addItem(user)
+                  .then(user => {
+                    return resolve(user);
+                  })
+                  .catch(err => {
+                    return reject(new Error(err));
+                  });
+              })
+              .catch(err => reject(new Error(err)));
+          })
+          .catch(err => reject(new Error(err)));
+      });
     });
   }
 
@@ -75,18 +92,21 @@ class UserController {
     return new Promise((resolve, reject) => {
       let userFind: any = {};
       updatedIsActived == null
-        ? userFind.isActived = true
-        : userFind = user;
-      this
-        .showUsers(userFind)
-        .then((users) => {
+        ? (userFind.isActived = true)
+        : (userFind = user);
+      this.showUsers(userFind)
+        .then(users => {
           if (users.length === 0) {
             return reject(new Error('No user registered'));
           }
 
           if (users.length > 1) {
-            return reject(new Error(`There are ${users.length} users found who are actived. ` +
-            'Please inactive the others'));
+            return reject(
+              new Error(
+                `There are ${users.length} users found who are actived. ` +
+                  'Please inactive the others'
+              )
+            );
           }
 
           if (updatedIsActived != null) {
@@ -96,14 +116,14 @@ class UserController {
           const userClone = Object.assign({}, users[0]);
           this.userDao
             .updateItem(userClone.id, user)
-            .then((replaced) => {
+            .then(replaced => {
               return resolve(replaced);
             })
-            .catch((err) => {
+            .catch(err => {
               return reject(err);
             });
         })
-        .catch((err) => {
+        .catch(err => {
           return reject(err);
         });
     });
@@ -111,121 +131,130 @@ class UserController {
 
   async updateEducation(education: any) {
     return new Promise((resolve, reject) => {
-      this
-        .showUsers({ isActived: true })
-        .then((users) => {
-          if (users.length === 0) {
-            return reject(new Error('No user registered'));
-          }
+      this.showUsers({ isActived: true }).then(users => {
+        if (users.length === 0) {
+          return reject(new Error('No user registered'));
+        }
 
-          if (users.length > 1) {
-            return reject(new Error(`There are ${users.length} users found. Please specify more`));
-          }
+        if (users.length > 1) {
+          return reject(
+            new Error(
+              `There are ${users.length} users found. Please specify more`
+            )
+          );
+        }
 
-          const userClone = Object.assign({}, users[0]);
-          const educationClone = Object.assign({}, education);
-          if (!userClone.education) {
-            userClone.education = [];
-          }
-          userClone.education.push(education);
-          this.userDao
-            .updateItem(userClone.id, { education: userClone.education })
-            .then((replaced) => {
-              return resolve(replaced);
-            })
-            .catch((err) => {
-              return reject(err);
-            });
-        });
+        const userClone = Object.assign({}, users[0]);
+        const educationClone = Object.assign({}, education);
+        if (!userClone.education) {
+          userClone.education = [];
+        }
+        userClone.education.push(education);
+        this.userDao
+          .updateItem(userClone.id, { education: userClone.education })
+          .then(replaced => {
+            return resolve(replaced);
+          })
+          .catch(err => {
+            return reject(err);
+          });
+      });
     });
   }
 
   async updateExperience(experience: any) {
     return new Promise((resolve, reject) => {
-      this
-        .showUsers({ isActived: true })
-        .then((users) => {
-          if (users.length === 0) {
-            return reject(new Error('No user registered'));
-          }
+      this.showUsers({ isActived: true }).then(users => {
+        if (users.length === 0) {
+          return reject(new Error('No user registered'));
+        }
 
-          if (users.length > 1) {
-            return reject(new Error(`There are ${users.length} users found. Please specify more`));
-          }
+        if (users.length > 1) {
+          return reject(
+            new Error(
+              `There are ${users.length} users found. Please specify more`
+            )
+          );
+        }
 
-          const userClone = Object.assign({}, users[0]);
-          const experienceClone = Object.assign({}, experience);
-          if (!userClone.experience) {
-            userClone.experience = [];
-          }
-          userClone.experience.push(experience);
+        const userClone = Object.assign({}, users[0]);
+        const experienceClone = Object.assign({}, experience);
+        if (!userClone.experience) {
+          userClone.experience = [];
+        }
+        userClone.experience.push(experience);
 
-          this.userDao
-            .updateItem(userClone.id, { experience: userClone.experience })
-            .then((replaced) => {
-              return resolve(replaced);
-            })
-            .catch((err) => {
-              return reject(err);
-            });
-        });
+        this.userDao
+          .updateItem(userClone.id, { experience: userClone.experience })
+          .then(replaced => {
+            return resolve(replaced);
+          })
+          .catch(err => {
+            return reject(err);
+          });
+      });
     });
   }
 
   async updateProject(project: any) {
     return new Promise((resolve, reject) => {
-      this
-        .showUsers({ isActived: true })
-        .then((users) => {
-          if (users.length === 0) {
-            return reject(new Error('No user registered'));
-          }
+      this.showUsers({ isActived: true }).then(users => {
+        if (users.length === 0) {
+          return reject(new Error('No user registered'));
+        }
 
-          if (users.length > 1) {
-            return reject(new Error(`There are ${users.length} users found. Please specify more`));
-          }
+        if (users.length > 1) {
+          return reject(
+            new Error(
+              `There are ${users.length} users found. Please specify more`
+            )
+          );
+        }
 
-          const userClone = Object.assign({}, users[0]);
-          const projectClone = Object.assign({}, project);
-          if (!userClone.project) {
-            userClone.project = [];
-          }
-          userClone.project.push(project);
+        const userClone = Object.assign({}, users[0]);
+        const projectClone = Object.assign({}, project);
+        if (!userClone.project) {
+          userClone.project = [];
+        }
+        userClone.project.push(project);
 
-          this.userDao
-            .updateItem(userClone.id, { project: userClone.project })
-            .then((replaced) => {
-              return resolve(replaced);
-            })
-            .catch((err) => {
-              return reject(err);
-            });
-        });
+        this.userDao
+          .updateItem(userClone.id, { project: userClone.project })
+          .then(replaced => {
+            return resolve(replaced);
+          })
+          .catch(err => {
+            return reject(err);
+          });
+      });
     });
   }
 
   async deleteUser(user?: any) {
     return new Promise((resolve, reject) => {
-      this.showUsers(user)
-        .then((users) => {
-          if (users.length === 0) {
-            return reject(new Error('No user registered'));
-          }
+      this.showUsers(user).then(users => {
+        if (users.length === 0) {
+          return reject(new Error('No user registered'));
+        }
 
-          if (users.length > 1) {
-            return reject(new Error(`There are ${users.length} users found. Please specify more`));
-          }
+        if (users.length > 1) {
+          return reject(
+            new Error(
+              `There are ${users.length} users found. Please specify more`
+            )
+          );
+        }
 
-          const userClone = Object.assign({}, users[0]);
-          this.userDao
-            .deleteItem(userClone.id)
-            .then(() => {
-              return resolve(userClone);
-            })
-            .catch((err) => {
-              return reject(err);
-            });
-        });
+        const userClone = Object.assign({}, users[0]);
+        this.userDao
+          .deleteItem(userClone.id)
+          .then(() => {
+            return resolve(userClone);
+          })
+          .catch(err => {
+            return reject(err);
+          });
+      });
     });
   }
 }

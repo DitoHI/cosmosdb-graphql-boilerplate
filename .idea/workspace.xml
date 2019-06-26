@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bb75fe6-b363-482a-98be-9af986454925" name="Default Changelist" comment="">
+    <list default="true" id="d464a265-6b3a-4cbb-99d5-0ab54532fa9b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/ToDoApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ToDoApp.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/User/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/User/UserController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Dao.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Dao.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/User/UserModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User/UserModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resolver/user/Users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/user/Users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/schema/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/schema/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tslint.json" beforeDir="false" afterPath="$PROJECT_DIR$/tslint.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/.tmp/" />
-    <ignored path="$PROJECT_DIR$/temp/" />
-    <ignored path="$PROJECT_DIR$/tmp/" />
+    <ignored path="$PROJECT_DIR$/node_modules/" />
+    <ignored path="$PROJECT_DIR$/../ToDoApp/.tmp/" />
+    <ignored path="$PROJECT_DIR$/../ToDoApp/temp/" />
+    <ignored path="$PROJECT_DIR$/../ToDoApp/tmp/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,58 +29,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="95" selection-start-line="1" selection-start-column="95" selection-end-line="1" selection-end-column="95" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="60">
+              <caret line="4" column="53" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cosmos/Client.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
               <folding>
-                <element signature="e#0#30#0" expanded="true" />
+                <element signature="e#0#45#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/schema/index.ts">
+        <entry file="file://$PROJECT_DIR$/src/cosmos/Config.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="29" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+            <state relative-caret-position="90">
+              <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -76,12 +61,37 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resolver/user/Users.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
+            <state relative-caret-position="-180">
+              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
-                <element signature="e#2843#3504#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controller/User/UserController.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="72" column="26" lean-forward="true" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+                <element signature="n#!!block;n#updateUser#0;n#UserController#0" />
+                <element signature="n#!!block;n#updateEducation#0;n#UserController#0" />
+                <element signature="n#!!block;n#updateExperience#0;n#UserController#0" />
+                <element signature="n#!!block;n#updateProject#0;n#UserController#0" />
+                <element signature="n#!!block;n#deleteUser#0;n#UserController#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/User/UserModel.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -89,89 +99,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Dao.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1245">
-              <caret line="83" column="19" selection-start-line="83" selection-start-column="19" selection-end-line="83" selection-end-column="19" />
+            <state relative-caret-position="60">
+              <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="tsconfig.json" />
-        <option value="TypeScript File" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>ISODate</find>
-      <find>User</find>
-      <find>isodate</find>
-      <find>logical</find>
-      <find>DateTime</find>
-      <find>URL</find>
-      <find>url</find>
-      <find>name</find>
-      <find>updatedParameters</find>
-      <find>index</find>
-      <find>console.l</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/App.ts" />
-        <option value="$PROJECT_DIR$/config/winston.ts" />
-        <option value="$PROJECT_DIR$/tslint.json" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/cosmos/config.ts" />
-        <option value="$PROJECT_DIR$/src/model/userDao.ts" />
-        <option value="$PROJECT_DIR$/src/model/UserDao.ts" />
-        <option value="$PROJECT_DIR$/src/cosmos/client.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/index.ts" />
-        <option value="$PROJECT_DIR$/LICENSE.md" />
-        <option value="$PROJECT_DIR$/src/custom/ISODate.ts" />
-        <option value="$PROJECT_DIR$/src/scalar/ISODate.ts" />
-        <option value="$PROJECT_DIR$/src/model/User/UserModel.ts" />
-        <option value="$PROJECT_DIR$/Dockerfile" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/tsconfig.json" />
-        <option value="$PROJECT_DIR$/src/model/Blog/BlogDao.ts" />
-        <option value="$PROJECT_DIR$/src/model/User/UserDao.ts" />
-        <option value="$PROJECT_DIR$/src/cosmos/Config.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/Scalar/index.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/User/UserMutation.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/User/UserTypedef.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/Blog/BlogTypeDef.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/Combiner/mutation.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/User/Users.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/Blog/Blog.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/Combiner/resolvers.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/combiner/index.ts" />
-        <option value="$PROJECT_DIR$/src/schema/index.ts" />
+        <option value="$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts" />
         <option value="$PROJECT_DIR$/src/resolver/user/Users.ts" />
         <option value="$PROJECT_DIR$/src/controller/User/UserController.ts" />
-        <option value="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/blog/Blog.ts" />
-        <option value="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" />
-        <option value="$PROJECT_DIR$/src/model/Dao.ts" />
-        <option value="$PROJECT_DIR$/src/cosmos/Client.ts" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/src/index.ts" />
-        <option value="$PROJECT_DIR$/.npmrc" />
       </list>
     </option>
   </component>
@@ -197,6 +141,90 @@
               <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
               <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="Blog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="cosmos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="Blog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resolver" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resolver" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resolver" type="462c0819:PsiDirectoryNode" />
+              <item name="combiner" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resolver" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CosmosUser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CosmosUser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="schema" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -206,28 +234,10 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="eu.ydp.idea.ts.spec.generator.settings.spec.template" value="import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';&#10;&#10;describe('$ClassName$', () =&gt; {&#10;  let $ObjName$:$ClassName$;&#10;&#10;  beforeEach(() =&gt; {&#10;    $ObjName$ = new $ClassName$();&#10;  });&#10;&#10;  describe('', () =&gt; {&#10;    it('', () =&gt; {&#10;      // given&#10;&#10;      // when&#10;&#10;      // then&#10;    });&#10;  });&#10;});&#10;" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../React/privateblog" />
-    <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="$PROJECT_DIR$/node_modules/tslint" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.tslint" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/schema" />
-      <recent name="$PROJECT_DIR$/src/model/User" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -246,271 +256,29 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8bb75fe6-b363-482a-98be-9af986454925" name="Default Changelist" comment="" />
-      <created>1552376853837</created>
+      <changelist id="d464a265-6b3a-4cbb-99d5-0ab54532fa9b" name="Default Changelist" comment="" />
+      <created>1561563684032</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1552376853837</updated>
-      <workItem from="1552376856037" duration="1406000" />
-      <workItem from="1552391103421" duration="2039000" />
-      <workItem from="1552396409245" duration="589000" />
-      <workItem from="1552409946320" duration="601000" />
-      <workItem from="1552416382540" duration="9165000" />
-      <workItem from="1552450437470" duration="4955000" />
-      <workItem from="1552458475329" duration="55000" />
-      <workItem from="1552478452532" duration="30934000" />
-      <workItem from="1552546525918" duration="378000" />
-      <workItem from="1552568424555" duration="121000" />
-      <workItem from="1552569265461" duration="6535000" />
-      <workItem from="1552607099001" duration="2501000" />
-      <workItem from="1552632940456" duration="4795000" />
-      <workItem from="1552652584704" duration="961000" />
-      <workItem from="1552798146410" duration="6953000" />
-      <workItem from="1552863207615" duration="798000" />
-      <workItem from="1552928696030" duration="98000" />
-      <workItem from="1552933024960" duration="21000" />
-      <workItem from="1552949368590" duration="655000" />
-      <workItem from="1553078087850" duration="823000" />
-      <workItem from="1553080499077" duration="737000" />
-      <workItem from="1553083844240" duration="59000" />
-      <workItem from="1553097798858" duration="25000" />
-      <workItem from="1553097882159" duration="390000" />
-      <workItem from="1553103298544" duration="2210000" />
-      <workItem from="1553331452396" duration="140000" />
-      <workItem from="1553408246165" duration="27000" />
-      <workItem from="1553412532772" duration="3039000" />
-      <workItem from="1553420577602" duration="186000" />
-      <workItem from="1553422615008" duration="1918000" />
-      <workItem from="1553432404757" duration="22190000" />
-      <workItem from="1553470927648" duration="9697000" />
-      <workItem from="1553481517285" duration="477000" />
-      <workItem from="1553493324237" duration="226000" />
-      <workItem from="1553597695842" duration="47000" />
-      <workItem from="1553597822573" duration="451000" />
-      <workItem from="1553683527335" duration="250000" />
-      <workItem from="1553687441364" duration="1494000" />
-      <workItem from="1553691377225" duration="933000" />
-      <workItem from="1553692577782" duration="3113000" />
-      <workItem from="1553739786946" duration="164000" />
-      <workItem from="1553763303665" duration="319000" />
-      <workItem from="1553763657356" duration="653000" />
-      <workItem from="1553765744743" duration="249000" />
-      <workItem from="1553773731078" duration="654000" />
-      <workItem from="1554090529041" duration="384000" />
-      <workItem from="1554094711908" duration="413000" />
-      <workItem from="1554654830345" duration="41000" />
-      <workItem from="1554693138218" duration="26000" />
-      <workItem from="1554693185474" duration="1388000" />
-      <workItem from="1554901142520" duration="3340000" />
-      <workItem from="1555924758762" duration="44000" />
-      <workItem from="1555924841853" duration="877000" />
-      <workItem from="1556592981213" duration="6272000" />
+      <updated>1561563684032</updated>
+      <workItem from="1561563692812" duration="684000" />
     </task>
-    <task id="LOCAL-00001" summary="initial setup of cosmosClient, Model, and Controller done">
-      <created>1552437481395</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1552437481395</updated>
-    </task>
-    <task id="LOCAL-00002" summary="initial setup of graphldone">
-      <created>1552440285947</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1552440285947</updated>
-    </task>
-    <task id="LOCAL-00003" summary="add license and readme">
-      <created>1552440881136</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1552440881136</updated>
-    </task>
-    <task id="LOCAL-00004" summary="basic mutation addUser done">
-      <created>1552455391269</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1552455391269</updated>
-    </task>
-    <task id="LOCAL-00005" summary="add middleware to check if existing name or value in addUser">
-      <created>1552509269383</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1552509269383</updated>
-    </task>
-    <task id="LOCAL-00006" summary="delete user done">
-      <created>1552511310809</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1552511310809</updated>
-    </task>
-    <task id="LOCAL-00007" summary="delete and updating user done">
-      <created>1552526702104</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1552526702104</updated>
-    </task>
-    <task id="LOCAL-00008" summary="update status of user done">
-      <created>1552532155070</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1552532155070</updated>
-    </task>
-    <task id="LOCAL-00009" summary="optimize updating user">
-      <created>1552532444192</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1552532444192</updated>
-    </task>
-    <task id="LOCAL-00010" summary="wrapping up - done all the function of User CRUD">
-      <created>1552541850077</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1552541850077</updated>
-    </task>
-    <task id="LOCAL-00011" summary="add Dockerfile to dockerized the app">
-      <created>1552655075413</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1552655075413</updated>
-    </task>
-    <task id="LOCAL-00012" summary="fix the format of education">
-      <created>1552802260429</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1552802260429</updated>
-    </task>
-    <task id="LOCAL-00013" summary="update readme about custom scalar type">
-      <created>1552802950834</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1552802950834</updated>
-    </task>
-    <task id="LOCAL-00014" summary="add custom scalar to resolver">
-      <created>1552803241687</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1552803241687</updated>
-    </task>
-    <task id="LOCAL-00015" summary="use library to update custom scalar and modify project and experience controller">
-      <created>1552804627962</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1552804627962</updated>
-    </task>
-    <task id="LOCAL-00016" summary="fix indentation in resolver, controller, and dao">
-      <created>1552805578691</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1552805578691</updated>
-    </task>
-    <task id="LOCAL-00017" summary="fix tsconfig.json">
-      <created>1552805968736</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1552805968736</updated>
-    </task>
-    <task id="LOCAL-00018" summary="add name and role to type Project">
-      <created>1552806313761</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1552806313761</updated>
-    </task>
-    <task id="LOCAL-00019" summary="restructure folder to include multiple resolver">
-      <created>1553445422745</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1553445422745</updated>
-    </task>
-    <task id="LOCAL-00020" summary="fix return value from show">
-      <created>1553452256258</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1553452256258</updated>
-    </task>
-    <task id="LOCAL-00021" summary="update blog done">
-      <created>1553454026352</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1553454026352</updated>
-    </task>
-    <task id="LOCAL-00022" summary="delete blog done">
-      <created>1553455558935</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1553455558935</updated>
-    </task>
-    <task id="LOCAL-00023" summary="add condition to top selecting in query">
-      <created>1553479457632</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1553479457632</updated>
-    </task>
-    <task id="LOCAL-00024" summary="add query by indexing">
-      <created>1553480816125</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1553480816125</updated>
-    </task>
-    <task id="LOCAL-00025" summary="add hastag column to the model">
-      <created>1553481950816</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1553481950816</updated>
-    </task>
-    <task id="LOCAL-00026" summary="add id to props in query blog">
-      <created>1553597920761</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1553597920761</updated>
-    </task>
-    <task id="LOCAL-00027" summary="update the link in origin to be based on server connection">
-      <created>1554906964808</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1554906964808</updated>
-    </task>
-    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136816000" />
+    <option name="totallyTimeSpent" value="690000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="51" y="25" width="1315" height="743" extended-state="6" />
+    <frame x="45" y="25" width="1321" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1827451" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32899022" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -519,12 +287,14 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="RNConsole" order="10" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3306189" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="GraphQL" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="R Graphics" order="3" />
+      <window_info anchor="right" id="R Packages" order="4" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
@@ -552,128 +322,59 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="add license and readme" />
-    <MESSAGE value="basic mutation addUser done" />
-    <MESSAGE value="add middleware to check if existing name or value in addUser" />
-    <MESSAGE value="delete user done" />
-    <MESSAGE value="delete and updating user done" />
-    <MESSAGE value="update status of user done" />
-    <MESSAGE value="optimize updating user" />
-    <MESSAGE value="wrapping up - done all the function of User CRUD" />
-    <MESSAGE value="add Dockerfile to dockerized the app" />
-    <MESSAGE value="fix the format of education" />
-    <MESSAGE value="update readme about custom scalar type" />
-    <MESSAGE value="add custom scalar to resolver" />
-    <MESSAGE value="use library to update custom scalar and modify project and experience controller" />
-    <MESSAGE value="fix indentation in resolver, controller, and dao" />
-    <MESSAGE value="fix tsconfig.json" />
-    <MESSAGE value="add name and role to type Project" />
-    <MESSAGE value="restructure folder to include multiple resolver" />
-    <MESSAGE value="fix return value from show" />
-    <MESSAGE value="update blog done" />
-    <MESSAGE value="delete blog done" />
-    <MESSAGE value="add condition to top selecting in query" />
-    <MESSAGE value="add query by indexing" />
-    <MESSAGE value="add hastag column to the model" />
-    <MESSAGE value="add id to props in query blog" />
-    <MESSAGE value="update the link in origin to be based on server connection" />
-    <option name="LAST_COMMIT_MESSAGE" value="update the link in origin to be based on server connection" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/App.ts" />
-    <entry file="file://$PROJECT_DIR$/config/winston.ts" />
-    <entry file="file://$PROJECT_DIR$/tslint.json">
+    <entry file="file://$PROJECT_DIR$/src/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <caret line="4" column="53" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/cosmos/Client.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="82" column="10" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/model/Dao.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scalar/ISODate.ts" />
-    <entry file="file://$PROJECT_DIR$/LICENSE.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor>
-            <caret column="4" selection-start-column="4" selection-end-column="4" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="270">
-            <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/User/UserModel.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="27" column="15" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/User/UserDao.ts" />
-    <entry file="file://$PROJECT_DIR$/src/model/Blog/BlogDao.ts" />
-    <entry file="file://$PROJECT_DIR$/dist/resolver/User/Users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="72" column="3" lean-forward="true" selection-start-line="72" selection-start-column="3" selection-end-line="75" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package-lock.json" />
-    <entry file="file://$PROJECT_DIR$/src/resolver/Combiner/scalar.ts" />
-    <entry file="file://$PROJECT_DIR$/src/resolver/combiner/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="60">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
           <folding>
-            <element signature="e#0#100#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@azure/cosmos/src/client/Item/Item.ts">
+    <entry file="file://$PROJECT_DIR$/src/model/Dao.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-143">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        <state relative-caret-position="60">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/User/UserController.ts">
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tslint.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+          <caret line="2" column="64" lean-forward="true" selection-start-line="2" selection-start-column="64" selection-end-line="2" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/index.js">
+    <entry file="file://$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+        <state relative-caret-position="15">
+          <caret line="1" column="78" selection-start-line="1" selection-start-column="78" selection-end-line="1" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resolver/user/Users.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -684,134 +385,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts">
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/User/UserModel.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="64" column="35" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="35" />
+        <state relative-caret-position="297">
+          <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/User/UserController.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="72" column="26" lean-forward="true" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
+            <element signature="n#!!block;n#updateUser#0;n#UserController#0" />
+            <element signature="n#!!block;n#updateEducation#0;n#UserController#0" />
+            <element signature="n#!!block;n#updateExperience#0;n#UserController#0" />
+            <element signature="n#!!block;n#updateProject#0;n#UserController#0" />
+            <element signature="n#!!block;n#deleteUser#0;n#UserController#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cosmos/Client.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="65" selection-start-line="3" selection-start-column="65" selection-end-line="3" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resolver/blog/Blog.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Blog/BlogModel.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/schema/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resolver/user/Users.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-            <element signature="e#2843#3504#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Dao.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1245">
-          <caret line="83" column="19" selection-start-line="83" selection-start-column="19" selection-end-line="83" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="95" selection-start-line="1" selection-start-column="95" selection-end-line="1" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.npmrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
