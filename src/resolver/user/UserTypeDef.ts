@@ -11,9 +11,10 @@ export const mutationDef = `
     updateUser(occupation: String, phone: String, address: String,
                website: URL, dateBirth: DateTime, skill: [String]
                ): User
+    loginUser(username: String, email: String, password: String!): User
 `;
 
 export const queryDef = `
     me: User
-    users(name: String, email: String): [User]
+    users(name: String, email: String): [PublicUser]
 `;

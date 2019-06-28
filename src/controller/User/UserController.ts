@@ -1,9 +1,11 @@
 import { SqlParameter, SqlQuerySpec } from '@azure/cosmos';
 import bcryptjs from 'bcryptjs';
 import { default as Ajv } from 'ajv';
+import { default as jwt } from 'jsonwebtoken';
 
 import Dao from '../../model/Dao';
 import validator from '../../utils/validator';
+import { IUser } from '../../model/User/UserModel';
 
 class UserController {
   public userDao: Dao;
@@ -12,6 +14,7 @@ class UserController {
   private updatedParameters: string[] = ['updatedIsActived'];
   private salt: number = 10;
   private ajv = new Ajv({ allErrors: true });
+  private secretKey = process.env.APP_SECRET;
 
   constructor(userDao: Dao) {
     this.userDao = userDao;
@@ -55,6 +58,31 @@ class UserController {
       .catch(err => {
         throw new Error(err);
       });
+  }
+
+  async loginUser(user?: any) {
+    return new Promise((resolve, reject) => {
+      this.showUsers(user, 'OR')
+        .then(result => {
+          if (result.length <= 0) {
+            return reject(new Error('No user registered'));
+          }
+
+          const resultUser: IUser = result[0];
+          bcryptjs.compare(user.password, resultUser.password).then(valid => {
+            if (!valid) {
+              return reject(new Error("The password doesn't match"));
+            }
+
+            const newToken = this.generateToken(resultUser.id);
+            return resolve({
+              ...resultUser,
+              token: newToken
+            });
+          });
+        })
+        .catch(err => reject(new Error(err)));
+    });
   }
 
   async addUser(user?: any) {
@@ -280,6 +308,12 @@ class UserController {
           });
       });
     });
+  }
+
+  generateToken(id: String) {
+    const payload = { id };
+
+    return jwt.sign(payload, this.secretKey, { expiresIn: '1y' });
   }
 }
 

@@ -45,6 +45,19 @@ export const typeDef = `
     project: [Project],
     isActived: Boolean,
   }
+  
+  type PublicUser {
+    name: String!,
+    username: String!,
+    email: String!,
+    occupation: String,
+    website: String,
+    isActived: String,
+  }
+  
+  extend type User {
+    token: String
+  }
 `;
 
 export const resolvers: IResolvers = {
@@ -54,6 +67,16 @@ export const resolvers: IResolvers = {
     addUser: async (_, user, { userController }) => {
       return userController
         .addUser(user)
+        .then((result: any) => {
+          return result;
+        })
+        .catch((err: Error) => {
+          throw err;
+        });
+    },
+    loginUser: async (_, user, { userController }) => {
+      return userController
+        .loginUser(user)
         .then((result: any) => {
           return result;
         })
@@ -124,18 +147,8 @@ export const resolvers: IResolvers = {
     }
   },
   Query: {
-    me: async (_, {}, { userController }) => {
-      return userController
-        .showUsers({ isActived: true })
-        .then((result: any) => {
-          if (result.length > 1) {
-            throw new Error(
-              `There are ${result.length} users found who are actived. ` +
-                'Please inactive the others'
-            );
-          }
-          return result[0];
-        });
+    me: async (_, {}, { userFromJwt }) => {
+      return userFromJwt;
     },
     users: async (_, user, { userController }) => {
       return userController.showUsers(user).then((result: any) => {

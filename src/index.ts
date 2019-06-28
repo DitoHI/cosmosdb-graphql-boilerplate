@@ -1,8 +1,10 @@
 import express from 'express';
+import passport from 'passport';
+import { ApolloServer } from 'apollo-server-express';
 
 require('dotenv').config();
 
-import { ApolloServer } from 'apollo-server-express';
+import passportInitializer from './utils/passportInitializer';
 import schema from './schema';
 import Client from './cosmos/Client';
 
@@ -12,13 +14,28 @@ const startServer = async () => {
   const app = express();
 
   // initialize cosmosDB initializer
-  Client.init().catch(err => {
-    throw new Error(err);
+  Client.init()
+    .then()
+    .catch(err => {
+      throw new Error(err);
+    });
+
+  passport.use(passportInitializer(Client.userController));
+
+  app.use('/graphql', (req, res, next) => {
+    passport.authenticate('jwt', { session: true }, (err, user) => {
+      if (user) {
+        req.user = user;
+      }
+
+      next();
+    })(req, res, next);
   });
 
   const server = new ApolloServer({
     schema,
-    context: () => ({
+    context: ({ req }: any) => ({
+      userFromJwt: req.user,
       blogController: Client.blogController,
       userController: Client.userController
     })
