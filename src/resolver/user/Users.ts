@@ -1,6 +1,8 @@
 import { IResolvers } from 'graphql-tools';
 import { DateTime, URL } from '@okgrow/graphql-scalars';
 
+import common from '../../utils/common';
+
 export const typeDef = `
   type Education {
     dateStart: DateTime,
@@ -84,7 +86,9 @@ export const resolvers: IResolvers = {
           throw err;
         });
     },
-    deleteUser: async (_, user, { userController }) => {
+    deleteUser: async (_, user, { userFromJwt, userController }) => {
+      common.exitAppIfUnauthorized(userFromJwt);
+
       return userController
         .deleteUser(user)
         .then((result: any) => {
@@ -94,9 +98,11 @@ export const resolvers: IResolvers = {
           throw err;
         });
     },
-    updateStatus: async (_, user, { userController }) => {
+    updateStatus: async (_, user, { userFromJwt, userController }) => {
+      common.exitAppIfUnauthorized(userFromJwt);
+
       return userController
-        .updateUser(user, user.updatedIsActived)
+        .updateUser(userFromJwt.id, user, user.updatedIsActived)
         .then((result: any) => {
           return result;
         })
@@ -104,10 +110,12 @@ export const resolvers: IResolvers = {
           throw err;
         });
     },
-    updateUser: async (_, user, { userController }) => {
+    updateUser: async (_, user, { userFromJwt, userController }) => {
+      common.exitAppIfUnauthorized(userFromJwt);
+
       user.isActived = true;
       return userController
-        .updateUser(user)
+        .updateUser(userFromJwt.id, user)
         .then((result: any) => {
           return result;
         })
@@ -115,9 +123,11 @@ export const resolvers: IResolvers = {
           throw err;
         });
     },
-    updateEducation: async (_, education, { userController }) => {
+    updateEducation: async (_, education, { userFromJwt, userController }) => {
+      common.exitAppIfUnauthorized(userFromJwt);
+
       return userController
-        .updateEducation(education)
+        .updateEducation(userFromJwt, education)
         .then((result: any) => {
           return result;
         })
@@ -125,9 +135,15 @@ export const resolvers: IResolvers = {
           throw err;
         });
     },
-    updateExperience: async (_, experience, { userController }) => {
+    updateExperience: async (
+      _,
+      experience,
+      { userFromJwt, userController }
+    ) => {
+      common.exitAppIfUnauthorized(userFromJwt);
+
       return userController
-        .updateExperience(experience)
+        .updateExperience(userFromJwt, experience)
         .then((result: any) => {
           return result;
         })
@@ -135,9 +151,11 @@ export const resolvers: IResolvers = {
           throw err;
         });
     },
-    updateProject: async (_, project, { userController }) => {
+    updateProject: async (_, project, { userFromJwt, userController }) => {
+      common.exitAppIfUnauthorized(userFromJwt);
+
       return userController
-        .updateProject(project)
+        .updateProject(userFromJwt, project)
         .then((result: any) => {
           return result;
         })

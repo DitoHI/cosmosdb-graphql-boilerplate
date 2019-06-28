@@ -140,7 +140,7 @@ class UserController {
     });
   }
 
-  async updateUser(user?: any, updatedIsActived?: Boolean) {
+  async updateUser_V1(user?: any, updatedIsActived?: Boolean) {
     return new Promise((resolve, reject) => {
       let userFind: any = {};
       updatedIsActived == null
@@ -181,7 +181,21 @@ class UserController {
     });
   }
 
-  async updateEducation(education: any) {
+  async updateUser(idUser: string, user?: any, updatedIsActived?: Boolean) {
+    return new Promise((resolve, reject) => {
+      const updatedUser = Object.assign({}, user);
+      if (updatedIsActived) {
+        updatedUser.isActived = updatedIsActived;
+      }
+
+      this.userDao
+        .updateItem(idUser, updatedUser)
+        .then(replaced => resolve(replaced))
+        .catch(err => reject(err));
+    });
+  }
+
+  async updateEducation_V1(education: any) {
     return new Promise((resolve, reject) => {
       this.showUsers({ isActived: true }).then(users => {
         if (users.length === 0) {
@@ -214,7 +228,26 @@ class UserController {
     });
   }
 
-  async updateExperience(experience: any) {
+  async updateEducation(user: any, education: any) {
+    return new Promise((resolve, reject) => {
+      const userClone = Object.assign({}, user);
+      const educationClone = Object.assign({}, education);
+      if (!userClone.education) {
+        userClone.education = [];
+      }
+      userClone.education.push(education);
+      this.userDao
+        .updateItem(userClone.id, { education: userClone.education })
+        .then(replaced => {
+          return resolve(replaced);
+        })
+        .catch(err => {
+          return reject(err);
+        });
+    });
+  }
+
+  async updateExperience_V1(experience: any) {
     return new Promise((resolve, reject) => {
       this.showUsers({ isActived: true }).then(users => {
         if (users.length === 0) {
@@ -248,7 +281,27 @@ class UserController {
     });
   }
 
-  async updateProject(project: any) {
+  async updateExperience(user: any, experience: any) {
+    return new Promise((resolve, reject) => {
+      const userClone = Object.assign({}, user);
+      const experienceClone = Object.assign({}, experience);
+      if (!userClone.experience) {
+        userClone.experience = [];
+      }
+      userClone.experience.push(experience);
+
+      this.userDao
+        .updateItem(userClone.id, { experience: userClone.experience })
+        .then(replaced => {
+          return resolve(replaced);
+        })
+        .catch(err => {
+          return reject(err);
+        });
+    });
+  }
+
+  async updateProject_V1(project: any) {
     return new Promise((resolve, reject) => {
       this.showUsers({ isActived: true }).then(users => {
         if (users.length === 0) {
@@ -282,9 +335,29 @@ class UserController {
     });
   }
 
+  async updateProject(user: any, project: any) {
+    return new Promise((resolve, reject) => {
+      const userClone = Object.assign({}, user);
+      const projectClone = Object.assign({}, project);
+      if (!userClone.project) {
+        userClone.project = [];
+      }
+      userClone.project.push(project);
+
+      this.userDao
+        .updateItem(userClone.id, { project: userClone.project })
+        .then(replaced => {
+          return resolve(replaced);
+        })
+        .catch(err => {
+          return reject(err);
+        });
+    });
+  }
+
   async deleteUser(user?: any) {
     return new Promise((resolve, reject) => {
-      this.showUsers(user).then(users => {
+      this.showUsers(user, 'OR').then(users => {
         if (users.length === 0) {
           return reject(new Error('No user registered'));
         }
@@ -297,14 +370,27 @@ class UserController {
           );
         }
 
-        const userClone = Object.assign({}, users[0]);
-        this.userDao
-          .deleteItem(userClone.id)
-          .then(() => {
-            return resolve(userClone);
+        // comparing password
+        const resultUser: IUser = users[0];
+        bcryptjs
+          .compare(user.password, resultUser.password)
+          .then(valid => {
+            if (!valid) {
+              return reject(new Error("The password doesn't match"));
+            }
+
+            const userClone = Object.assign({}, users[0]);
+            this.userDao
+              .deleteItem(userClone.id)
+              .then(() => {
+                return resolve(userClone);
+              })
+              .catch(err => {
+                return reject(err);
+              });
           })
           .catch(err => {
-            return reject(err);
+            return reject(new Error(err));
           });
       });
     });
