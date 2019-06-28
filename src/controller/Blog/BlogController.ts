@@ -17,8 +17,11 @@ class BlogController {
     let index: number = 0;
     if (blog) {
       for (const prop in blog) {
-        if (blog.hasOwnProperty(prop) && blog[prop] &&
-          this.updatedParameters.indexOf(prop) === -1) {
+        if (
+          blog.hasOwnProperty(prop) &&
+          blog[prop] &&
+          this.updatedParameters.indexOf(prop) === -1
+        ) {
           let propActive = prop;
           let operator = '=';
           if (prop === 'startAt') {
@@ -52,10 +55,10 @@ class BlogController {
 
     return this.blogDao
       .find(querySpec)
-      .then((blog) => {
+      .then(blog => {
         return blog;
       })
-      .catch((err) => {
+      .catch(err => {
         throw new Error(err);
       });
   }
@@ -72,10 +75,10 @@ class BlogController {
 
       this.blogDao
         .addItem(blog)
-        .then((blog) => {
+        .then(blog => {
           return resolve(blog);
         })
-        .catch((err) => {
+        .catch(err => {
           return reject(new Error(err));
         });
     });
@@ -84,16 +87,25 @@ class BlogController {
   async updateBlog(idBlog: any, blog: any) {
     return new Promise((resolve, reject) => {
       this.blogDao
-        .updateItem(idBlog, blog)
-        .then((blogUpdated) => {
-          if (blogUpdated.code === 404) {
-            return reject(blogUpdated.body);
+        .getItem(idBlog)
+        .then(result => {
+          if (result.code === 404) {
+            return reject(new Error('Blog not found'));
           }
-          return resolve(blogUpdated);
+
+          this.blogDao
+            .updateItem(idBlog, blog)
+            .then(blogUpdated => {
+              if (blogUpdated.code === 404) {
+                return reject(blogUpdated.body);
+              }
+              return resolve(blogUpdated);
+            })
+            .catch(err => {
+              return reject(err);
+            });
         })
-        .catch((err) => {
-          return reject(err);
-        });
+        .catch(err => reject(err));
     });
   }
 
@@ -101,23 +113,21 @@ class BlogController {
     return new Promise((resolve, reject) => {
       const blog = {} as any;
       blog.id = id;
-      this
-        .showBlogs(blog)
-        .then((blogsResult) => {
-          if (blogsResult.length === 0) {
-            return reject(new Error('No blog found'));
-          }
+      this.showBlogs(blog).then(blogsResult => {
+        if (blogsResult.length === 0) {
+          return reject(new Error('No blog found'));
+        }
 
-          const blogClone = Object.assign({}, blogsResult[0]);
-          this.blogDao
-            .deleteItem(id)
-            .then(() => {
-              return resolve(blogClone);
-            })
-            .catch((err) => {
-              return reject(err);
-            });
-        });
+        const blogClone = Object.assign({}, blogsResult[0]);
+        this.blogDao
+          .deleteItem(id)
+          .then(() => {
+            return resolve(blogClone);
+          })
+          .catch(err => {
+            return reject(err);
+          });
+      });
     });
   }
 }

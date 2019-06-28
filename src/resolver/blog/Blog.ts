@@ -1,6 +1,8 @@
 import { IResolvers } from 'graphql-tools';
-import { IUser } from '../../model/User/UserModel';
 import { DateTime } from '@okgrow/graphql-scalars';
+
+import { IUser } from '../../model/User/UserModel';
+import common from '../../utils/common';
 
 export const typeDef = `
   type Blog {
@@ -19,34 +21,26 @@ export const typeDef = `
 export const resolvers: IResolvers = {
   DateTime,
   Mutation: {
-    addBlog: async (_, blog, { userController, blogController }) => {
-      return userController
-        .showUsers({ isActived: true })
-        .then((result: any) => {
-          if (result.length === 0) {
-            throw new Error('user not found');
-          }
+    addBlog: async (
+      _,
+      blog,
+      { userFromJwt, userController, blogController }
+    ) => {
+      common.exitAppIfUnauthorized(userFromJwt);
 
-          if (result.length > 1) {
-            throw new Error(
-              `There are ${result.length} users found who are actived. ` +
-                'Please inactive the others'
-            );
-          }
+      const newBlog = Object.assign({}, blog);
+      newBlog.user = userFromJwt.id;
 
-          const user = result[0] as IUser;
-          blog.user = user.id;
-          return blogController
-            .addBlog(blog)
-            .then((blog: any) => {
-              return blog;
-            })
-            .catch((err: Error) => {
-              throw err;
-            });
+      return blogController
+        .addBlog(newBlog)
+        .then((blog: any) => {
+          return blog;
+        })
+        .catch((err: Error) => {
+          throw err;
         });
     },
-    deleteBlog: async (_, { id }, { blogController }) => {
+    deleteBlog: async (_, { id }, { userFromJwt, blogController }) => {
       return blogController
         .deleteBlog(id)
         .then((blogDeleted: any) => {
@@ -56,7 +50,9 @@ export const resolvers: IResolvers = {
           throw err;
         });
     },
-    updateBlog: async (_, blog, { blogController }) => {
+    updateBlog: async (_, blog, { userFromJwt, blogController }) => {
+      common.exitAppIfUnauthorized(userFromJwt);
+
       return blogController
         .updateBlog(blog.id, blog)
         .then((blogUpdated: any) => {
@@ -68,35 +64,21 @@ export const resolvers: IResolvers = {
     }
   },
   Query: {
-    blogs: async (_, blog, { userController, blogController }) => {
-      return userController
-        .showUsers({ isActived: true })
-        .then((result: any) => {
-          if (result.length === 0) {
-            throw new Error('user not found');
+    blogs: async (_, blog, { userFromJwt, userController, blogController }) => {
+      common.exitAppIfUnauthorized(userFromJwt);
+
+      blog.user = userFromJwt.id;
+      return blogController
+        .showBlogs(blog)
+        .then((blogsResult: any) => {
+          if (blogsResult.length === 0) {
+            throw new Error('Blog is empty');
           }
 
-          if (result.length > 1) {
-            throw new Error(
-              `There are ${result.length} users found who are actived. ` +
-                'Please inactive the others'
-            );
-          }
-
-          const user = result[0] as IUser;
-          blog.user = user.id;
-          return blogController
-            .showBlogs(blog)
-            .then((blogsResult: any) => {
-              if (blogsResult.length === 0) {
-                throw new Error('Blog is empty');
-              }
-
-              return blogsResult;
-            })
-            .catch((err: any) => {
-              throw err;
-            });
+          return blogsResult;
+        })
+        .catch((err: any) => {
+          throw err;
         });
     }
   }
