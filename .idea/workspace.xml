@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d464a265-6b3a-4cbb-99d5-0ab54532fa9b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/cosmos/Config.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/cosmos/Config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/resolver/User/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/User/Users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/resolver/User/Users.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/resolver/User/Users.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/azure_storage/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/azure_storage/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/../ToDoApp/.tmp/" />
@@ -73,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-400">
-              <caret line="89" column="30" selection-start-line="89" selection-start-column="30" selection-end-line="89" selection-end-column="30" />
+            <state relative-caret-position="427">
+              <caret line="131" column="27" lean-forward="true" selection-start-line="131" selection-start-column="27" selection-end-line="131" selection-end-column="27" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -85,7 +82,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/azure_storage/index.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
+            <state relative-caret-position="401">
               <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
@@ -118,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="60" selection-start-line="1" selection-start-column="60" selection-end-line="1" selection-end-column="60" />
+            <state relative-caret-position="60">
+              <caret line="4" column="33" lean-forward="true" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -152,7 +149,6 @@
         <option value="$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts" />
         <option value="$PROJECT_DIR$/src/controller/User/UserController.ts" />
         <option value="$PROJECT_DIR$/src/@types/apollo-upload-server/index.d.ts" />
-        <option value="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" />
         <option value="$PROJECT_DIR$/src/resolver/combiner/index.ts" />
         <option value="$PROJECT_DIR$/.prettierrc" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
@@ -165,6 +161,7 @@
         <option value="$PROJECT_DIR$/src/utils/azure_storage/index.ts" />
         <option value="$PROJECT_DIR$/src/resolver/blog/Blog.ts" />
         <option value="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" />
+        <option value="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" />
         <option value="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" />
       </list>
     </option>
@@ -298,7 +295,7 @@
       <updated>1561563684032</updated>
       <workItem from="1561563692812" duration="4842000" />
       <workItem from="1561737499852" duration="7214000" />
-      <workItem from="1563091147693" duration="10451000" />
+      <workItem from="1563091147693" duration="11239000" />
     </task>
     <task id="LOCAL-00001" summary="fix styling and hashing the password [new]">
       <created>1561564405211</created>
@@ -349,11 +346,18 @@
       <option name="project" value="LOCAL" />
       <updated>1563106836206</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feature delete blog while deleting blob in azure cloud too">
+      <created>1563107659789</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1563107659790</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27224000" />
+    <option name="totallyTimeSpent" value="28012000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -366,6 +370,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="824" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49898168" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -373,8 +378,8 @@
       <window_info id="npm" order="3" sideWeight="0.50101835" side_tool="true" weight="0.24947146" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329235" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3989071" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.329235" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3989071" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329235" />
@@ -425,7 +430,20 @@
     <MESSAGE value="chore configure new param to update the status of user" />
     <MESSAGE value="feature define module for upload file" />
     <MESSAGE value="feature uploader file of cover blog" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature uploader file of cover blog" />
+    <MESSAGE value="feature delete blog while deleting blob in azure cloud too" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature delete blog while deleting blob in azure cloud too" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts</url>
+          <line>112</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -644,13 +662,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="60" selection-start-line="1" selection-start-column="60" selection-end-line="1" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/common.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -692,9 +703,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="33" lean-forward="true" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/azure_storage/index.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
+        <state relative-caret-position="401">
           <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
@@ -704,8 +722,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-400">
-          <caret line="89" column="30" selection-start-line="89" selection-start-column="30" selection-end-line="89" selection-end-column="30" />
+        <state relative-caret-position="427">
+          <caret line="131" column="27" lean-forward="true" selection-start-line="131" selection-start-column="27" selection-end-line="131" selection-end-column="27" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
           </folding>
