@@ -1,10 +1,14 @@
-### CosmosDB with GraphQL
+# Public Blog API
 
-GraphQL is a powerful tool to satisfy the front end for them to manipulate the returned data in the client. Also CosmosDB is also a powerful tool to satisfy the back end to manipulate the request data from the client. But it's so daunting to combine them as a full pack server. So this boilerplate comes to solve that daunting process
+Open Data for Blog API. **Anyone** can use it. Every when. Every where. Good news for the Front End Engineer, you will not be bothered again to build the back end API first :muscle:
 
-### Public Blog API
+## Tech Stacks
 
-The boilerplate is using **user** as the model and resolvers which is likely to be displayed in _curriculum vitae_ alongside with the **blog** management
+This project developed using [Apollo Server](https://github.com/apollographql/apollo-server) and [Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-node) as the database. It means, We are already using **GraphQL**
+
+## Introduction
+
+The boilerplate is using **user** as the model and resolvers which is likely to be displayed in curriculum vita alongside with the **blog** management
 
 ## Dependencies
 
@@ -13,6 +17,7 @@ The boilerplate is using **user** as the model and resolvers which is likely to 
 - Update user with the only one `isActived` true
 - Delete user by its parameters
 - Use [this library](https://github.com/okgrow/graphql-scalars) from @okgrow to use Scalar Type in GraphQL
+- Upload file with GraphQL dependency. Kindly check this [link](https://github.com/jaydenseric/graphql-upload) to get the knowing of how to send the files in query of GraphQL
 
 ## License
 
