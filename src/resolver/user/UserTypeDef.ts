@@ -1,7 +1,7 @@
 export const mutationDef = `
     addUser(username: String!, email: String!, password: String!, name: String): User
     deleteUser(email: String!, password: String!): User
-    updateStatus(name: String!, email: String!, updatedIsActived: Boolean!): User
+    updateStatus(isActived: Boolean!): User
     updateEducation(name: String, degree: String, major: String, dateStart: DateTime,
                     dateEnd: DateTime, location: String, description: String): User
     updateExperience(name: String, role: String, description: String,

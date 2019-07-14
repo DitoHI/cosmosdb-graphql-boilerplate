@@ -1,7 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const UserTypeDef_1 = require("../user/UserTypeDef");
-const BlogTypeDef_1 = require("../blog/BlogTypeDef");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+const UserTypeDef_1 = require('../user/UserTypeDef');
+const BlogTypeDef_1 = require('../blog/BlogTypeDef');
 exports.resolversTypeDef = `
   type Mutation {
     ${UserTypeDef_1.mutationDef}

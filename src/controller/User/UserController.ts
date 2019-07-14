@@ -181,12 +181,10 @@ class UserController {
     });
   }
 
-  async updateUser(idUser: string, user?: any, updatedIsActived?: Boolean) {
+  async updateUser(idUser: string, user?: any) {
     return new Promise((resolve, reject) => {
       const updatedUser = Object.assign({}, user);
-      if (updatedIsActived) {
-        updatedUser.isActived = updatedIsActived;
-      }
+      console.log(user);
 
       this.userDao
         .updateItem(idUser, updatedUser)

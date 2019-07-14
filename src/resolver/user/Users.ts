@@ -99,10 +99,10 @@ export const resolvers: IResolvers = {
         });
     },
     updateStatus: async (_, user, { userFromJwt, userController }) => {
-      common.exitAppIfUnauthorized(userFromJwt);
+      common.exitAppIfUnauthorized(userFromJwt, false);
 
       return userController
-        .updateUser(userFromJwt.id, user, user.updatedIsActived)
+        .updateUser(userFromJwt.id, user)
         .then((result: any) => {
           return result;
         })
