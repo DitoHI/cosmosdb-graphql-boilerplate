@@ -1,9 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
 exports.mutationDef = `
-    addUser(name: String!, email: String!): User
-    deleteUser(name: String!, email: String!): User
-    updateStatus(name: String!, email: String!, updatedIsActived: Boolean!): User
+    addUser(username: String!, email: String!, password: String!, name: String): User
+    deleteUser(email: String!, password: String!): User
+    updateStatus(isActived: Boolean!): User
     updateEducation(name: String, degree: String, major: String, dateStart: DateTime,
                     dateEnd: DateTime, location: String, description: String): User
     updateExperience(name: String, role: String, description: String,
@@ -13,9 +13,10 @@ exports.mutationDef = `
     updateUser(occupation: String, phone: String, address: String,
                website: URL, dateBirth: DateTime, skill: [String]
                ): User
+    loginUser(username: String, email: String, password: String!): User
 `;
 exports.queryDef = `
     me: User
-    users(name: String, email: String): [User]
+    users(name: String, email: String): [PublicUser]
 `;
 //# sourceMappingURL=UserTypeDef.js.map

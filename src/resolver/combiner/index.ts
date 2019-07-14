@@ -21,4 +21,5 @@ export const resolversTypeDef = `
 
   scalar DateTime
   scalar URL
+  scalar Upload
 `;

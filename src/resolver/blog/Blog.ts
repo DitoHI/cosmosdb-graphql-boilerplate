@@ -1,10 +1,17 @@
 import { IResolvers } from 'graphql-tools';
-import { DateTime } from '@okgrow/graphql-scalars';
+import { GraphQLUpload } from 'apollo-upload-server';
 
-import { IUser } from '../../model/User/UserModel';
 import common from '../../utils/common';
 
 export const typeDef = `
+  type File {
+    id: ID!
+    path: String!
+    filename: String!
+    mimetype: String!
+    encoding: String!
+  }
+
   type Blog {
     id: ID!,
     user: String!,
@@ -12,20 +19,16 @@ export const typeDef = `
     content: String,
     lastEdited: DateTime,
     isDeleted: Boolean,
-    imageUri: [String],
+    imageUri: String,
     hastag: String,
     positionIndex: Int,
   }
 `;
 
 export const resolvers: IResolvers = {
-  DateTime,
+  Upload: GraphQLUpload,
   Mutation: {
-    addBlog: async (
-      _,
-      blog,
-      { userFromJwt, userController, blogController }
-    ) => {
+    addBlog: async (_, blog, { userFromJwt, blogController }) => {
       common.exitAppIfUnauthorized(userFromJwt);
 
       const newBlog = Object.assign({}, blog);
@@ -54,7 +57,7 @@ export const resolvers: IResolvers = {
       common.exitAppIfUnauthorized(userFromJwt);
 
       return blogController
-        .updateBlog(blog.id, blog)
+        .updateBlog(blog.id, blog, userFromJwt.id)
         .then((blogUpdated: any) => {
           return blogUpdated;
         })

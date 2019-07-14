@@ -184,7 +184,6 @@ class UserController {
   async updateUser(idUser: string, user?: any) {
     return new Promise((resolve, reject) => {
       const updatedUser = Object.assign({}, user);
-      console.log(user);
 
       this.userDao
         .updateItem(idUser, updatedUser)

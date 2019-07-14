@@ -27,8 +27,14 @@ var __awaiter =
       step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
   };
+var __importDefault =
+  (this && this.__importDefault) ||
+  function(mod) {
+    return mod && mod.__esModule ? mod : { default: mod };
+  };
 Object.defineProperty(exports, '__esModule', { value: true });
 const graphql_scalars_1 = require('@okgrow/graphql-scalars');
+const common_1 = __importDefault(require('../../utils/common'));
 exports.typeDef = `
   type Education {
     dateStart: DateTime,
@@ -58,6 +64,8 @@ exports.typeDef = `
 
   type User {
     id: ID!,
+    username: String!,
+    password: String!,
     name: String!,
     email: String!,
     occupation: String,
@@ -70,6 +78,19 @@ exports.typeDef = `
     experience: [Experience],
     project: [Project],
     isActived: Boolean,
+  }
+  
+  type PublicUser {
+    name: String!,
+    username: String!,
+    email: String!,
+    occupation: String,
+    website: String,
+    isActived: String,
+  }
+  
+  extend type User {
+    token: String
   }
 `;
 exports.resolvers = {
@@ -87,8 +108,20 @@ exports.resolvers = {
             throw err;
           });
       }),
-    deleteUser: (_, user, { userController }) =>
+    loginUser: (_, user, { userController }) =>
       __awaiter(this, void 0, void 0, function*() {
+        return userController
+          .loginUser(user)
+          .then(result => {
+            return result;
+          })
+          .catch(err => {
+            throw err;
+          });
+      }),
+    deleteUser: (_, user, { userFromJwt, userController }) =>
+      __awaiter(this, void 0, void 0, function*() {
+        common_1.default.exitAppIfUnauthorized(userFromJwt);
         return userController
           .deleteUser(user)
           .then(result => {
@@ -98,10 +131,11 @@ exports.resolvers = {
             throw err;
           });
       }),
-    updateStatus: (_, user, { userController }) =>
+    updateStatus: (_, user, { userFromJwt, userController }) =>
       __awaiter(this, void 0, void 0, function*() {
+        common_1.default.exitAppIfUnauthorized(userFromJwt, false);
         return userController
-          .updateUser(user, user.updatedIsActived)
+          .updateUser(userFromJwt.id, user)
           .then(result => {
             return result;
           })
@@ -109,11 +143,12 @@ exports.resolvers = {
             throw err;
           });
       }),
-    updateUser: (_, user, { userController }) =>
+    updateUser: (_, user, { userFromJwt, userController }) =>
       __awaiter(this, void 0, void 0, function*() {
+        common_1.default.exitAppIfUnauthorized(userFromJwt);
         user.isActived = true;
         return userController
-          .updateUser(user)
+          .updateUser(userFromJwt.id, user)
           .then(result => {
             return result;
           })
@@ -121,10 +156,11 @@ exports.resolvers = {
             throw err;
           });
       }),
-    updateEducation: (_, education, { userController }) =>
+    updateEducation: (_, education, { userFromJwt, userController }) =>
       __awaiter(this, void 0, void 0, function*() {
+        common_1.default.exitAppIfUnauthorized(userFromJwt);
         return userController
-          .updateEducation(education)
+          .updateEducation(userFromJwt, education)
           .then(result => {
             return result;
           })
@@ -132,10 +168,11 @@ exports.resolvers = {
             throw err;
           });
       }),
-    updateExperience: (_, experience, { userController }) =>
+    updateExperience: (_, experience, { userFromJwt, userController }) =>
       __awaiter(this, void 0, void 0, function*() {
+        common_1.default.exitAppIfUnauthorized(userFromJwt);
         return userController
-          .updateExperience(experience)
+          .updateExperience(userFromJwt, experience)
           .then(result => {
             return result;
           })
@@ -143,10 +180,11 @@ exports.resolvers = {
             throw err;
           });
       }),
-    updateProject: (_, project, { userController }) =>
+    updateProject: (_, project, { userFromJwt, userController }) =>
       __awaiter(this, void 0, void 0, function*() {
+        common_1.default.exitAppIfUnauthorized(userFromJwt);
         return userController
-          .updateProject(project)
+          .updateProject(userFromJwt, project)
           .then(result => {
             return result;
           })
@@ -156,17 +194,9 @@ exports.resolvers = {
       })
   },
   Query: {
-    me: (_, {}, { userController }) =>
+    me: (_, {}, { userFromJwt }) =>
       __awaiter(this, void 0, void 0, function*() {
-        return userController.showUsers({ isActived: true }).then(result => {
-          if (result.length > 1) {
-            throw new Error(
-              `There are ${result.length} users found who are actived. ` +
-                'Please inactive the others'
-            );
-          }
-          return result[0];
-        });
+        return userFromJwt;
       }),
     users: (_, user, { userController }) =>
       __awaiter(this, void 0, void 0, function*() {

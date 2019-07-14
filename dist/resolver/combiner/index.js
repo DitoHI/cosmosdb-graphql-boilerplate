@@ -15,5 +15,6 @@ exports.resolversTypeDef = `
 
   scalar DateTime
   scalar URL
+  scalar Upload
 `;
 //# sourceMappingURL=index.js.map

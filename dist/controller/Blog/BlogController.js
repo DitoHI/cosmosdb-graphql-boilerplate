@@ -105,20 +105,36 @@ class BlogController {
       );
     });
   }
-  updateBlog(idBlog, blog) {
+  updateBlog(blogId, blog, userId) {
     return __awaiter(this, void 0, void 0, function*() {
       return new Promise((resolve, reject) => {
         this.blogDao
-          .updateItem(idBlog, blog)
-          .then(blogUpdated => {
-            if (blogUpdated.code === 404) {
-              return reject(blogUpdated.body);
+          .getItem(blogId)
+          .then(result => {
+            if (result.code === 404) {
+              return reject(new Error('Blog not found'));
             }
-            return resolve(blogUpdated);
+            const blogFound = blog;
+            if (blogFound.user !== userId) {
+              return reject(
+                new Error(
+                  "You dont't have the authorization to update the blog"
+                )
+              );
+            }
+            this.blogDao
+              .updateItem(blogId, blog)
+              .then(blogUpdated => {
+                if (blogUpdated.code === 404) {
+                  return reject(blogUpdated.body);
+                }
+                return resolve(blogUpdated);
+              })
+              .catch(err => {
+                return reject(err);
+              });
           })
-          .catch(err => {
-            return reject(err);
-          });
+          .catch(err => reject(err));
       });
     });
   }

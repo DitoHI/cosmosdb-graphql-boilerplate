@@ -1,5 +1,6 @@
 import Dao from '../../model/Dao';
 import { SqlParameter, SqlQuerySpec } from '@azure/cosmos';
+import { IBlog } from '../../model/Blog/BlogModel';
 
 class BlogController {
   public blogDao: Dao;
@@ -84,17 +85,24 @@ class BlogController {
     });
   }
 
-  async updateBlog(idBlog: any, blog: any) {
+  async updateBlog(blogId: string, blog: any, userId: string) {
     return new Promise((resolve, reject) => {
       this.blogDao
-        .getItem(idBlog)
+        .getItem(blogId)
         .then(result => {
           if (result.code === 404) {
             return reject(new Error('Blog not found'));
           }
 
+          const blogFound = blog as IBlog;
+          if (blogFound.user !== userId) {
+            return reject(
+              new Error("You dont't have the authorization to update the blog")
+            );
+          }
+
           this.blogDao
-            .updateItem(idBlog, blog)
+            .updateItem(blogId, blog)
             .then(blogUpdated => {
               if (blogUpdated.code === 404) {
                 return reject(blogUpdated.body);

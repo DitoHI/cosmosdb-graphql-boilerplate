@@ -27,10 +27,22 @@ var __awaiter =
       step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
   };
+var __importDefault =
+  (this && this.__importDefault) ||
+  function(mod) {
+    return mod && mod.__esModule ? mod : { default: mod };
+  };
 Object.defineProperty(exports, '__esModule', { value: true });
+const bcryptjs_1 = __importDefault(require('bcryptjs'));
+const ajv_1 = __importDefault(require('ajv'));
+const jsonwebtoken_1 = __importDefault(require('jsonwebtoken'));
+const validator_1 = __importDefault(require('../../utils/validator'));
 class UserController {
   constructor(userDao) {
     this.updatedParameters = ['updatedIsActived'];
+    this.salt = 10;
+    this.ajv = new ajv_1.default({ allErrors: true });
+    this.secretKey = process.env.APP_SECRET;
     this.userDao = userDao;
   }
   showUsers(user, logical = 'AND') {
@@ -72,6 +84,31 @@ class UserController {
         });
     });
   }
+  loginUser(user) {
+    return __awaiter(this, void 0, void 0, function*() {
+      return new Promise((resolve, reject) => {
+        this.showUsers(user, 'OR')
+          .then(result => {
+            if (result.length <= 0) {
+              return reject(new Error('No user registered'));
+            }
+            const resultUser = result[0];
+            bcryptjs_1.default
+              .compare(user.password, resultUser.password)
+              .then(valid => {
+                if (!valid) {
+                  return reject(new Error("The password doesn't match"));
+                }
+                const newToken = this.generateToken(resultUser.id);
+                return resolve(
+                  Object.assign({}, resultUser, { token: newToken })
+                );
+              });
+          })
+          .catch(err => reject(new Error(err)));
+      });
+    });
+  }
   addUser(user) {
     return __awaiter(this, void 0, void 0, function*() {
       // check if name or username is already exist
@@ -80,20 +117,55 @@ class UserController {
           if (result.length > 0) {
             return reject(new Error('Username or email is already exist'));
           }
-          user.isActived = true;
-          this.userDao
-            .addItem(user)
-            .then(user => {
-              return resolve(user);
-            })
-            .catch(err => {
-              return reject(new Error(err));
+          // validator
+          const validateUserSchema = this.ajv.compile(
+            validator_1.default.userSchema
+          );
+          const isUserValid = validateUserSchema(user);
+          let errorUserMap;
+          if (!isUserValid) {
+            errorUserMap = validateUserSchema.errors.map(log => {
+              const attr = log.dataPath.replace('.', '').toUpperCase();
+              return `${attr} ${
+                attr.toLowerCase() === 'password'
+                  ? validator_1.default.log.password
+                  : log.message
+              }`;
             });
+            return reject(new Error(errorUserMap.join(' && ')));
+          }
+          user.isActived = true;
+          // if name is null
+          // then username = name
+          if (!user.name) {
+            user.name = user.username;
+          }
+          bcryptjs_1.default
+            .genSalt(this.salt)
+            .then(salt => {
+              bcryptjs_1.default
+                .hash(user.password, salt)
+                .then(hash => {
+                  // change the naked password
+                  // to hash
+                  user.password = hash;
+                  this.userDao
+                    .addItem(user)
+                    .then(user => {
+                      return resolve(user);
+                    })
+                    .catch(err => {
+                      return reject(new Error(err));
+                    });
+                })
+                .catch(err => reject(new Error(err)));
+            })
+            .catch(err => reject(new Error(err)));
         });
       });
     });
   }
-  updateUser(user, updatedIsActived) {
+  updateUser_V1(user, updatedIsActived) {
     return __awaiter(this, void 0, void 0, function*() {
       return new Promise((resolve, reject) => {
         let userFind = {};
@@ -132,7 +204,18 @@ class UserController {
       });
     });
   }
-  updateEducation(education) {
+  updateUser(idUser, user) {
+    return __awaiter(this, void 0, void 0, function*() {
+      return new Promise((resolve, reject) => {
+        const updatedUser = Object.assign({}, user);
+        this.userDao
+          .updateItem(idUser, updatedUser)
+          .then(replaced => resolve(replaced))
+          .catch(err => reject(err));
+      });
+    });
+  }
+  updateEducation_V1(education) {
     return __awaiter(this, void 0, void 0, function*() {
       return new Promise((resolve, reject) => {
         this.showUsers({ isActived: true }).then(users => {
@@ -164,7 +247,27 @@ class UserController {
       });
     });
   }
-  updateExperience(experience) {
+  updateEducation(user, education) {
+    return __awaiter(this, void 0, void 0, function*() {
+      return new Promise((resolve, reject) => {
+        const userClone = Object.assign({}, user);
+        const educationClone = Object.assign({}, education);
+        if (!userClone.education) {
+          userClone.education = [];
+        }
+        userClone.education.push(education);
+        this.userDao
+          .updateItem(userClone.id, { education: userClone.education })
+          .then(replaced => {
+            return resolve(replaced);
+          })
+          .catch(err => {
+            return reject(err);
+          });
+      });
+    });
+  }
+  updateExperience_V1(experience) {
     return __awaiter(this, void 0, void 0, function*() {
       return new Promise((resolve, reject) => {
         this.showUsers({ isActived: true }).then(users => {
@@ -196,7 +299,27 @@ class UserController {
       });
     });
   }
-  updateProject(project) {
+  updateExperience(user, experience) {
+    return __awaiter(this, void 0, void 0, function*() {
+      return new Promise((resolve, reject) => {
+        const userClone = Object.assign({}, user);
+        const experienceClone = Object.assign({}, experience);
+        if (!userClone.experience) {
+          userClone.experience = [];
+        }
+        userClone.experience.push(experience);
+        this.userDao
+          .updateItem(userClone.id, { experience: userClone.experience })
+          .then(replaced => {
+            return resolve(replaced);
+          })
+          .catch(err => {
+            return reject(err);
+          });
+      });
+    });
+  }
+  updateProject_V1(project) {
     return __awaiter(this, void 0, void 0, function*() {
       return new Promise((resolve, reject) => {
         this.showUsers({ isActived: true }).then(users => {
@@ -228,10 +351,30 @@ class UserController {
       });
     });
   }
+  updateProject(user, project) {
+    return __awaiter(this, void 0, void 0, function*() {
+      return new Promise((resolve, reject) => {
+        const userClone = Object.assign({}, user);
+        const projectClone = Object.assign({}, project);
+        if (!userClone.project) {
+          userClone.project = [];
+        }
+        userClone.project.push(project);
+        this.userDao
+          .updateItem(userClone.id, { project: userClone.project })
+          .then(replaced => {
+            return resolve(replaced);
+          })
+          .catch(err => {
+            return reject(err);
+          });
+      });
+    });
+  }
   deleteUser(user) {
     return __awaiter(this, void 0, void 0, function*() {
       return new Promise((resolve, reject) => {
-        this.showUsers(user).then(users => {
+        this.showUsers(user, 'OR').then(users => {
           if (users.length === 0) {
             return reject(new Error('No user registered'));
           }
@@ -242,17 +385,35 @@ class UserController {
               )
             );
           }
-          const userClone = Object.assign({}, users[0]);
-          this.userDao
-            .deleteItem(userClone.id)
-            .then(() => {
-              return resolve(userClone);
+          // comparing password
+          const resultUser = users[0];
+          bcryptjs_1.default
+            .compare(user.password, resultUser.password)
+            .then(valid => {
+              if (!valid) {
+                return reject(new Error("The password doesn't match"));
+              }
+              const userClone = Object.assign({}, users[0]);
+              this.userDao
+                .deleteItem(userClone.id)
+                .then(() => {
+                  return resolve(userClone);
+                })
+                .catch(err => {
+                  return reject(err);
+                });
             })
             .catch(err => {
-              return reject(err);
+              return reject(new Error(err));
             });
         });
       });
+    });
+  }
+  generateToken(id) {
+    const payload = { id };
+    return jsonwebtoken_1.default.sign(payload, this.secretKey, {
+      expiresIn: '1y'
     });
   }
 }

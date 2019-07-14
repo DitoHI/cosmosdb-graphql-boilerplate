@@ -1,6 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 import { ApolloServer } from 'apollo-server-express';
+import { apolloUploadExpress } from 'apollo-upload-server';
 
 require('dotenv').config();
 
@@ -12,6 +13,7 @@ const startServer = async () => {
   const port = process.env.PORT || 3000; // default port to listen
 
   const app = express();
+  app.use(apolloUploadExpress());
 
   // initialize cosmosDB initializer
   Client.init()
@@ -51,4 +53,6 @@ const startServer = async () => {
   });
 };
 
-startServer();
+startServer()
+  .then()
+  .catch();

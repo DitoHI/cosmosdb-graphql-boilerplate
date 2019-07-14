@@ -74,7 +74,7 @@ class Client {
           }
         })
         .catch(err => {
-          return err;
+          console.log(err.body);
         });
       this.blogDao
         .init()
@@ -84,7 +84,7 @@ class Client {
           }
         })
         .catch(err => {
-          return err;
+          console.log(err.body);
         });
       return this.log;
     });

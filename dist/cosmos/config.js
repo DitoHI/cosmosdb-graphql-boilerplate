@@ -1,6 +1,10 @@
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
 const config = {};
+exports.config = config;
 config.host = process.env.HOST_DB;
-config.authKey = process.env.AUTH_KEY;
-config.databaseId = 'IdeaStorm';
-config.containerId = '';
-//# sourceMappingURL=config.js.map
+config.authKey = process.env.KEY_DB;
+config.databaseId = 'Blog';
+config.containerUserId = 'Users';
+config.containerBlogId = 'Blogs';
+//# sourceMappingURL=Config.js.map
