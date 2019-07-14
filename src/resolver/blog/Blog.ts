@@ -19,7 +19,8 @@ export const typeDef = `
     content: String,
     lastEdited: DateTime,
     isDeleted: Boolean,
-    cover: String,
+    blobUri: String,
+    blobName: String,
     hastag: String,
     positionIndex: Int,
   }

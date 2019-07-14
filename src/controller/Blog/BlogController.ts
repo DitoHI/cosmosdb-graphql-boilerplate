@@ -81,11 +81,13 @@ class BlogController {
       // upload cover to azure storage
       const fullPathCover = await this.createFileFromStream(blog.cover);
       await azureCustomStorage.createContainer(common.blogBlobContainerName);
-      blog.cover = await azureCustomStorage.uploadLocalFile(
+      const blobInfo: any = await azureCustomStorage.uploadLocalFile(
         common.blogBlobContainerName,
         fullPathCover
       );
       await filesystem.deleteFile(fullPathCover);
+      blog.blobUri = blobInfo.url;
+      blog.blobName = blobInfo.name;
 
       this.blogDao
         .addItem(blog)
@@ -134,13 +136,21 @@ class BlogController {
     return new Promise((resolve, reject) => {
       const blog = {} as any;
       blog.id = id;
-      this.showBlogs(blog).then(blogsResult => {
+      return this.showBlogs(blog).then(async (blogsResult: any) => {
         if (blogsResult.length === 0) {
           return reject(new Error('No blog found'));
         }
 
-        const blogClone = Object.assign({}, blogsResult[0]);
-        this.blogDao
+        const blogClone: IBlog = Object.assign({}, blogsResult[0]);
+        // delete the blob in azure cloud
+        if (blogClone.blobName) {
+          await azureCustomStorage.deleteBlob(
+            common.blogBlobContainerName,
+            blogClone.blobName
+          );
+        }
+
+        return this.blogDao
           .deleteItem(id)
           .then(() => {
             return resolve(blogClone);

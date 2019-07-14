@@ -34,7 +34,7 @@ export default {
   uploadLocalFile: async (containerName: string, filePath: string) => {
     return new Promise((resolve, reject) => {
       const fullPath = path.resolve(filePath);
-      const blobName = `${path.basename(filePath)}-${Date.now()}`;
+      const blobName = path.basename(filePath);
       blobService.createBlockBlobFromLocalFile(
         containerName,
         blobName,
@@ -42,7 +42,10 @@ export default {
         err => {
           if (err) reject(err);
           else {
-            resolve(blobService.getUrl(containerName, blobName));
+            resolve({
+              name: blobName,
+              url: blobService.getUrl(containerName, blobName)
+            });
           }
         }
       );
