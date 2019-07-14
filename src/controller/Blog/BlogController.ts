@@ -104,16 +104,36 @@ class BlogController {
     return new Promise((resolve, reject) => {
       this.blogDao
         .getItem(blogId)
-        .then(result => {
+        .then(async result => {
           if (result.code === 404) {
             return reject(new Error('Blog not found'));
           }
 
-          const blogFound = blog as IBlog;
+          const blogFound = result as IBlog;
           if (blogFound.user !== userId) {
             return reject(
               new Error("You dont't have the authorization to update the blog")
             );
+          }
+
+          // delete existing cover if exist
+          // and upload new cover
+          if (blog.cover) {
+            const fullPathCover = await this.createFileFromStream(blog.cover);
+            await azureCustomStorage.createContainer(
+              common.blogBlobContainerName
+            );
+            await azureCustomStorage.deleteBlob(
+              common.blogBlobContainerName,
+              blogFound.blobName
+            );
+            const blobInfo: any = await azureCustomStorage.uploadLocalFile(
+              common.blogBlobContainerName,
+              fullPathCover
+            );
+            await filesystem.deleteFile(fullPathCover);
+            blog.blobUri = blobInfo.url;
+            blog.blobName = blobInfo.name;
           }
 
           this.blogDao
