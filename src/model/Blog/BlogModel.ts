@@ -5,7 +5,7 @@ interface IBlog {
   content: string;
   lastEdited: Date;
   isDeleted: boolean;
-  imageUri: string;
+  cover: string;
   positionIndex: number;
   hastag: string;
 }

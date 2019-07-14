@@ -1,7 +1,9 @@
 import express from 'express';
 import passport from 'passport';
 import { ApolloServer } from 'apollo-server-express';
-import { apolloUploadExpress } from 'apollo-upload-server';
+// @ts-ignore
+import { graphqlUploadExpress } from 'graphql-upload';
+import cors from 'cors';
 
 require('dotenv').config();
 
@@ -13,7 +15,6 @@ const startServer = async () => {
   const port = process.env.PORT || 3000; // default port to listen
 
   const app = express();
-  app.use(apolloUploadExpress());
 
   // initialize cosmosDB initializer
   Client.init()
@@ -44,6 +45,10 @@ const startServer = async () => {
   });
 
   server.applyMiddleware({ app, path: '/graphql' });
+
+  app
+    .use(cors())
+    .use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
 
   // start the Express server
   app.listen({ port }, () => {

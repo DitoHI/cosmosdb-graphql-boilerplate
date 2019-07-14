@@ -1,5 +1,5 @@
 import { IResolvers } from 'graphql-tools';
-import { GraphQLUpload } from 'apollo-upload-server';
+import { GraphQLUpload } from 'graphql-upload';
 
 import common from '../../utils/common';
 
@@ -19,7 +19,7 @@ export const typeDef = `
     content: String,
     lastEdited: DateTime,
     isDeleted: Boolean,
-    imageUri: String,
+    cover: String,
     hastag: String,
     positionIndex: Int,
   }

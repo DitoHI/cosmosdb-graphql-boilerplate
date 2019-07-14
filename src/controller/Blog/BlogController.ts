@@ -1,6 +1,10 @@
-import Dao from '../../model/Dao';
 import { SqlParameter, SqlQuerySpec } from '@azure/cosmos';
+
+import Dao from '../../model/Dao';
 import { IBlog } from '../../model/Blog/BlogModel';
+import filesystem from '../../utils/filesystem';
+import common from '../../utils/common';
+import { default as azureCustomStorage } from '../../utils/azure_storage';
 
 class BlogController {
   public blogDao: Dao;
@@ -74,6 +78,15 @@ class BlogController {
       const blogs = await this.showBlogs();
       blog.positionIndex = blogs.length;
 
+      // upload cover to azure storage
+      const fullPathCover = await this.createFileFromStream(blog.cover);
+      await azureCustomStorage.createContainer(common.blogBlobContainerName);
+      blog.cover = await azureCustomStorage.uploadLocalFile(
+        common.blogBlobContainerName,
+        fullPathCover
+      );
+      await filesystem.deleteFile(fullPathCover);
+
       this.blogDao
         .addItem(blog)
         .then(blog => {
@@ -137,6 +150,13 @@ class BlogController {
           });
       });
     });
+  }
+
+  async createFileFromStream(upload: any) {
+    const { createReadStream, filename, mimetype } = await upload;
+    const steam = createReadStream();
+    const result: any = await filesystem.storeFs(steam, filename);
+    return result.path;
   }
 }
 
