@@ -17,7 +17,7 @@ class BlogController {
   }
 
   async showBlogs(blog?: any, logical: string = 'AND') {
-    this.query = 'SELECT * FROM Blogs b';
+    this.query = 'SELECT VALUE b FROM Blogs b JOIN tags IN b.tags';
     this.parameters = [];
     let index: number = 0;
     if (blog) {
@@ -27,20 +27,33 @@ class BlogController {
           blog[prop] &&
           this.updatedParameters.indexOf(prop) === -1
         ) {
-          let propActive = prop;
-          let operator = '=';
+          let propActive;
+          let operator;
           if (prop === 'startAt') {
             propActive = 'positionIndex';
             operator = '>=';
-          }
-          if (prop === 'endAt') {
+          } else if (prop === 'endAt') {
             propActive = 'positionIndex';
             operator = '<=';
-          }
-          if (index === 0) {
-            this.query += ` WHERE b.${propActive}${operator}@${prop}`;
+          } else if (prop === 'tags') {
+            propActive = prop;
+            const tags: string[] = Object.values(blog[prop]);
+            tags.map(tag => tag.toUpperCase());
+            blog[prop] = tags;
           } else {
-            this.query += ` ${logical} b.${propActive}${operator}@${prop}`;
+            propActive = prop;
+            operator = '=';
+          }
+
+          if (index === 0) {
+            this.query += ` WHERE `;
+          }
+
+          const showLogical = index === 0 ? '' : ` ${logical} `;
+          if (prop === 'tags') {
+            this.query += `${showLogical}ARRAY_CONTAINS(@${prop}, ${propActive}, ${true})`;
+          } else {
+            this.query += `${showLogical}b.${propActive} ${operator} @${prop}`;
           }
           this.parameters.push({
             name: `@${prop}`,

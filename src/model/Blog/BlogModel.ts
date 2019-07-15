@@ -8,7 +8,7 @@ interface IBlog {
   blobUri: string;
   blobName: string;
   positionIndex: number;
-  hastag: string;
+  tags: string[];
 }
 
 export { IBlog };

@@ -21,7 +21,7 @@ export const typeDef = `
     isDeleted: Boolean,
     blobUri: String,
     blobName: String,
-    hastag: String,
+    tags: [String],
     positionIndex: Int,
   }
 `;
