@@ -12,6 +12,8 @@ export const typeDef = `
     degree: String,
     major: String,
     description: String,
+    blobName: String,
+    blobUri: String,
   }
 
   type Experience {
@@ -20,6 +22,8 @@ export const typeDef = `
     description: String,
     dateStart: DateTime,
     dateEnd: DateTime,
+    blobName: String,
+    blobUri: String,
   }
 
   type Project {
@@ -28,6 +32,8 @@ export const typeDef = `
     techStacks: [String],
     description: String,
     link: URL,
+    blobName: String,
+    blobUri: String,
   }
 
   type User {
@@ -46,6 +52,8 @@ export const typeDef = `
     experience: [Experience],
     project: [Project],
     isActived: Boolean,
+    blobName: String,
+    blobUri: String,
   }
   
   type PublicUser {
@@ -168,7 +176,7 @@ export const resolvers: IResolvers = {
     me: async (_, {}, { userFromJwt }) => {
       return userFromJwt;
     },
-    users: async (_, user, { userController }) => {
+    users: async (_, user, { userFromJWt, userController }) => {
       return userController.showUsers(user).then((result: any) => {
         if (result.length === 0) {
           throw new Error('user not found');

@@ -5,6 +5,8 @@ interface IEducation {
   city: string;
   name: string;
   description: string;
+  blobName: string;
+  blogUri: string;
 }
 
 interface IExperience {
@@ -13,6 +15,8 @@ interface IExperience {
   name: string;
   role: string;
   description: string;
+  blobName: string;
+  blogUri: string;
 }
 
 interface IProject {
@@ -21,6 +25,8 @@ interface IProject {
   techStacks: string[];
   description: string;
   link: string;
+  blobName: string;
+  blogUri: string;
 }
 
 interface IUser {
@@ -38,6 +44,8 @@ interface IUser {
   experience: IExperience;
   project: IProject;
   isActived: boolean;
+  blobName: string;
+  blogUri: string;
   // credentials
   username: string;
   password: string;

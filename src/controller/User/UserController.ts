@@ -6,6 +6,9 @@ import { default as jwt } from 'jsonwebtoken';
 import Dao from '../../model/Dao';
 import validator from '../../utils/validator';
 import { IUser } from '../../model/User/UserModel';
+import filesystem from '../../utils/filesystem';
+import { default as azureCustomStorage } from '../../utils/azure_storage';
+import common from '../../utils/common';
 
 class UserController {
   public userDao: Dao;
@@ -182,8 +185,20 @@ class UserController {
   }
 
   async updateUser(idUser: string, user?: any) {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       const updatedUser = Object.assign({}, user);
+
+      // upload cover to azure storage
+      const fullPathCover = await this.createFileFromStream(user.cover);
+      await azureCustomStorage.createContainer(common.userBlobContainerName);
+      const blobInfo: any = await azureCustomStorage.uploadLocalFile(
+        common.userBlobContainerName,
+        fullPathCover
+      );
+      await filesystem.deleteFile(fullPathCover);
+      updatedUser.blobUri = blobInfo.url;
+      updatedUser.blobName = blobInfo.name;
+      delete user.cover;
 
       this.userDao
         .updateItem(idUser, updatedUser)
@@ -226,9 +241,23 @@ class UserController {
   }
 
   async updateEducation(user: any, education: any) {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       const userClone = Object.assign({}, user);
       const educationClone = Object.assign({}, education);
+
+      // upload cover to azure storage
+      const fullPathCover = await this.createFileFromStream(education.cover);
+      await azureCustomStorage.createContainer(
+        common.educationBlobContainerName
+      );
+      const blobInfo: any = await azureCustomStorage.uploadLocalFile(
+        common.educationBlobContainerName,
+        fullPathCover
+      );
+      await filesystem.deleteFile(fullPathCover);
+      education.blobUri = blobInfo.url;
+      education.blobName = blobInfo.name;
+
       if (!userClone.education) {
         userClone.education = [];
       }
@@ -246,7 +275,7 @@ class UserController {
 
   async updateExperience_V1(experience: any) {
     return new Promise((resolve, reject) => {
-      this.showUsers({ isActived: true }).then(users => {
+      this.showUsers({ isActived: true }).then(async users => {
         if (users.length === 0) {
           return reject(new Error('No user registered'));
         }
@@ -261,6 +290,7 @@ class UserController {
 
         const userClone = Object.assign({}, users[0]);
         const experienceClone = Object.assign({}, experience);
+
         if (!userClone.experience) {
           userClone.experience = [];
         }
@@ -279,9 +309,23 @@ class UserController {
   }
 
   async updateExperience(user: any, experience: any) {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       const userClone = Object.assign({}, user);
       const experienceClone = Object.assign({}, experience);
+
+      // upload cover to azure storage
+      const fullPathCover = await this.createFileFromStream(experience.cover);
+      await azureCustomStorage.createContainer(
+        common.experienceBlobContainerName
+      );
+      const blobInfo: any = await azureCustomStorage.uploadLocalFile(
+        common.experienceBlobContainerName,
+        fullPathCover
+      );
+      await filesystem.deleteFile(fullPathCover);
+      experience.blobUri = blobInfo.url;
+      experience.blobName = blobInfo.name;
+
       if (!userClone.experience) {
         userClone.experience = [];
       }
@@ -333,9 +377,21 @@ class UserController {
   }
 
   async updateProject(user: any, project: any) {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       const userClone = Object.assign({}, user);
       const projectClone = Object.assign({}, project);
+
+      // upload cover to azure storage
+      const fullPathCover = await this.createFileFromStream(project.cover);
+      await azureCustomStorage.createContainer(common.projectBlobContainerName);
+      const blobInfo: any = await azureCustomStorage.uploadLocalFile(
+        common.projectBlobContainerName,
+        fullPathCover
+      );
+      await filesystem.deleteFile(fullPathCover);
+      project.blobUri = blobInfo.url;
+      project.blobName = blobInfo.name;
+
       if (!userClone.project) {
         userClone.project = [];
       }
@@ -397,6 +453,13 @@ class UserController {
     const payload = { id };
 
     return jwt.sign(payload, this.secretKey, { expiresIn: '1y' });
+  }
+
+  async createFileFromStream(upload: any) {
+    const { createReadStream, filename, mimetype } = await upload;
+    const steam = createReadStream();
+    const result: any = await filesystem.storeFs(steam, filename);
+    return result.path;
   }
 }
 

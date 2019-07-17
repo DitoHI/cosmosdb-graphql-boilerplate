@@ -3,13 +3,13 @@ export const mutationDef = `
     deleteUser(email: String!, password: String!): User
     updateStatus(isActived: Boolean!): User
     updateEducation(name: String, degree: String, major: String, dateStart: DateTime,
-                    dateEnd: DateTime, location: String, description: String): User
+                    dateEnd: DateTime, location: String, description: String, cover: Upload): User
     updateExperience(name: String, role: String, description: String,
-                     dateStart: DateTime, dateEnd: DateTime): User
+                     dateStart: DateTime, dateEnd: DateTime, cover: Upload): User
     updateProject(name: String, role: String, techStacks: [String],
-                  description: String, link: URL): User
+                  description: String, link: URL, cover: Upload): User
     updateUser(occupation: String, phone: String, address: String,
-               website: URL, dateBirth: DateTime, skill: [String]
+               website: URL, dateBirth: DateTime, skill: [String], cover: Upload
                ): User
     loginUser(username: String, email: String, password: String!): User
 `;
