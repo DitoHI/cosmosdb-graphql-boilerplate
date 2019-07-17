@@ -427,12 +427,45 @@ class UserController {
         const resultUser: IUser = users[0];
         bcryptjs
           .compare(user.password, resultUser.password)
-          .then(valid => {
+          .then(async valid => {
             if (!valid) {
               return reject(new Error("The password doesn't match"));
             }
 
             const userClone = Object.assign({}, users[0]);
+
+            // delete the blob in azure cloud
+            if (userClone.blobName) {
+              await azureCustomStorage.deleteBlob(
+                common.userBlobContainerName,
+                userClone.blobName
+              );
+            }
+            if (userClone.education && userClone.education.length >= 1) {
+              for (const edu of userClone.education) {
+                await azureCustomStorage.deleteBlob(
+                  common.educationBlobContainerName,
+                  edu.blobName
+                );
+              }
+            }
+            if (userClone.project && userClone.project.length >= 1) {
+              for (const pro of userClone.project) {
+                await azureCustomStorage.deleteBlob(
+                  common.projectBlobContainerName,
+                  pro.blobName
+                );
+              }
+            }
+            if (userClone.experience && userClone.experience.length >= 1) {
+              for (const exp of userClone.experience) {
+                await azureCustomStorage.deleteBlob(
+                  common.experienceBlobContainerName,
+                  exp.blobName
+                );
+              }
+            }
+
             this.userDao
               .deleteItem(userClone.id)
               .then(() => {

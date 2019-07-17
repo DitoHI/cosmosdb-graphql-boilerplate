@@ -4,10 +4,6 @@
     <list default="true" id="d464a265-6b3a-4cbb-99d5-0ab54532fa9b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/User/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/User/UserController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/User/UserModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User/UserModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/user/Users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/user/Users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/common.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/../ToDoApp/.tmp/" />
@@ -24,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="93" column="6" selection-start-line="93" selection-start-column="6" selection-end-line="102" selection-end-column="36" />
+            <state relative-caret-position="166">
+              <caret line="177" column="8" lean-forward="true" selection-start-line="177" selection-start-column="8" selection-end-line="184" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -45,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/User/UserController.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="460" column="24" selection-start-line="460" selection-start-column="24" selection-end-line="460" selection-end-column="24" />
+            <state relative-caret-position="219">
+              <caret line="436" column="42" lean-forward="true" selection-start-line="436" selection-start-column="42" selection-end-line="436" selection-end-column="42" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
                 <element signature="n#!!block;n#updateEducation_V1#0;n#UserController#0" />
@@ -133,8 +129,8 @@
         <option value="$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts" />
         <option value="$PROJECT_DIR$/src/model/Dao.ts" />
         <option value="$PROJECT_DIR$/src/utils/common.ts" />
-        <option value="$PROJECT_DIR$/src/controller/User/UserController.ts" />
         <option value="$PROJECT_DIR$/src/resolver/user/Users.ts" />
+        <option value="$PROJECT_DIR$/src/controller/User/UserController.ts" />
       </list>
     </option>
   </component>
@@ -303,7 +299,7 @@
       <workItem from="1563221042301" duration="6328000" />
       <workItem from="1563229868226" duration="579000" />
       <workItem from="1563245100360" duration="79000" />
-      <workItem from="1563376411307" duration="4613000" />
+      <workItem from="1563376411307" duration="5131000" />
     </task>
     <task id="LOCAL-00001" summary="fix styling and hashing the password [new]">
       <created>1561564405211</created>
@@ -389,11 +385,18 @@
       <option name="project" value="LOCAL" />
       <updated>1563230367830</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="feature add cover to user, project, experience, and education">
+      <created>1563383319009</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1563383319009</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41251000" />
+    <option name="totallyTimeSpent" value="41769000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -471,7 +474,8 @@
     <MESSAGE value="docs update readme" />
     <MESSAGE value="feature search by tags and remodel db" />
     <MESSAGE value="fix audit npm" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix audit npm" />
+    <MESSAGE value="feature add cover to user, project, experience, and education" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature add cover to user, project, experience, and education" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -766,16 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="93" column="6" selection-start-line="93" selection-start-column="6" selection-end-line="102" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/graphql-upload/lib/processRequest.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
@@ -793,17 +787,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/User/UserModel.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
           <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
         </state>
       </provider>
     </entry>
@@ -817,10 +811,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="177" column="8" lean-forward="true" selection-start-line="177" selection-start-column="8" selection-end-line="184" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/User/UserController.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="460" column="24" selection-start-line="460" selection-start-column="24" selection-end-line="460" selection-end-column="24" />
+        <state relative-caret-position="219">
+          <caret line="436" column="42" lean-forward="true" selection-start-line="436" selection-start-column="42" selection-end-line="436" selection-end-column="42" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
             <element signature="n#!!block;n#updateEducation_V1#0;n#UserController#0" />
