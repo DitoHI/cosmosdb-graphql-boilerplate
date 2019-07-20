@@ -4,9 +4,8 @@ import { default as Ajv } from 'ajv';
 import { default as jwt } from 'jsonwebtoken';
 
 import Dao from '../../model/Dao';
-import validator from '../../utils/validator';
 import { IUser } from '../../model/User/UserModel';
-import filesystem from '../../utils/filesystem';
+import validator from '../../utils/validator';
 import { default as azureCustomStorage } from '../../utils/azure_storage';
 import common from '../../utils/common';
 
@@ -189,13 +188,10 @@ class UserController {
       const updatedUser = Object.assign({}, user);
 
       // upload cover to azure storage
-      const fullPathCover = await this.createFileFromStream(user.cover);
-      await azureCustomStorage.createContainer(common.userBlobContainerName);
-      const blobInfo: any = await azureCustomStorage.uploadLocalFile(
-        common.userBlobContainerName,
-        fullPathCover
+      const blobInfo = await common.uploadCoverToAzure(
+        user.cover,
+        common.userBlobContainerName
       );
-      await filesystem.deleteFile(fullPathCover);
       updatedUser.blobUri = blobInfo.url;
       updatedUser.blobName = blobInfo.name;
       delete user.cover;
@@ -246,15 +242,10 @@ class UserController {
       const educationClone = Object.assign({}, education);
 
       // upload cover to azure storage
-      const fullPathCover = await this.createFileFromStream(education.cover);
-      await azureCustomStorage.createContainer(
+      const blobInfo = await common.uploadCoverToAzure(
+        education.cover,
         common.educationBlobContainerName
       );
-      const blobInfo: any = await azureCustomStorage.uploadLocalFile(
-        common.educationBlobContainerName,
-        fullPathCover
-      );
-      await filesystem.deleteFile(fullPathCover);
       education.blobUri = blobInfo.url;
       education.blobName = blobInfo.name;
 
@@ -314,15 +305,10 @@ class UserController {
       const experienceClone = Object.assign({}, experience);
 
       // upload cover to azure storage
-      const fullPathCover = await this.createFileFromStream(experience.cover);
-      await azureCustomStorage.createContainer(
+      const blobInfo = await common.uploadCoverToAzure(
+        experience.cover,
         common.experienceBlobContainerName
       );
-      const blobInfo: any = await azureCustomStorage.uploadLocalFile(
-        common.experienceBlobContainerName,
-        fullPathCover
-      );
-      await filesystem.deleteFile(fullPathCover);
       experience.blobUri = blobInfo.url;
       experience.blobName = blobInfo.name;
 
@@ -381,14 +367,11 @@ class UserController {
       const userClone = Object.assign({}, user);
       const projectClone = Object.assign({}, project);
 
-      // upload cover to azure storage
-      const fullPathCover = await this.createFileFromStream(project.cover);
-      await azureCustomStorage.createContainer(common.projectBlobContainerName);
-      const blobInfo: any = await azureCustomStorage.uploadLocalFile(
-        common.projectBlobContainerName,
-        fullPathCover
+      // upload cover to azure storage=
+      const blobInfo = await common.uploadCoverToAzure(
+        project.cover,
+        common.projectBlobContainerName
       );
-      await filesystem.deleteFile(fullPathCover);
       project.blobUri = blobInfo.url;
       project.blobName = blobInfo.name;
 
@@ -486,13 +469,6 @@ class UserController {
     const payload = { id };
 
     return jwt.sign(payload, this.secretKey, { expiresIn: '1y' });
-  }
-
-  async createFileFromStream(upload: any) {
-    const { createReadStream, filename, mimetype } = await upload;
-    const steam = createReadStream();
-    const result: any = await filesystem.storeFs(steam, filename);
-    return result.path;
   }
 }
 

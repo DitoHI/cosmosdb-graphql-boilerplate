@@ -2,8 +2,13 @@ import { IResolvers } from 'graphql-tools';
 import { DateTime, URL } from '@okgrow/graphql-scalars';
 
 import common from '../../utils/common';
+import { IUser } from '../../model/User/UserModel';
 
 export const typeDef = `
+  input Sort {
+    by: String,
+    as: String,
+  }
   type Education {
     dateStart: DateTime,
     dateEnd: DateTime,
@@ -173,10 +178,83 @@ export const resolvers: IResolvers = {
     }
   },
   Query: {
-    me: async (_, {}, { userFromJwt }) => {
-      return userFromJwt;
+    me: async (_, { sort }, { userFromJwt }) => {
+      const paramSort = {
+        by: sort.by || 'dateStart',
+        as: sort.as || 'asc'
+      };
+      const user = Object.assign({}, userFromJwt) as IUser;
+      if (user.education.length >= 1) {
+        if (paramSort.as === 'asc') {
+          switch (paramSort.by) {
+            case 'dateStart':
+              user.education.sort((a, b) =>
+                common.sortByDateAsc(a.dateStart, b.dateStart)
+              );
+              break;
+            case 'dateEnd':
+              user.education.sort((a, b) =>
+                common.sortByDateAsc(a.dateEnd, b.dateEnd)
+              );
+              break;
+            default:
+              break;
+          }
+        } else if (paramSort.as === 'desc') {
+          switch (paramSort.by) {
+            case 'dateStart':
+              user.education.sort((a, b) =>
+                common.sortByDateDesc(a.dateStart, b.dateStart)
+              );
+              break;
+            case 'dateEnd':
+              user.education.sort((a, b) =>
+                common.sortByDateDesc(a.dateEnd, b.dateEnd)
+              );
+              break;
+            default:
+              break;
+          }
+        }
+      }
+
+      if (user.experience.length >= 1) {
+        if (paramSort.as === 'asc') {
+          switch (paramSort.by) {
+            case 'dateStart':
+              user.experience.sort((a, b) =>
+                common.sortByDateAsc(a.dateStart, b.dateStart)
+              );
+              break;
+            case 'dateEnd':
+              user.experience.sort((a, b) =>
+                common.sortByDateAsc(a.dateEnd, b.dateEnd)
+              );
+              break;
+            default:
+              break;
+          }
+        } else if (paramSort.as === 'desc') {
+          switch (paramSort.by) {
+            case 'dateStart':
+              user.experience.sort((a, b) =>
+                common.sortByDateDesc(a.dateStart, b.dateStart)
+              );
+              break;
+            case 'dateEnd':
+              user.experience.sort((a, b) =>
+                common.sortByDateDesc(a.dateEnd, b.dateEnd)
+              );
+              break;
+            default:
+              break;
+          }
+        }
+      }
+
+      return user;
     },
-    users: async (_, user, { userFromJWt, userController }) => {
+    users: async (_, user, { userController }) => {
       return userController.showUsers(user).then((result: any) => {
         if (result.length === 0) {
           throw new Error('user not found');

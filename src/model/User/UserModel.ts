@@ -40,9 +40,9 @@ interface IUser {
   dateBirth: Date;
   skill: string[];
   aboutMe: string;
-  education: IEducation;
-  experience: IExperience;
-  project: IProject;
+  education: IEducation[];
+  experience: IExperience[];
+  project: IProject[];
   isActived: boolean;
   blobName: string;
   blogUri: string;

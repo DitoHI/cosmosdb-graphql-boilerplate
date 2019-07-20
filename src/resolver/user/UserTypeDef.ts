@@ -15,6 +15,6 @@ export const mutationDef = `
 `;
 
 export const queryDef = `
-    me: User
+    me(sort: Sort): User
     users(name: String, email: String): [PublicUser]
 `;
