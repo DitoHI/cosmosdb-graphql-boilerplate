@@ -180,8 +180,8 @@ export const resolvers: IResolvers = {
   Query: {
     me: async (_, { sort }, { userFromJwt }) => {
       const paramSort = {
-        by: sort.by || 'dateStart',
-        as: sort.as || 'asc'
+        by: (sort && sort.by) || 'dateStart',
+        as: (sort && sort.as) || 'asc'
       };
       const user = Object.assign({}, userFromJwt) as IUser;
       if (user.education.length >= 1) {
