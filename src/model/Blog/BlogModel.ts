@@ -9,6 +9,7 @@ interface IBlog {
   blobName: string;
   positionIndex: number;
   tags: string[];
+  quote: string;
 }
 
 export { IBlog };

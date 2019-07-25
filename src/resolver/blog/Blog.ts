@@ -22,6 +22,7 @@ export const typeDef = `
     blobUri: String,
     blobName: String,
     tags: [String],
+    quote: String,
     positionIndex: Int,
   }
 `;
