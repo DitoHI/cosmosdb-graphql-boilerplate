@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d464a265-6b3a-4cbb-99d5-0ab54532fa9b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" afterDir="false" />
-    </list>
+    <list default="true" id="d464a265-6b3a-4cbb-99d5-0ab54532fa9b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +120,7 @@
       <workItem from="1563520328236" duration="16000" />
       <workItem from="1563600455786" duration="2739000" />
       <workItem from="1563624170386" duration="189000" />
-      <workItem from="1564066023043" duration="333000" />
+      <workItem from="1564066023043" duration="397000" />
     </task>
     <task id="LOCAL-00001" summary="fix styling and hashing the password [new]">
       <created>1561564405211</created>
@@ -239,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563624326941</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="feature add quote attribute to blog model">
+      <created>1564066411198</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1564066411198</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -287,7 +289,8 @@
     <MESSAGE value="feature delete the blobs simultaneously while deleting user" />
     <MESSAGE value="feature sorting the education and experience by dateStart or dateEnd (asc/desc)" />
     <MESSAGE value="fix read undefined method of sort when fetch user" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix read undefined method of sort when fetch user" />
+    <MESSAGE value="feature add quote attribute to blog model" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature add quote attribute to blog model" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
