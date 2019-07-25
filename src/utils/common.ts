@@ -53,7 +53,7 @@ export default {
   convertHtmlToText: (htmlText: string) => {
     return htmlToText.fromString(htmlText, { wordwrap: false });
   },
-  truncateString: (text: string, max: number = 75) => {
+  truncateString: (text: string, max: number = 85) => {
     return `${text.substring(0, max)}...`;
   }
 };

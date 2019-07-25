@@ -17,6 +17,7 @@ export const typeDef = `
     id: ID!,
     user: String!,
     title: String,
+    titlePreview: String,
     content: String,
     contentPreview: String,
     lastEdited: DateTime,
@@ -84,8 +85,10 @@ export const resolvers: IResolvers = {
 
           return blogsResult.map((blog: IBlog) => {
             blog.contentPreview = common.truncateString(
-              common.convertHtmlToText(blog.content)
+              common.convertHtmlToText(blog.content),
+              150
             );
+            blog.titlePreview = common.truncateString(blog.title);
 
             return blog;
           });
