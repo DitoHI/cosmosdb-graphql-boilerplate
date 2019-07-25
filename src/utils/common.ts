@@ -51,6 +51,9 @@ export default {
     return 0;
   },
   convertHtmlToText: (htmlText: string) => {
-    return htmlToText.fromString(htmlText);
+    return htmlToText.fromString(htmlText, { wordwrap: false });
+  },
+  truncateString: (text: string, max: number = 75) => {
+    return `${text.substring(0, max)}...`;
   }
 };

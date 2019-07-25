@@ -82,12 +82,13 @@ export const resolvers: IResolvers = {
             throw new Error('Blog is empty');
           }
 
-          const blogMod = blogsResult.map((blog: IBlog) => {
-            blog.contentPreview = common.convertHtmlToText(blog.content);
+          return blogsResult.map((blog: IBlog) => {
+            blog.contentPreview = common.truncateString(
+              common.convertHtmlToText(blog.content)
+            );
 
             return blog;
           });
-          return blogsResult;
         })
         .catch((err: any) => {
           throw err;
