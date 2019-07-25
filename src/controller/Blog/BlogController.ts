@@ -17,7 +17,7 @@ class BlogController {
   }
 
   async showBlogs(blog?: any, logical: string = 'AND') {
-    this.query = 'SELECT VALUE b FROM Blogs b JOIN tags IN b.tags';
+    this.query = 'SELECT DISTINCT VALUE b FROM Blogs b JOIN tags IN b.tags';
     this.parameters = [];
     let index: number = 0;
     if (blog) {
@@ -37,8 +37,8 @@ class BlogController {
             operator = '<=';
           } else if (prop === 'tags') {
             propActive = prop;
-            const tags: string[] = Object.values(blog[prop]);
-            tags.map(tag => tag.toUpperCase());
+            let tags: string[] = Object.values(blog[prop]);
+            tags = tags.map(tag => tag.toUpperCase());
             blog[prop] = tags;
           } else {
             propActive = prop;
@@ -51,7 +51,7 @@ class BlogController {
 
           const showLogical = index === 0 ? '' : ` ${logical} `;
           if (prop === 'tags') {
-            this.query += `${showLogical}ARRAY_CONTAINS(@${prop}, ${propActive}, ${true})`;
+            this.query += `${showLogical}ARRAY_CONTAINS(@${prop}, UPPER(${propActive}), ${true})`;
           } else {
             this.query += `${showLogical}b.${propActive} ${operator} @${prop}`;
           }

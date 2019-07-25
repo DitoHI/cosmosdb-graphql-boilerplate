@@ -2,6 +2,7 @@ import { IResolvers } from 'graphql-tools';
 import { GraphQLUpload } from 'graphql-upload';
 
 import common from '../../utils/common';
+import { IBlog } from '../../model/Blog/BlogModel';
 
 export const typeDef = `
   type File {
@@ -17,6 +18,7 @@ export const typeDef = `
     user: String!,
     title: String,
     content: String,
+    contentPreview: String,
     lastEdited: DateTime,
     isDeleted: Boolean,
     blobUri: String,
@@ -80,6 +82,11 @@ export const resolvers: IResolvers = {
             throw new Error('Blog is empty');
           }
 
+          const blogMod = blogsResult.map((blog: IBlog) => {
+            blog.contentPreview = common.convertHtmlToText(blog.content);
+
+            return blog;
+          });
           return blogsResult;
         })
         .catch((err: any) => {

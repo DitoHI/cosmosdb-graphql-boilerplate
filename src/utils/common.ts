@@ -1,4 +1,5 @@
 import { default as azureCustomStorage } from './azure_storage';
+import { default as htmlToText } from 'html-to-text';
 
 import { IUser } from '../model/User/UserModel';
 import filesystem from './filesystem';
@@ -48,5 +49,8 @@ export default {
     if (date1 > date2) return -1;
     if (date1 < date2) return 1;
     return 0;
+  },
+  convertHtmlToText: (htmlText: string) => {
+    return htmlToText.fromString(htmlText);
   }
 };

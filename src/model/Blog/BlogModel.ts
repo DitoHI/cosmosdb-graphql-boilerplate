@@ -3,6 +3,7 @@ interface IBlog {
   user: string;
   title: string;
   content: string;
+  contentPreview: String;
   lastEdited: Date;
   isDeleted: boolean;
   blobUri: string;
