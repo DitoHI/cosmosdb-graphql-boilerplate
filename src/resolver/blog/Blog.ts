@@ -108,6 +108,20 @@ export const resolvers: IResolvers = {
         .catch((err: Error) => {
           throw err;
         });
+    },
+    getBlogByPositionIndex: async (
+      _,
+      { index, operator },
+      { userFromJwt, blogController }
+    ) => {
+      common.exitAppIfUnauthorized(userFromJwt);
+
+      return blogController
+        .getBlogByIndex(index, operator)
+        .then((blog: any) => blog)
+        .catch((err: Error) => {
+          throw err;
+        });
     }
   }
 };

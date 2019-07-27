@@ -106,6 +106,47 @@ class BlogController {
     });
   }
 
+  async getBlogByIndex(positionIndex: number, operator: string) {
+    return new Promise((resolve, reject) => {
+      if (operator !== '+' && operator !== '-') {
+        return reject(new Error('Operator not supported'));
+      }
+
+      this.showBlogs()
+        .then(result => {
+          if (result.length === 0) {
+            return reject(new Error('No blog found'));
+          }
+
+          const blogs = result as IBlog[];
+          const blog = blogs.find((b: IBlog) => {
+            switch (operator) {
+              case '+':
+                return b.positionIndex === positionIndex + 1;
+              case '-':
+                return b.positionIndex === positionIndex - 1;
+              default:
+                return reject(new Error('Operator not supported'));
+            }
+          });
+
+          if (!blog) {
+            return reject(new Error('No blog found'));
+          }
+
+          const blogPreview = BlogController.getPreviewOfContent(
+            blog.title,
+            blog.content
+          );
+          blog.titlePreview = blogPreview.title;
+          blog.contentPreview = blogPreview.content;
+
+          return resolve(blog);
+        })
+        .catch((err: Error) => reject(err));
+    });
+  }
+
   async addBlog(blog?: any) {
     return new Promise(async (resolve, reject) => {
       blog.lastEdited = Date.now();

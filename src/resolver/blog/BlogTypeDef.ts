@@ -11,4 +11,5 @@ export const queryDef = `
           imageUri: [String], startAt: Int, endAt: Int, tags: [String], quote: String
     ): [Blog]
     getBlogById(id: String!): Blog
+    getBlogByPositionIndex(index: Int!, operator: String!): Blog
 `;

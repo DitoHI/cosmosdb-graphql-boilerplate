@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d464a265-6b3a-4cbb-99d5-0ab54532fa9b" name="Default Changelist" comment="">
+    <list default="true" id="d464a265-6b3a-4cbb-99d5-0ab54532fa9b" name="Default Changelist" comment="feature get blog by id">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" afterDir="false" />
@@ -125,7 +125,7 @@
       <workItem from="1564074430607" duration="2152000" />
       <workItem from="1564076706432" duration="202000" />
       <workItem from="1564077176097" duration="92000" />
-      <workItem from="1564194202943" duration="697000" />
+      <workItem from="1564194202943" duration="2452000" />
     </task>
     <task id="LOCAL-00001" summary="fix styling and hashing the password [new]">
       <created>1561564405211</created>
@@ -267,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564076894661</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="feature get blog by id">
+      <created>1564194946416</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1564194946417</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView">
@@ -321,7 +328,26 @@
     <MESSAGE value="fix search blog by tag with distinct and ignore case" />
     <MESSAGE value="feature add blog preview with default truncating content" />
     <MESSAGE value="feature title preview of blog" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature title preview of blog" />
+    <MESSAGE value="feature get blog by id" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature get blog by id" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts</url>
+          <line>143</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts</url>
+          <line>132</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
