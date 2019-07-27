@@ -10,4 +10,5 @@ export const queryDef = `
     blogs(id: String, title: String, content: String, lastEdited: DateTime, isDeleted: Boolean,
           imageUri: [String], startAt: Int, endAt: Int, tags: [String], quote: String
     ): [Blog]
+    getBlogById(id: String!): Blog
 `;

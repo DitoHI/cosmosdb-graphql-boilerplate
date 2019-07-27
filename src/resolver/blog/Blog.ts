@@ -3,6 +3,7 @@ import { GraphQLUpload } from 'graphql-upload';
 
 import common from '../../utils/common';
 import { IBlog } from '../../model/Blog/BlogModel';
+import BlogController from '../../controller/Blog/BlogController';
 
 export const typeDef = `
   type File {
@@ -84,16 +85,27 @@ export const resolvers: IResolvers = {
           }
 
           return blogsResult.map((blog: IBlog) => {
-            blog.contentPreview = common.truncateString(
-              common.convertHtmlToText(blog.content),
-              150
+            const blogPreview = BlogController.getPreviewOfContent(
+              blog.title,
+              blog.content
             );
-            blog.titlePreview = common.truncateString(blog.title);
+            blog.contentPreview = blogPreview.content;
+            blog.titlePreview = blogPreview.title;
 
             return blog;
           });
         })
         .catch((err: any) => {
+          throw err;
+        });
+    },
+    getBlogById: async (_, { id }, { userFromJwt, blogController }) => {
+      common.exitAppIfUnauthorized(userFromJwt);
+
+      return blogController
+        .getBlogById(id, userFromJwt.id)
+        .then((blogFound: any) => blogFound)
+        .catch((err: Error) => {
           throw err;
         });
     }

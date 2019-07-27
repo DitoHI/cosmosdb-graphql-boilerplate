@@ -81,6 +81,31 @@ class BlogController {
       });
   }
 
+  async getBlogById(id: string, userId: string) {
+    return new Promise((resolve, reject) => {
+      this.blogDao.getItem(id).then(result => {
+        if (result.code === 404) {
+          return reject(new Error('Blog not found'));
+        }
+
+        const blogFound = result as IBlog;
+        if (blogFound.user !== userId) {
+          return reject(
+            new Error("You dont't have the authorization to update the blog")
+          );
+        }
+        const blogPreview = BlogController.getPreviewOfContent(
+          blogFound.title,
+          blogFound.content
+        );
+        blogFound.titlePreview = blogPreview.title;
+        blogFound.contentPreview = blogPreview.content;
+
+        return resolve(blogFound);
+      });
+    });
+  }
+
   async addBlog(blog?: any) {
     return new Promise(async (resolve, reject) => {
       blog.lastEdited = Date.now();
@@ -200,6 +225,21 @@ class BlogController {
     const steam = createReadStream();
     const result: any = await filesystem.storeFs(steam, filename);
     return result.path;
+  }
+
+  static getPreviewOfContent(
+    title: string,
+    content: string
+  ): { title: string; content: string } {
+    const contentPreview = common.truncateString(
+      common.convertHtmlToText(content),
+      200
+    );
+    const titlePreview = common.truncateString(title);
+    return {
+      title: titlePreview,
+      content: contentPreview
+    };
   }
 }
 
