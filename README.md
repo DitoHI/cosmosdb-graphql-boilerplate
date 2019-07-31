@@ -1,6 +1,8 @@
 # Public Blog API
 
-Open Data for Blog API. **Anyone** can use it. Every when. Every where. Good news for the Front End Engineer, you will not be bothered again to build the back end API first :muscle:
+Open Data for Blog API. **Anyone** can use it. Every when. Every where. Good news for the Front End Engineer, you will not be bothered again to build the back end API first.
+
+Check out the demo [https://admiring-beaver-05372e.netlify.com](https://admiring-beaver-05372e.netlify.com)
 
 ## Tech Stacks
 

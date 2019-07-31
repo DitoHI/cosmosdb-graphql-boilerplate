@@ -2,46 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d464a265-6b3a-4cbb-99d5-0ab54532fa9b" name="Default Changelist" comment="feature setup cd on netlify">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ToDoApp.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/@types/apollo-upload-server/index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/User/UserController.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cosmos/Client.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cosmos/Config.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Dao.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/User/UserModel.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/combiner/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/user/UserTypeDef.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/user/Users.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/schema/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/azure_storage/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/common.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/filesystem.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/passportInitializer.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/validator.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tslint.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -163,7 +124,7 @@
       <workItem from="1564077176097" duration="92000" />
       <workItem from="1564194202943" duration="2574000" />
       <workItem from="1564535211077" duration="653000" />
-      <workItem from="1564536186237" duration="1474000" />
+      <workItem from="1564536186237" duration="1733000" />
     </task>
     <task id="LOCAL-00001" summary="fix styling and hashing the password [new]">
       <created>1561564405211</created>
