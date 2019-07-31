@@ -84,3 +84,4 @@ typings/
 
 public/
 dist/
+netlify.toml
