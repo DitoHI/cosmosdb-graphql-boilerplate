@@ -1,4 +1,5 @@
 import { SqlParameter, SqlQuerySpec } from '@azure/cosmos';
+import firebase from '../../utils/firebase';
 
 import Dao from '../../model/Dao';
 import { IBlog } from '../../model/Blog/BlogModel';
@@ -79,6 +80,47 @@ class BlogController {
       .catch(err => {
         throw new Error(err);
       });
+  }
+
+  async showBlogByViews(userId: string, topFetched: number = 5) {
+    const db = firebase.db();
+    const ref = db.ref(`blogs/${userId}`);
+    return new Promise((resolve, reject) => {
+      return ref
+        .orderByChild('views')
+        .limitToLast(topFetched)
+        .on(
+          'value',
+          async snapshot => {
+            let blogs: IBlog[] = [];
+            const blogViews = snapshot.val();
+            let sortableBlogViews: {
+              view: { blogId: string; sumView: number };
+            }[] = [];
+            for (const idBlog in snapshot.val()) {
+              if (blogViews.hasOwnProperty(idBlog)) {
+                sortableBlogViews = sortableBlogViews.concat([
+                  { view: { blogId: idBlog, sumView: blogViews[idBlog].views } }
+                ]);
+              }
+            }
+            sortableBlogViews.sort((b1, b2) => {
+              return b2.view.sumView - b1.view.sumView;
+            });
+            for (const sbv of sortableBlogViews) {
+              const blogFound = (await this.getBlogById(
+                sbv.view.blogId,
+                userId
+              )) as IBlog;
+              blogs = blogs.concat([blogFound]);
+            }
+            return resolve(blogs);
+          },
+          () => {
+            return reject(new Error('Unidentified Error'));
+          }
+        );
+    });
   }
 
   async getBlogById(id: string, userId: string) {

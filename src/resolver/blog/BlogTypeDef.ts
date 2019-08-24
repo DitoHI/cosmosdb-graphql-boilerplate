@@ -10,6 +10,7 @@ export const queryDef = `
     blogs(id: String, title: String, content: String, lastEdited: DateTime, isDeleted: Boolean,
           imageUri: [String], startAt: Int, endAt: Int, tags: [String], quote: String
     ): [Blog]
+    blogsByItsView(method: SortMethod): [Blog]
     getBlogById(id: String!): Blog
     getBlogByTitleDash(titleDash: String!): Blog
     getBlogByPositionIndex(index: Int!, operator: String!): Blog

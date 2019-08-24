@@ -8,6 +8,11 @@ import BlogController from '../../controller/Blog/BlogController';
 import { throws } from 'assert';
 
 export const typeDef = `
+  enum SortMethod {
+    asc,
+    desc
+  }
+
   type File {
     id: ID!
     path: String!
@@ -98,6 +103,16 @@ export const resolvers: IResolvers = {
             return blog;
           });
         })
+        .catch((err: any) => {
+          throw err;
+        });
+    },
+    blogsByItsView: async (_, method, { userFromJwt, blogController }) => {
+      common.exitAppIfUnauthorized(userFromJwt);
+
+      return blogController
+        .showBlogByViews(userFromJwt.id)
+        .then((blogs: any) => blogs)
         .catch((err: any) => {
           throw err;
         });
