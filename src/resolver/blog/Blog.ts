@@ -1,9 +1,11 @@
 import { IResolvers } from 'graphql-tools';
 import { GraphQLUpload } from 'graphql-upload';
+import firebase from '../../utils/firebase';
 
 import common from '../../utils/common';
 import { IBlog } from '../../model/Blog/BlogModel';
 import BlogController from '../../controller/Blog/BlogController';
+import { throws } from 'assert';
 
 export const typeDef = `
   type File {
@@ -19,6 +21,7 @@ export const typeDef = `
     user: String!,
     title: String,
     titlePreview: String,
+    titleDash: String,
     content: String,
     contentPreview: String,
     lastEdited: DateTime,
@@ -105,6 +108,20 @@ export const resolvers: IResolvers = {
       return blogController
         .getBlogById(id, userFromJwt.id)
         .then((blogFound: any) => blogFound)
+        .catch((err: Error) => {
+          throw err;
+        });
+    },
+    getBlogByTitleDash: async (
+      _,
+      { titleDash },
+      { userFromJwt, blogController }
+    ) => {
+      common.exitAppIfUnauthorized(userFromJwt);
+
+      return blogController
+        .getBlogByTitleDash(titleDash, userFromJwt.id)
+        .then((blog: any) => blog)
         .catch((err: Error) => {
           throw err;
         });

@@ -55,5 +55,22 @@ export default {
   },
   truncateString: (text: string, max: number = 85) => {
     return `${text.substring(0, max)}...`;
+  },
+  makeDashIdentified: (str: string, id: string): string => {
+    const strWithoutSpecialChar = str.replace(/[^a-zA-Z ]/g, '');
+    const strSplit = strWithoutSpecialChar.split(' ');
+    const strChosen = strSplit.slice(0, 10);
+    const finalStr = strChosen.join('-');
+    return `${finalStr.toLowerCase()}-${id}`;
+  },
+  generateRandomString: (length: number): string => {
+    let result = '';
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i = i + 1) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
   }
 };

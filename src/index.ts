@@ -1,6 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 import serverlessHttp from 'serverless-http';
+import firebase from './utils/firebase';
 
 import { ApolloServer } from 'apollo-server-express';
 // @ts-ignore
@@ -54,6 +55,9 @@ server.applyMiddleware({ app, path: '/graphql' });
 app
   .use(cors())
   .use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
+
+// init firebase conn
+firebase.init();
 
 // start the Express server
 app.listen({ port }, () => {

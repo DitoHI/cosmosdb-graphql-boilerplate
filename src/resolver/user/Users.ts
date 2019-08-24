@@ -184,7 +184,7 @@ export const resolvers: IResolvers = {
         as: (sort && sort.as) || 'asc'
       };
       const user = Object.assign({}, userFromJwt) as IUser;
-      if (user.education.length >= 1) {
+      if (user.education && user.education.length >= 1) {
         if (paramSort.as === 'asc') {
           switch (paramSort.by) {
             case 'dateStart':
@@ -218,7 +218,7 @@ export const resolvers: IResolvers = {
         }
       }
 
-      if (user.experience.length >= 1) {
+      if (user.experience && user.experience.length >= 1) {
         if (paramSort.as === 'asc') {
           switch (paramSort.by) {
             case 'dateStart':

@@ -106,6 +106,33 @@ class BlogController {
     });
   }
 
+  async getBlogByTitleDash(titleDash: string, userId: string) {
+    return new Promise((resolve, reject) => {
+      return this.showBlogs({ titleDash })
+        .then(result => {
+          if (result.length === 0) {
+            return reject(new Error('No blog found'));
+          }
+
+          const blog = result[0] as IBlog;
+          if (blog.user !== userId) {
+            return reject(
+              new Error("You dont't have the authorization to update the blog")
+            );
+          }
+          const blogPreview = BlogController.getPreviewOfContent(
+            blog.title,
+            blog.content
+          );
+          blog.titlePreview = blogPreview.title;
+          blog.contentPreview = blogPreview.content;
+
+          return resolve(blog);
+        })
+        .catch((err: Error) => reject(err));
+    });
+  }
+
   async getBlogByIndex(positionIndex: number, operator: string) {
     return new Promise((resolve, reject) => {
       if (operator !== '+' && operator !== '-') {
@@ -156,6 +183,10 @@ class BlogController {
       // to assign manual indexing
       const blogs = await this.showBlogs();
       blog.positionIndex = blogs.length;
+
+      // get the dashed blog
+      const randomId = common.generateRandomString(10);
+      blog.titleDash = common.makeDashIdentified(blog.title, randomId);
 
       // upload cover to azure storage
       const fullPathCover = await this.createFileFromStream(blog.cover);

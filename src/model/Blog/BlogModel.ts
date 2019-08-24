@@ -3,6 +3,7 @@ interface IBlog {
   user: string;
   title: string;
   titlePreview: string;
+  titleDash: string;
   content: string;
   contentPreview: String;
   lastEdited: Date;

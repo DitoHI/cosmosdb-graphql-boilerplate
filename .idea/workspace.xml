@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d464a265-6b3a-4cbb-99d5-0ab54532fa9b" name="Default Changelist" comment="docs update readme about deployment">
+    <list default="true" id="d464a265-6b3a-4cbb-99d5-0ab54532fa9b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netlify.toml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resolver/user/Users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/user/Users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/common.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +44,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/credentials" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -49,6 +56,11 @@
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/credentials" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -127,7 +139,10 @@
       <workItem from="1564194202943" duration="2574000" />
       <workItem from="1564535211077" duration="653000" />
       <workItem from="1564536186237" duration="1756000" />
-      <workItem from="1564538576823" duration="9629000" />
+      <workItem from="1564538576823" duration="9705000" />
+      <workItem from="1564578700140" duration="26000" />
+      <workItem from="1566607920659" duration="1386000" />
+      <workItem from="1566636158642" duration="6483000" />
     </task>
     <task id="LOCAL-00001" summary="fix styling and hashing the password [new]">
       <created>1561564405211</created>
@@ -297,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564538167034</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="docs update the link of deployment">
+      <created>1564552106766</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1564552106766</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView">
@@ -355,23 +377,8 @@
     <MESSAGE value="feature get blog by position index (+/-)" />
     <MESSAGE value="feature setup cd on netlify" />
     <MESSAGE value="docs update readme about deployment" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs update readme about deployment" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts</url>
-          <line>143</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts</url>
-          <line>132</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="docs update the link of deployment" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs update the link of deployment" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
