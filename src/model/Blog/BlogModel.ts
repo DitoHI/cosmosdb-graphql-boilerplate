@@ -15,4 +15,9 @@ interface IBlog {
   quote: string;
 }
 
-export { IBlog };
+enum SortMethod {
+  asc = 'asc',
+  desc = 'desc'
+}
+
+export { IBlog, SortMethod };

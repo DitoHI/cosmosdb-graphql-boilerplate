@@ -107,11 +107,11 @@ export const resolvers: IResolvers = {
           throw err;
         });
     },
-    blogsByItsView: async (_, method, { userFromJwt, blogController }) => {
+    blogsByItsView: async (_, { method }, { userFromJwt, blogController }) => {
       common.exitAppIfUnauthorized(userFromJwt);
 
       return blogController
-        .showBlogByViews(userFromJwt.id)
+        .showBlogByViews(userFromJwt.id, method)
         .then((blogs: any) => blogs)
         .catch((err: any) => {
           throw err;

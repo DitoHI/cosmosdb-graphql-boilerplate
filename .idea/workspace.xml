@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d464a265-6b3a-4cbb-99d5-0ab54532fa9b" name="Default Changelist" comment="">
+    <list default="true" id="d464a265-6b3a-4cbb-99d5-0ab54532fa9b" name="Default Changelist" comment="feature sort the blog by its views">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Blog/BlogController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Blog/BlogModel.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/Blog.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolver/blog/BlogTypeDef.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +138,12 @@
       <workItem from="1566607920659" duration="1386000" />
       <workItem from="1566636158642" duration="6527000" />
       <workItem from="1566646869136" duration="17000" />
-      <workItem from="1566647388298" duration="7660000" />
+      <workItem from="1566647388298" duration="8269000" />
+      <workItem from="1566657877010" duration="15000" />
+      <workItem from="1566665577804" duration="155000" />
+      <workItem from="1566731663600" duration="485000" />
+      <workItem from="1566784718866" duration="56000" />
+      <workItem from="1566784798852" duration="710000" />
     </task>
     <task id="LOCAL-00001" summary="fix styling and hashing the password [new]">
       <created>1561564405211</created>
@@ -322,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566646088645</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="feature sort the blog by its views">
+      <created>1566656462830</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1566656462830</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView">
@@ -356,7 +368,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix new subscription" />
     <MESSAGE value="chore ajv to validate user added" />
     <MESSAGE value="fix rebuild to use auth with passport" />
     <MESSAGE value="chore configure new param to update the status of user" />
@@ -381,16 +392,17 @@
     <MESSAGE value="docs update readme about deployment" />
     <MESSAGE value="docs update the link of deployment" />
     <MESSAGE value="feature init blog with dash and random id" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature init blog with dash and random id" />
+    <MESSAGE value="feature sort the blog by its views" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature sort the blog by its views" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/controller/Blog/BlogController.ts</url>
-          <line>109</line>
+          <line>111</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="20" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

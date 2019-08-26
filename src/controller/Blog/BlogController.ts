@@ -2,7 +2,7 @@ import { SqlParameter, SqlQuerySpec } from '@azure/cosmos';
 import firebase from '../../utils/firebase';
 
 import Dao from '../../model/Dao';
-import { IBlog } from '../../model/Blog/BlogModel';
+import { IBlog, SortMethod } from '../../model/Blog/BlogModel';
 import filesystem from '../../utils/filesystem';
 import common from '../../utils/common';
 import { default as azureCustomStorage } from '../../utils/azure_storage';
@@ -82,7 +82,11 @@ class BlogController {
       });
   }
 
-  async showBlogByViews(userId: string, topFetched: number = 5) {
+  async showBlogByViews(
+    userId: string,
+    sortMethod: SortMethod = SortMethod.desc,
+    topFetched: number = 5
+  ) {
     const db = firebase.db();
     const ref = db.ref(`blogs/${userId}`);
     return new Promise((resolve, reject) => {
@@ -105,7 +109,11 @@ class BlogController {
               }
             }
             sortableBlogViews.sort((b1, b2) => {
-              return b2.view.sumView - b1.view.sumView;
+              if (sortMethod === SortMethod.desc) {
+                return b2.view.sumView - b1.view.sumView;
+              }
+
+              return b1.view.sumView - b2.view.sumView;
             });
             for (const sbv of sortableBlogViews) {
               const blogFound = (await this.getBlogById(
